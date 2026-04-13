@@ -1,0 +1,53 @@
+========================================================================================
+PDF: F-16C“蝰蛇”.pdf
+========================================================================================
+Median font size: 8.04
+
+All font sizes (desc) with span counts:
+  -  36.00: 19 spans
+  -  18.00: 106 spans
+  -  12.00: 295 spans
+  -   9.96: 529 spans
+  -   9.00: 8 spans
+  -   8.04: 18945 spans
+  -   7.56: 310 spans
+  -   6.98: 5 spans
+  -   6.96: 79 spans
+  -   6.48: 68 spans
+  -   6.00: 1277 spans
+  -   5.04: 3 spans
+  -   3.96: 3 spans
+
+Samples for sizes > median:
+  Font size 36.00 (first up to 5 spans):
+    1. bold=False | 目录
+    2. bold=False | 最新改动
+    3. bold=False | DCS: WORLD
+    4. bold=False | 基础知识
+    5. bold=False | F-16C
+  Font size 18.00 (first up to 5 spans):
+    1. bold=False | 健康警告
+    2. bold=False | 安装和启动
+    3. bold=False | 配置您的游戏
+    4. bold=False | 开始一个任务
+    5. bold=False | 飞行控制
+  Font size 12.00 (first up to 5 spans):
+    1. bold=False | 改变空速
+    2. bold=False | 改变高度
+    3. bold=False | 改变航向
+    4. bold=False | 战机黑手党
+    5. bold=False | 轻型战斗机计划
+  Font size 9.96 (first up to 5 spans):
+    1. bold=False | 平视显示器
+    2. bold=False | 迎角分度器
+    3. bold=False | AR
+    4. bold=False | 状态
+    5. bold=False | /NWS
+  Font size 9.00 (first up to 5 spans):
+    1. bold=False | 水平状态显示器（
+    2. bold=False | HSD
+    3. bold=False | ）
+    4. bold=False | 雷达显示
+    5. bold=False | 二级标识符（无雷达锁定）
+
+Total image blocks (sum of page.get_images()): 722

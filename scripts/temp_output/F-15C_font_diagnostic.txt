@@ -1,0 +1,93 @@
+========================================================================================
+PDF: F-15C.pdf
+========================================================================================
+Median font size: 9.00
+
+All font sizes (desc) with span counts:
+  -  48.00: 14 spans
+  -  36.00: 3 spans
+  -  24.00: 1 spans
+  -  22.02: 17 spans
+  -  19.98: 65 spans
+  -  13.98: 86 spans
+  -  12.00: 952 spans
+  -  11.88: 232 spans
+  -  10.98: 183 spans
+  -  10.02: 152 spans
+  -   9.18: 2 spans
+  -   9.02: 5 spans
+  -   9.00: 7666 spans
+  -   8.94: 1 spans
+  -   8.16: 76 spans
+  -   8.11: 46 spans
+  -   7.98: 271 spans
+  -   7.92: 1 spans
+  -   7.02: 314 spans
+  -   6.95: 4 spans
+
+Samples for sizes > median:
+  Font size 48.00 (first up to 5 spans):
+    1. bold=False | F-15
+    2. bold=False | 的历史
+    3. bold=False | 简易航电模式
+    4. bold=False | 驾驶舱仪表
+    5. bold=False | 对抗系统
+  Font size 36.00 (first up to 5 spans):
+    1. bold=False | DCS: F-15C
+    2. bold=False | “鹰”
+    3. bold=False | 飞行手册
+  Font size 24.00 (first up to 5 spans):
+    1. bold=False | 目录
+  Font size 22.02 (first up to 5 spans):
+    1. bold=False | F-15C
+    2. bold=False | 介绍
+    3. bold=False | F-15
+    4. bold=False | 的历史
+    5. bold=False | 简易航电模式
+  Font size 19.98 (first up to 5 spans):
+    1. bold=False | 诞生
+    2. bold=False | 未来发展
+    3. bold=False | 多级改进计划
+    4. bold=False | F-15
+    5. bold=False | 服役
+  Font size 13.98 (first up to 5 spans):
+    1. bold=False | F-15C HUD
+    2. bold=False | 基本符号
+    3. bold=False | 导航模式
+    4. bold=False | 仪表着陆系统导航（
+    5. bold=True | ILSN
+  Font size 12.00 (first up to 5 spans):
+    1. bold=True | [
+    2. bold=True | F-15C
+    3. bold=True | ]
+    4. bold=True | DCS
+    5. bold=False | ELS
+  Font size 11.88 (first up to 5 spans):
+    1. bold=False | B
+    2. bold=False | IM
+    3. bold=False | EK
+    4. bold=False | B
+    5. bold=False | IM
+  Font size 10.98 (first up to 5 spans):
+    1. bold=True | F-15C
+    2. bold=False | 介绍
+    3. bold=True | ........................................
+    4. bold=True | F-15
+    5. bold=False | 的历史
+  Font size 10.02 (first up to 5 spans):
+    1. bold=False | 官方论坛：
+    2. bold=False | http://forums.eagle.ru
+    3. bold=False | F-15C HUD
+    4. bold=False | 基本符号
+    5. bold=False | ........................................
+  Font size 9.18 (first up to 5 spans):
+    1. bold=False | 注意。
+    2. bold=False | 警告。
+  Font size 9.02 (first up to 5 spans):
+    1. bold=False | 一个带有菱形符号的闪烁的圆，其包围有一个
+    2. bold=False | M
+    3. bold=False | 符号
+    4. bold=False | -
+    5. bold=False | 来袭的主动雷达
+
+Total image blocks (sum of page.get_images()): 541

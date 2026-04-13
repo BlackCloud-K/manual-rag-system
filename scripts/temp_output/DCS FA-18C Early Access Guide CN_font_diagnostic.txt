@@ -1,0 +1,65 @@
+========================================================================================
+PDF: DCS FA-18C Early Access Guide CN.pdf
+========================================================================================
+Median font size: 8.04
+
+All font sizes (desc) with span counts:
+  -  36.02: 1 spans
+  -  36.00: 22 spans
+  -  21.96: 41 spans
+  -  20.04: 1 spans
+  -  18.00: 148 spans
+  -  15.96: 464 spans
+  -  12.00: 693 spans
+  -   9.00: 886 spans
+  -   8.04: 28208 spans
+  -   7.56: 585 spans
+  -   6.96: 51 spans
+  -   6.48: 15 spans
+  -   6.02: 4 spans
+  -   6.00: 1520 spans
+  -   5.04: 1 spans
+
+Samples for sizes > median:
+  Font size 36.02 (first up to 5 spans):
+    1. bold=False | 手册
+  Font size 36.00 (first up to 5 spans):
+    1. bold=False | F/A-18C
+    2. bold=False | 抢先体验
+    3. bold=False | DCS: WORLD
+    4. bold=False | 基础知识
+    5. bold=False | F/A-18C
+  Font size 21.96 (first up to 5 spans):
+    1. bold=False | 目录
+    2. bold=False | 历史改动
+    3. bold=False | DCS: WORLD
+    4. bold=False | 基础知识
+    5. bold=False | F/A-18C
+  Font size 20.04 (first up to 5 spans):
+    1. bold=False | AN/ASQ-228 ATFLIR
+  Font size 18.00 (first up to 5 spans):
+    1. bold=False | 健康警告！
+    2. bold=False | 安装与启动
+    3. bold=False | 飞行控制
+    4. bold=False | VFAX
+    5. bold=False | 计划
+  Font size 15.96 (first up to 5 spans):
+    1. bold=False | 配置您的游戏
+    2. bold=False | 开始一个任务
+    3. bold=False | 游戏问题
+    4. bold=False | 相关链接
+    5. bold=False | 改变空速
+  Font size 12.00 (first up to 5 spans):
+    1. bold=False | 2
+    2. bold=False | 3
+    3. bold=False | 4
+    4. bold=False | 5
+    5. bold=False | 6
+  Font size 9.00 (first up to 5 spans):
+    1. bold=False | 图
+    2. bold=False | 1:
+    3. bold=False | 操纵设备指示器显示
+    4. bold=False | 图
+    5. bold=False | 2. F/A-18C
+
+Total image blocks (sum of page.get_images()): 793

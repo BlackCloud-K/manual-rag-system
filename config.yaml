@@ -1,0 +1,16 @@
+manuals:
+  "DCS FA-18C Early Access Guide CN":
+    margin_top: 55
+    margin_bottom: 55
+  "DCS_ JF-17 _雷电_":
+    margin_top: 55
+    margin_bottom: 55
+  "F-15C":
+    margin_top: 55
+    margin_bottom: 55
+  "F-16C“蝰蛇”":
+    margin_top: 55
+    margin_bottom: 55
+  default:
+    margin_top: 55
+    margin_bottom: 55

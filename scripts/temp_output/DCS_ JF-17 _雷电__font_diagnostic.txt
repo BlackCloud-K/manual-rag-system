@@ -1,0 +1,30 @@
+========================================================================================
+PDF: DCS_ JF-17 _雷电_.pdf
+========================================================================================
+Median font size: 12.00
+
+All font sizes (desc) with span counts:
+  -  27.95: 1 spans
+  -  26.05: 1 spans
+  -  14.05: 466 spans
+  -  12.00: 9574 spans
+  -  11.05: 5 spans
+  -  10.45: 116 spans
+  -   9.95: 246 spans
+  -   9.50: 1 spans
+  -   9.00: 328 spans
+  -   7.80: 11 spans
+
+Samples for sizes > median:
+  Font size 27.95 (first up to 5 spans):
+    1. bold=False | 飞行手册
+  Font size 26.05 (first up to 5 spans):
+    1. bold=False | DCS: JF-17 "雷电"
+  Font size 14.05 (first up to 5 spans):
+    1. bold=False | 1.1.
+    2. bold=False | 飞机
+    3. bold=False | 1.1.1.
+    4. bold=False | 历史
+    5. bold=False | JF-17
+
+Total image blocks (sum of page.get_images()): 1497
