@@ -353,6 +353,87 @@ def remove_short_same_page_stubs(chunks: list[dict[str, Any]]) -> tuple[list[dic
     return kept, removed
 
 
+def _normalize_ws(s: str) -> str:
+    return " ".join((s or "").split())
+
+
+def remove_title_only_chunks(chunks: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], int]:
+    """Remove chunks whose body text is only the section title (no extra prose).
+
+    Example: TOC points to a heading line; the real content is the next entry.
+    """
+    if not chunks:
+        return [], 0
+
+    kept: list[dict[str, Any]] = []
+    removed = 0
+    for chunk in chunks:
+        title = _pick_chunk_title(chunk)
+        text = str(chunk.get("text", "")).strip()
+        if title and _normalize_ws(text) == _normalize_ws(title):
+            removed += 1
+            continue
+        kept.append(chunk)
+
+    return kept, removed
+
+
+def merge_chunks_by_identical_title(chunks: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], int]:
+    """Merge chunks that share the same pick-title (h3 > h2 > h1) into one.
+
+    All occurrences with identical title text are merged; text is concatenated in
+    TOC order, page_start/page_end span the combined range. Chunk ids are not
+    renumbered (first chunk keeps its chunk_id).
+    """
+    if not chunks:
+        return [], 0
+
+    from collections import defaultdict
+
+    key_to_indices: dict[str, list[int]] = defaultdict(list)
+    for i, c in enumerate(chunks):
+        t = _normalize_ws(_pick_chunk_title(c))
+        if not t:
+            continue
+        key_to_indices[t].append(i)
+
+    merged_from: set[int] = set()
+    out: list[dict[str, Any]] = []
+    removed = 0
+
+    for i, c in enumerate(chunks):
+        if i in merged_from:
+            continue
+        t = _normalize_ws(_pick_chunk_title(c))
+        if not t:
+            out.append(c)
+            continue
+        idxs = key_to_indices[t]
+        if len(idxs) == 1:
+            out.append(c)
+            continue
+
+        group = [chunks[j] for j in idxs]
+        for j in idxs[1:]:
+            merged_from.add(j)
+        removed += len(idxs) - 1
+
+        first = dict(group[0])
+        texts = [str(x.get("text", "")).strip() for x in group]
+        first["text"] = "\n\n".join(tx for tx in texts if tx)
+        first["page_start"] = min(int(x["page_start"]) for x in group)
+        first["page_end"] = max(int(x["page_end"]) for x in group)
+        out.append(first)
+
+    for idx, chunk in enumerate(out):
+        chunk["prev_chunk_id"] = out[idx - 1]["chunk_id"] if idx > 0 else None
+        chunk["next_chunk_id"] = (
+            out[idx + 1]["chunk_id"] if idx < len(out) - 1 else None
+        )
+
+    return out, removed
+
+
 def remove_empty_chunks(chunks: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], int]:
     filtered = [c for c in chunks if str(c.get("text", "")).strip()]
     removed_count = len(chunks) - len(filtered)
@@ -374,10 +455,26 @@ if __name__ == "__main__":
     output_path = output_dir / "chunks_f15c.json"
 
     toc = parse_toc(str(pdf_path))
+
+    print("\n=== F-15C 目录（TOC 分级）===")
+    if toc:
+        src = toc[0].get("source", "?")
+        print(f"来源: {src}")
+        for i, item in enumerate(toc, start=1):
+            level = int(item.get("level", 0))
+            title = str(item.get("title", "")).strip()
+            page = item.get("page", "")
+            indent = "  " * max(0, level - 1)
+            print(f"{i:3d}. [H{level}] {indent}{title} → {page}")
+    else:
+        print("(无 TOC 条目)")
+
     with fitz.open(pdf_path) as document:
         chunks = build_chunks(toc, document, pdf_path.name)
         chunks = fill_text(chunks, document, pdf_name=pdf_path.name, config_path=config_path)
         chunks, removed_stub_count = remove_short_same_page_stubs(chunks)
+        chunks, removed_title_only_count = remove_title_only_chunks(chunks)
+        chunks, merged_same_title_count = merge_chunks_by_identical_title(chunks)
         chunks, removed_empty_count = remove_empty_chunks(chunks)
 
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -395,5 +492,14 @@ if __name__ == "__main__":
     print(f"text非空Chunk数: {non_empty}")
     print(f"page_start范围: min={min_page}, max={max_page}")
     print(f"被删除的同页短标题占位Chunk数: {removed_stub_count}")
+    print(f"被删除的仅标题无正文Chunk数: {removed_title_only_count}")
+    print(f"因标题相同合并掉的Chunk数: {merged_same_title_count}")
     print(f"被删除的空Chunk数: {removed_empty_count}")
     print(f"margin_top={margin_top}, margin_bottom={margin_bottom}")
+
+    if chunks:
+        max_words = max(len(str(c.get("text", "")).split()) for c in chunks)
+        max_chars = max(len(str(c.get("text", ""))) for c in chunks)
+        longest = max(chunks, key=lambda c: len(str(c.get("text", "")).split()))
+        print(f"最长text(按空白分词): {max_words} 词, chunk_id={longest['chunk_id']}")
+        print(f"最长text(字符数): {max_chars}")
