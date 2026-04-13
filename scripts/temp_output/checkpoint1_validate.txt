@@ -1,0 +1,207 @@
+共 1 个 chunks_*.json
+
+########################################################################
+[1/1] stem=f15c
+########################################################################
+文件: D:\Programs\manual-rag-system\data\chunks_f15c.json
+图片目录: D:\Programs\manual-rag-system\data\images\f15c
+chunk 总数: 66
+
+✅ 结构完整性：通过
+
+✅ text非空率：通过
+
+✅ 链表完整性：通过
+
+所有 chunk 的 image_paths 条目数（可重复引用）: 93
+磁盘上 PNG 张数: 93
+已被至少一个 chunk 引用的张数: 93  覆盖率: 1.0000 (93/93)
+未被任何 chunk 引用的图: 无
+✅ 图片归属覆盖率：通过（>95% 磁盘图已被引用）
+
+========================================================================
+人工抽查：随机 10 个 chunk
+========================================================================
+[1] chunk_id: f15c_0017
+    title_h1: 驾驶舱仪表
+    title_h2: F-15C驾驶舱仪表
+    title_h3: 迎角指示器
+    page_start: 37  page_end: 105
+    text 前150字: 迎角指示器 迎角指示器位于指示空速和马赫数表的下方，也安装在仪表面板上。它用来指示从0 度到45 度的当前迎角数值。指示的迎角值并不对应实际的俯仰角。在着陆迎角范围（20 度 到22 度）内，表上会有一个对应的指针。  迎角指示器 就像前面所说的，飞机的速度矢量可能和飞机的纵轴指向并不一致，飞机速度
+    image_paths: ['data/images/f15c/page_38_img_0.png']
+
+[2] chunk_id: f15c_0005
+    title_h1: F-15C介绍
+    title_h2: F-15的历史
+    title_h3: 多级改进计划
+    page_start: 20  page_end: 22
+    text 前150字: 多级改进计划 当全新的F-15A 与B 型战机服役后，一些问题便暴露了出来。例如，进气道的结构太 过薄弱，必须更加严格地限制飞机的飞行过载，因此进气道必须重新设计，从而使F-15 能 够满足设计要求，这也意味着要对现有的机身结构进行改造。这是从那时便开始的F-15 多 级改进计划的第一步。美国空军于
+    image_paths: []
+
+[3] chunk_id: f15c_0073
+    title_h1: 驾驶舱仪表
+    title_h2: 空对空导弹
+    title_h3: 近距导弹
+    page_start: 87  page_end: 91
+    text 前150字: 近距导弹 AIM-9 响尾蛇 AIM-9 的研制工作始于1948 年，并于1952 年到1954 年间进行升级版本的飞行测试工 作。第一种型号，AIM-9A 响尾蛇，于1956 年服役。 AIM-9 根据空气动力学的鸭式布局方案设计。它有一个直径为127 毫米的圆柱形主体 和一组横梯形弹翼。陀螺舵安
+    image_paths: ['data/images/f15c/page_88_img_0.png', 'data/images/f15c/page_89_img_0.png']
+
+[4] chunk_id: f15c_0018
+    title_h1: 驾驶舱仪表
+    title_h2: F-15C驾驶舱仪表
+    title_h3: 加速度计
+    page_start: 38  page_end: 38
+    text 前150字: 加速度计 加速度计指示当前的正负过载数值。G 标记指示最大可允许的正负过载值。这些仪表 读数各自独立而且不如HUD 显示的精确。 图 26. 加速度计  姿态方位指示器
+    image_paths: ['data/images/f15c/page_38_img_1.png']
+
+[5] chunk_id: f15c_0142
+    title_h1: 驾驶舱仪表
+    title_h2: 附录
+    title_h3: 翻译
+    page_start: 144  page_end: 144
+    text 前150字: 翻译 Qingsheng "Flycat111222" Wang (insky-1252/kongzhan) 校对 Jiong "billeinstein" Zhang (官方汉化组) Xueqian "uboats" Zhao (官方汉化组)
+    image_paths: []
+
+[6] chunk_id: f15c_0010
+    title_h1: F-15C介绍
+    title_h2: 简易航电模式
+    title_h3: 空对空模式
+    page_start: 31  page_end: 32
+    text 前150字: 空对空模式 图 19.空对空模式 空对空模式中的独有符号如下：   （玩家飞机符号）：玩家的飞机用一个绿色圆圈表示，显示在显示器底部中央   （本方飞机符号）：所有本方战机都用蓝色圆圈表示，每个圆圈上的直线指向该 机现在的飞行方向   （敌方飞机符号）：所有敌方战机都用红色三角形表示，每个三角
+    image_paths: ['data/images/f15c/page_31_img_0.png', 'data/images/f15c/page_32_img_0.png']
+
+[7] chunk_id: f15c_0086
+    title_h1: 驾驶舱仪表
+    title_h2: 空战基本知识
+    title_h3: 
+    page_start: 111  page_end: 111
+    text 前150字: 空战基本知识 在不到一个世纪的时间之内，现代空战的战术技巧已经发生了革命性的变化。几十年 前的螺旋桨战机到今天已经进化成为了先进的喷气式战机。 使虚拟飞行员坠毁或其飞机经常被摧毁的首要原因，就是战场态势与其使用的武器之 间的矛盾。今天的战机比二战时期的战机们更为强大。然而现在，敌军火力往往更精准更 
+    image_paths: []
+
+[8] chunk_id: f15c_0008
+    title_h1: F-15C介绍
+    title_h2: 简易航电模式
+    title_h3: 
+    page_start: 29  page_end: 30
+    text 前150字: 简易航电模式 简易航电模式提供了简易风格的航电系统，这个系统使得休闲玩家更容易接受与熟悉 这个游戏。这个模式可以在游戏设置中调整游戏的可玩性，或者直接选择游戏中的预设模 式"简易"。 图 17. 简易航电模式雷达屏幕 简易航电模式的雷达屏幕显示在屏幕的右上角，采用俯视视角，底部中央的绿色圆圈 代表玩
+    image_paths: ['data/images/f15c/page_29_img_0.png']
+
+[9] chunk_id: f15c_0082
+    title_h1: 驾驶舱仪表
+    title_h2: 理论训练
+    title_h3: 转弯半径与转弯速率
+    page_start: 105  page_end: 107
+    text 前150字: 转弯半径与转弯速率 气动升力矢量垂直于飞机的速度矢量，只要飞机保持水平飞行，那么升力与重力平衡。 当飞机产生坡度变化的时候，升力在垂直方向的投影就会减小。 图 71. 飞机受到的气动力 升力的可用量影响着飞机的操作特性，在水平面的转弯速率以及转弯半径是衡量飞机 机动能力的最重要指标，这些数据取决于飞
+    image_paths: ['data/images/f15c/page_106_img_0.png', 'data/images/f15c/page_107_img_0.png']
+
+[10] chunk_id: f15c_0126
+    title_h1: 驾驶舱仪表
+    title_h2: F-15C飞行动力学
+    title_h3: 外部因素对首要机动特性的影响
+    page_start: 131  page_end: 133
+    text 前150字: 外部因素对首要机动特性的影响 重量 最大正常过载和推力限制正常过载会随飞机重量的变化成比例变化（在恒定马赫数和 高度处）。 对于任何正常过载，纵向过载会随着飞机重量的增加而减少，但不是简单的反比例变 化，因为重量的增加也会使推力增加（因为配平后的迎角会增加）。 外部挂载 外部挂载会通过它们的重量和由
+    image_paths: ['data/images/f15c/page_132_img_0.png']
+
+========================================================================
+人工抽查：随机 5 个 image_paths 非空的 chunk
+========================================================================
+[1] chunk_id: f15c_0111
+    title_h1: 驾驶舱仪表
+    title_h2: F-15C飞行动力学
+    title_h3: 高度包线和速度包线
+    page_start: 123
+    image_paths: ['data/images/f15c/page_123_img_0.png', 'data/images/f15c/page_127_img_0.png']
+    text 前100字: 高度包线和速度包线 只有表示飞机高度和速度的飞行包线图，才能表示出飞机在各速度和高度下的气动性 能。 包线范围 能够进行水平飞行的速度和高度范围，会被最小速度、升限和最大速度所限制，这被 称为飞机水平
+
+[2] chunk_id: f15c_0010
+    title_h1: F-15C介绍
+    title_h2: 简易航电模式
+    title_h3: 空对空模式
+    page_start: 31
+    image_paths: ['data/images/f15c/page_31_img_0.png', 'data/images/f15c/page_32_img_0.png']
+    text 前100字: 空对空模式 图 19.空对空模式 空对空模式中的独有符号如下：   （玩家飞机符号）：玩家的飞机用一个绿色圆圈表示，显示在显示器底部中央   （本方飞机符号）：所有本方战机都用蓝色圆圈表示，每个圆
+
+[3] chunk_id: f15c_0003
+    title_h1: F-15C介绍
+    title_h2: F-15的历史
+    title_h3: 诞生
+    page_start: 10
+    image_paths: ['data/images/f15c/page_10_img_0.png', 'data/images/f15c/page_11_img_0.png', 'data/images/f15c/page_12_img_0.png', 'data/images/f15c/page_13_img_0.png', 'data/images/f15c/page_14_img_0.png', 'data/images/f15c/page_15_img_0.png', 'data/images/f15c/page_16_img_0.png']
+    text 前100字: 诞生 诞生于二十世纪七十年代的麦道公司F-15 是世界上最优秀的战斗机之一，取得了很多 令人印象深刻的成就。 F-15 鹰是美国空军的主力。作为一款最初为获得制空权而设计的战机，F-15 是一款未 来
+
+[4] chunk_id: f15c_0021
+    title_h1: 驾驶舱仪表
+    title_h2: F-15C驾驶舱仪表
+    title_h3: 气压高度表
+    page_start: 39
+    image_paths: ['data/images/f15c/page_40_img_0.png']
+    text 前100字: 气压高度表 高度表指示飞机的气压高度，并以20 英尺为单位。 要求航向飞机航向方位指针航线偏差指示点航线偏差指示条距离窗口 图29. 气压高度表
+
+[5] chunk_id: f15c_0019
+    title_h1: 驾驶舱仪表
+    title_h2: F-15C驾驶舱仪表
+    title_h3: 姿态方位指示器
+    page_start: 38
+    image_paths: ['data/images/f15c/page_39_img_0.png']
+    text 前100字: 姿态方位指示器 姿态方位指示器位于仪表面板的中部。旋转的球体指示当前的俯仰和坡度。俯仰角分 度值为5 度，坡度分度值为10 度。垂直水平指示条位于指示器的前部，指示飞机相对于预 计航线的偏差。 最大负
+
+========================================================================
+已知章节：title_h1 包含 "驾驶舱仪表" 的 chunk
+========================================================================
+chunk_id=f15c_0012  page_start=33  page_end=34  title_h2='F-15C驾驶舱仪表'  title_h3=''
+chunk_id=f15c_0013  page_start=34  page_end=35  title_h2='F-15C驾驶舱仪表'  title_h3='垂直态势显示器'
+chunk_id=f15c_0014  page_start=35  page_end=35  title_h2='F-15C驾驶舱仪表'  title_h3='战术电子战系统显示器'
+chunk_id=f15c_0015  page_start=35  page_end=37  title_h2='F-15C驾驶舱仪表'  title_h3='多功能彩色显示器武器控制面板'
+chunk_id=f15c_0016  page_start=37  page_end=37  title_h2='F-15C驾驶舱仪表'  title_h3='指示空速与马赫数表'
+chunk_id=f15c_0017  page_start=37  page_end=105  title_h2='F-15C驾驶舱仪表'  title_h3='迎角指示器'
+chunk_id=f15c_0018  page_start=38  page_end=38  title_h2='F-15C驾驶舱仪表'  title_h3='加速度计'
+chunk_id=f15c_0019  page_start=38  page_end=39  title_h2='F-15C驾驶舱仪表'  title_h3='姿态方位指示器'
+chunk_id=f15c_0020  page_start=39  page_end=39  title_h2='F-15C驾驶舱仪表'  title_h3='水平状态指示器'
+chunk_id=f15c_0021  page_start=39  page_end=40  title_h2='F-15C驾驶舱仪表'  title_h3='气压高度表'
+chunk_id=f15c_0022  page_start=40  page_end=40  title_h2='F-15C驾驶舱仪表'  title_h3='垂直速度表'
+chunk_id=f15c_0023  page_start=40  page_end=41  title_h2='F-15C驾驶舱仪表'  title_h3='转速表'
+chunk_id=f15c_0024  page_start=41  page_end=41  title_h2='F-15C驾驶舱仪表'  title_h3='风扇涡轮入口温度表'
+chunk_id=f15c_0025  page_start=41  page_end=42  title_h2='F-15C驾驶舱仪表'  title_h3='发动机燃油流量表'
+chunk_id=f15c_0026  page_start=42  page_end=42  title_h2='F-15C驾驶舱仪表'  title_h3='发动机喷口位置指示器'
+chunk_id=f15c_0027  page_start=42  page_end=43  title_h2='F-15C驾驶舱仪表'  title_h3='油量指示器'
+chunk_id=f15c_0028  page_start=43  page_end=43  title_h2='F-15C驾驶舱仪表'  title_h3='座舱气压计'
+chunk_id=f15c_0029  page_start=43  page_end=45  title_h2='F-15C驾驶舱仪表'  title_h3='箔条和红外干扰弹指示灯'
+chunk_id=f15c_0030  page_start=45  page_end=61  title_h2='F-15C驾驶舱仪表'  title_h3='F-15C HUD操作'
+chunk_id=f15c_0052  page_start=61  page_end=72  title_h2='F-15C驾驶舱仪表'  title_h3='AN/APG-63（V）1雷达'
+chunk_id=f15c_0061  page_start=72  page_end=72  title_h2='对抗系统'  title_h3=''
+chunk_id=f15c_0062  page_start=72  page_end=73  title_h2='对抗系统'  title_h3='AN/ALQ-135内置电子干扰系统'
+chunk_id=f15c_0063  page_start=73  page_end=74  title_h2='对抗系统'  title_h3='雷达告警系统'
+chunk_id=f15c_0064  page_start=74  page_end=81  title_h2='对抗系统'  title_h3='AN/ALR-56C告警接收仪'
+chunk_id=f15c_0068  page_start=81  page_end=83  title_h2='空对空导弹'  title_h3=''
+chunk_id=f15c_0070  page_start=83  page_end=87  title_h2='空对空导弹'  title_h3='中距导弹'
+chunk_id=f15c_0073  page_start=87  page_end=91  title_h2='空对空导弹'  title_h3='近距导弹'
+chunk_id=f15c_0074  page_start=91  page_end=91  title_h2='无线电通信与消息'  title_h3=''
+chunk_id=f15c_0075  page_start=91  page_end=98  title_h2='无线电通信与消息'  title_h3='无线电指令'
+chunk_id=f15c_0076  page_start=98  page_end=101  title_h2='无线电通信与消息'  title_h3='无线电消息'
+chunk_id=f15c_0077  page_start=101  page_end=104  title_h2='无线电通信与消息'  title_h3='语音信息与告警'
+chunk_id=f15c_0078  page_start=104  page_end=104  title_h2='理论训练'  title_h3=''
+chunk_id=f15c_0079  page_start=104  page_end=104  title_h2='理论训练'  title_h3='指示空速和真空速'
+chunk_id=f15c_0080  page_start=104  page_end=104  title_h2='理论训练'  title_h3='速度矢量'
+chunk_id=f15c_0082  page_start=105  page_end=107  title_h2='理论训练'  title_h3='转弯半径与转弯速率'
+chunk_id=f15c_0083  page_start=107  page_end=108  title_h2='理论训练'  title_h3='转弯速率'
+chunk_id=f15c_0084  page_start=108  page_end=109  title_h2='理论训练'  title_h3='持续转弯与瞬时转弯'
+chunk_id=f15c_0085  page_start=109  page_end=111  title_h2='理论训练'  title_h3='能量控制'
+chunk_id=f15c_0086  page_start=111  page_end=111  title_h2='空战基本知识'  title_h3=''
+chunk_id=f15c_0088  page_start=111  page_end=115  title_h2='空战基本知识'  title_h3='空战战术'
+chunk_id=f15c_0098  page_start=115  page_end=120  title_h2='空战基本知识'  title_h3='导弹规避'
+chunk_id=f15c_0102  page_start=120  page_end=121  title_h2='F-15C飞行动力学'  title_h3='起飞'
+chunk_id=f15c_0103  page_start=121  page_end=121  title_h2='F-15C飞行动力学'  title_h3='爬升'
+chunk_id=f15c_0104  page_start=121  page_end=122  title_h2='F-15C飞行动力学'  title_h3='飞行中'
+chunk_id=f15c_0105  page_start=122  page_end=122  title_h2='F-15C飞行动力学'  title_h3='进近'
+chunk_id=f15c_0106  page_start=122  page_end=122  title_h2='F-15C飞行动力学'  title_h3='复飞'
+chunk_id=f15c_0107  page_start=122  page_end=135  title_h2='F-15C飞行动力学'  title_h3='着陆'
+chunk_id=f15c_0108  page_start=122  page_end=123  title_h2='F-15C飞行动力学'  title_h3='F-15C的机动性能'
+chunk_id=f15c_0111  page_start=123  page_end=127  title_h2='F-15C飞行动力学'  title_h3='高度包线和速度包线'
+chunk_id=f15c_0122  page_start=127  page_end=131  title_h2='F-15C飞行动力学'  title_h3='过载'
+chunk_id=f15c_0126  page_start=131  page_end=133  title_h2='F-15C飞行动力学'  title_h3='外部因素对首要机动特性的影响'
+chunk_id=f15c_0131  page_start=133  page_end=133  title_h2='F-15C检查单'  title_h3='开车'
+chunk_id=f15c_0132  page_start=133  page_end=134  title_h2='F-15C检查单'  title_h3='滑行与起飞'
+chunk_id=f15c_0133  page_start=134  page_end=134  title_h2='F-15C检查单'  title_h3='导航'
+chunk_id=f15c_0135  page_start=135  page_end=139  title_h2='F-15C检查单'  title_h3='空对空导弹应用'
+chunk_id=f15c_0141  page_start=139  page_end=144  title_h2='附录'  title_h3='缩略词表'
+chunk_id=f15c_0142  page_start=144  page_end=144  title_h2='附录'  title_h3='翻译'
