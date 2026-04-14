@@ -26,6 +26,10 @@ except ModuleNotFoundError:
 RENDER_SCALE = 2.0
 VERTICAL_GAP_MERGE_PT = 50.0
 SOLID_RGB_STD_MAX = 5.0
+# After vertical clustering, expand the merged bbox. Values are **output image
+# pixels** (at RENDER_SCALE); converted to PDF points via / RENDER_SCALE.
+CLIP_PADDING_PX_LR = 140  # left and right
+CLIP_PADDING_PX_TB = 0  # top and bottom (0 = same as before any clip padding)
 
 
 def _bbox_union(
@@ -37,6 +41,23 @@ def _bbox_union(
         max(a[2], b[2]),
         max(a[3], b[3]),
     )
+
+
+def _pad_clip_rect(
+    page: fitz.Page,
+    box: tuple[float, float, float, float],
+    pad_x_px: float,
+    pad_y_px: float,
+) -> fitz.Rect:
+    """Expand *box* horizontally/vertically in screen pixels, clamped to the page."""
+    pad_x_pt = float(pad_x_px) / RENDER_SCALE
+    pad_y_pt = float(pad_y_px) / RENDER_SCALE
+    r = fitz.Rect(box)
+    r.x0 -= pad_x_pt
+    r.y0 -= pad_y_pt
+    r.x1 += pad_x_pt
+    r.y1 += pad_y_pt
+    return r & page.rect
 
 
 def _cluster_by_vertical_gap(
@@ -91,7 +112,7 @@ def extract_image_clusters(
     out: list[dict[str, Any]] = []
 
     for box in clusters_bbox:
-        clip = fitz.Rect(box)
+        clip = _pad_clip_rect(page, box, CLIP_PADDING_PX_LR, CLIP_PADDING_PX_TB)
         pix = page.get_pixmap(clip=clip, matrix=mat)
         arr = np.frombuffer(pix.samples, dtype=np.uint8)
         if arr.size == 0:
