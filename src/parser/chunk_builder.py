@@ -28,6 +28,12 @@ def build_chunks(
     if not toc_list:
         return []
 
+    # Current chunk schema supports h1/h2/h3 only.
+    # Ignore deeper TOC levels to avoid malformed slicing and accidental drops.
+    toc_list = [item for item in toc_list if int(item.get("level", 0)) <= 3]
+    if not toc_list:
+        return []
+
     pdf_stem = _normalize_pdf_stem(pdf_name)
     total_pages = len(doc)
     chunks: list[dict[str, Any]] = []

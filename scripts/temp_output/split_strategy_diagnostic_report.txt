@@ -1,0 +1,777 @@
+========================================================================================
+手册: chunks_f16c.json
+========================================================================================
+大Chunk数量: 31
+
+[f16c_0019] F-16C 和D | 1212 tokens
+  - double_newline: 段数=1, max=1212, mean=1212.0, 可压到<800=否
+  - single_line: 段数=44, max=48, mean=27.5, 可压到<800=是
+  - step_blocks: 段数=1, max=1212, mean=1212.0, 可压到<800=否
+  - title_list_blocks: 段数=1, max=1212, mean=1212.0, 可压到<800=否
+  - sentences: 段数=10, max=203, mean=121.2, 可压到<800=是
+
+[f16c_0040] 仪表面板 | 2967 tokens
+  - double_newline: 段数=1, max=2967, mean=2967.0, 可压到<800=否
+  - single_line: 段数=138, max=44, mean=21.5, 可压到<800=是
+  - step_blocks: 段数=1, max=2967, mean=2967.0, 可压到<800=否
+  - title_list_blocks: 段数=8, max=2651, mean=370.9, 可压到<800=否
+  - sentences: 段数=44, max=254, mean=67.4, 可压到<800=是
+
+[f16c_0041] 左侧辅助控制台 | 1023 tokens
+  - double_newline: 段数=1, max=1023, mean=1023.0, 可压到<800=否
+  - single_line: 段数=43, max=43, mean=23.8, 可压到<800=是
+  - step_blocks: 段数=1, max=1023, mean=1023.0, 可压到<800=否
+  - title_list_blocks: 段数=1, max=1023, mean=1023.0, 可压到<800=否
+  - sentences: 段数=16, max=128, mean=63.9, 可压到<800=是
+
+[f16c_0043] 左侧控制台 | 3376 tokens
+  - double_newline: 段数=1, max=3376, mean=3376.0, 可压到<800=否
+  - single_line: 段数=192, max=45, mean=17.6, 可压到<800=是
+  - step_blocks: 段数=1, max=3376, mean=3376.0, 可压到<800=否
+  - title_list_blocks: 段数=38, max=673, mean=88.8, 可压到<800=是
+  - sentences: 段数=57, max=164, mean=59.2, 可压到<800=是
+
+[f16c_0044] 右侧控制台 | 1088 tokens
+  - double_newline: 段数=1, max=1088, mean=1088.0, 可压到<800=否
+  - single_line: 段数=71, max=43, mean=15.3, 可压到<800=是
+  - step_blocks: 段数=1, max=1088, mean=1088.0, 可压到<800=否
+  - title_list_blocks: 段数=10, max=810, mean=108.8, 可压到<800=否
+  - sentences: 段数=21, max=184, mean=51.8, 可压到<800=是
+
+[f16c_0046] 驾驶杆 | 894 tokens
+  - double_newline: 段数=1, max=894, mean=894.0, 可压到<800=否
+  - single_line: 段数=115, max=48, mean=7.8, 可压到<800=是
+  - step_blocks: 段数=1, max=894, mean=894.0, 可压到<800=否
+  - title_list_blocks: 段数=4, max=574, mean=223.5, 可压到<800=是
+  - sentences: 段数=13, max=162, mean=68.8, 可压到<800=是
+
+[f16c_0074] 水平状态显示器（HSD） | 1259 tokens
+  - double_newline: 段数=1, max=1259, mean=1259.0, 可压到<800=否
+  - single_line: 段数=78, max=46, mean=16.1, 可压到<800=是
+  - step_blocks: 段数=1, max=1259, mean=1259.0, 可压到<800=否
+  - title_list_blocks: 段数=7, max=682, mean=179.9, 可压到<800=是
+  - sentences: 段数=33, max=147, mean=38.2, 可压到<800=是
+
+[f16c_0080] INS 对准 | 1712 tokens
+  - double_newline: 段数=1, max=1712, mean=1712.0, 可压到<800=否
+  - single_line: 段数=104, max=44, mean=16.5, 可压到<800=是
+  - step_blocks: 段数=12, max=364, mean=142.7, 可压到<800=是
+  - title_list_blocks: 段数=8, max=1165, mean=214.0, 可压到<800=否
+  - sentences: 段数=41, max=183, mean=41.8, 可压到<800=是
+
+[f16c_0089] 使用ILS 下滑道和航向道进行导航 | 911 tokens
+  - double_newline: 段数=1, max=911, mean=911.0, 可压到<800=否
+  - single_line: 段数=46, max=43, mean=19.8, 可压到<800=是
+  - step_blocks: 段数=1, max=911, mean=911.0, 可压到<800=否
+  - title_list_blocks: 段数=1, max=911, mean=911.0, 可压到<800=否
+  - sentences: 段数=13, max=150, mean=70.1, 可压到<800=是
+
+[f16c_0099] 冷启动 | 3030 tokens
+  - double_newline: 段数=1, max=3030, mean=3030.0, 可压到<800=否
+  - single_line: 段数=330, max=34, mean=9.2, 可压到<800=是
+  - step_blocks: 段数=33, max=233, mean=91.8, 可压到<800=是
+  - title_list_blocks: 段数=32, max=1477, mean=94.7, 可压到<800=否
+  - sentences: 段数=58, max=194, mean=52.2, 可压到<800=是
+
+[f16c_0107] 空中受油 | 1393 tokens
+  - double_newline: 段数=1, max=1393, mean=1393.0, 可压到<800=否
+  - single_line: 段数=131, max=45, mean=10.6, 可压到<800=是
+  - step_blocks: 段数=18, max=541, mean=77.4, 可压到<800=是
+  - title_list_blocks: 段数=1, max=1393, mean=1393.0, 可压到<800=否
+  - sentences: 段数=27, max=104, mean=51.6, 可压到<800=是
+
+[f16c_0114] 空对空模式 | 1066 tokens
+  - double_newline: 段数=1, max=1066, mean=1066.0, 可压到<800=否
+  - single_line: 段数=64, max=48, mean=16.7, 可压到<800=是
+  - step_blocks: 段数=1, max=1066, mean=1066.0, 可压到<800=否
+  - title_list_blocks: 段数=7, max=938, mean=152.3, 可压到<800=否
+  - sentences: 段数=16, max=161, mean=66.6, 可压到<800=是
+
+[f16c_0115] 复合雷达模式（CRM） | 2164 tokens
+  - double_newline: 段数=1, max=2164, mean=2164.0, 可压到<800=否
+  - single_line: 段数=121, max=43, mean=17.9, 可压到<800=是
+  - step_blocks: 段数=1, max=2164, mean=2164.0, 可压到<800=否
+  - title_list_blocks: 段数=7, max=1382, mean=309.1, 可压到<800=否
+  - sentences: 段数=37, max=142, mean=58.5, 可压到<800=是
+
+[f16c_0116] 空战格斗模式（ACM） | 1128 tokens
+  - double_newline: 段数=1, max=1128, mean=1128.0, 可压到<800=否
+  - single_line: 段数=74, max=44, mean=15.2, 可压到<800=是
+  - step_blocks: 段数=3, max=903, mean=376.0, 可压到<800=否
+  - title_list_blocks: 段数=9, max=731, mean=125.3, 可压到<800=是
+  - sentences: 段数=17, max=177, mean=66.4, 可压到<800=是
+
+[f16c_0122] 地形测绘（GM）模式 | 2080 tokens
+  - double_newline: 段数=1, max=2080, mean=2080.0, 可压到<800=否
+  - single_line: 段数=120, max=43, mean=17.3, 可压到<800=是
+  - step_blocks: 段数=1, max=2080, mean=2080.0, 可压到<800=否
+  - title_list_blocks: 段数=12, max=831, mean=173.3, 可压到<800=否
+  - sentences: 段数=42, max=132, mean=49.5, 可压到<800=是
+
+[f16c_0126] 显示标识符 | 874 tokens
+  - double_newline: 段数=1, max=874, mean=874.0, 可压到<800=否
+  - single_line: 段数=105, max=42, mean=8.3, 可压到<800=是
+  - step_blocks: 段数=2, max=621, mean=437.0, 可压到<800=是
+  - title_list_blocks: 段数=4, max=546, mean=218.5, 可压到<800=是
+  - sentences: 段数=14, max=162, mean=62.4, 可压到<800=是
+
+[f16c_0137] 空对地（A-G）模式 | 2413 tokens
+  - double_newline: 段数=1, max=2413, mean=2413.0, 可压到<800=否
+  - single_line: 段数=143, max=48, mean=16.9, 可压到<800=是
+  - step_blocks: 段数=2, max=1794, mean=1206.5, 可压到<800=否
+  - title_list_blocks: 段数=23, max=486, mean=104.9, 可压到<800=是
+  - sentences: 段数=45, max=285, mean=53.6, 可压到<800=是
+
+[f16c_0140] 空对空（A-A）模式 | 1134 tokens
+  - double_newline: 段数=1, max=1134, mean=1134.0, 可压到<800=否
+  - single_line: 段数=68, max=48, mean=16.7, 可压到<800=是
+  - step_blocks: 段数=1, max=1134, mean=1134.0, 可压到<800=否
+  - title_list_blocks: 段数=8, max=376, mean=141.8, 可压到<800=是
+  - sentences: 段数=20, max=233, mean=56.7, 可压到<800=是
+
+[f16c_0153] 空对空航炮射击 | 1636 tokens
+  - double_newline: 段数=1, max=1636, mean=1636.0, 可压到<800=否
+  - single_line: 段数=95, max=44, mean=17.2, 可压到<800=是
+  - step_blocks: 段数=4, max=1111, mean=409.0, 可压到<800=否
+  - title_list_blocks: 段数=5, max=908, mean=327.2, 可压到<800=否
+  - sentences: 段数=26, max=203, mean=62.9, 可压到<800=是
+
+[f16c_0155] AIM-9M/X 使用 | 1212 tokens
+  - double_newline: 段数=1, max=1212, mean=1212.0, 可压到<800=否
+  - single_line: 段数=64, max=46, mean=18.9, 可压到<800=是
+  - step_blocks: 段数=7, max=503, mean=173.1, 可压到<800=是
+  - title_list_blocks: 段数=1, max=1212, mean=1212.0, 可压到<800=否
+  - sentences: 段数=20, max=106, mean=60.6, 可压到<800=是
+
+[f16c_0157] AIM-9M/X HMCS 雷达BORE 模式使用 | 867 tokens
+  - double_newline: 段数=1, max=867, mean=867.0, 可压到<800=否
+  - single_line: 段数=58, max=44, mean=14.9, 可压到<800=是
+  - step_blocks: 段数=6, max=216, mean=144.5, 可压到<800=是
+  - title_list_blocks: 段数=1, max=867, mean=867.0, 可压到<800=否
+  - sentences: 段数=20, max=97, mean=43.4, 可压到<800=是
+
+[f16c_0175] 非制导/激光制导炸弹SMS 页面 | 1194 tokens
+  - double_newline: 段数=1, max=1194, mean=1194.0, 可压到<800=否
+  - single_line: 段数=94, max=45, mean=12.7, 可压到<800=是
+  - step_blocks: 段数=10, max=252, mean=119.4, 可压到<800=是
+  - title_list_blocks: 段数=12, max=434, mean=99.5, 可压到<800=是
+  - sentences: 段数=22, max=108, mean=54.3, 可压到<800=是
+
+[f16c_0178] 非制导炸弹CCRP 攻击 | 933 tokens
+  - double_newline: 段数=1, max=933, mean=933.0, 可压到<800=否
+  - single_line: 段数=77, max=39, mean=12.1, 可压到<800=是
+  - step_blocks: 段数=12, max=276, mean=77.8, 可压到<800=是
+  - title_list_blocks: 段数=3, max=463, mean=311.0, 可压到<800=是
+  - sentences: 段数=18, max=163, mean=51.8, 可压到<800=是
+
+[f16c_0179] 激光制导炸弹 | 860 tokens
+  - double_newline: 段数=1, max=860, mean=860.0, 可压到<800=否
+  - single_line: 段数=27, max=45, mean=31.9, 可压到<800=是
+  - step_blocks: 段数=1, max=860, mean=860.0, 可压到<800=否
+  - title_list_blocks: 段数=1, max=860, mean=860.0, 可压到<800=否
+  - sentences: 段数=7, max=379, mean=122.9, 可压到<800=是
+
+[f16c_0182] 激光制导炸弹CCRP 攻击 | 1706 tokens
+  - double_newline: 段数=1, max=1706, mean=1706.0, 可压到<800=否
+  - single_line: 段数=129, max=42, mean=13.2, 可压到<800=是
+  - step_blocks: 段数=16, max=385, mean=106.6, 可压到<800=是
+  - title_list_blocks: 段数=3, max=918, mean=568.7, 可压到<800=否
+  - sentences: 段数=34, max=233, mean=50.2, 可压到<800=是
+
+[f16c_0200] 标识符 | 2738 tokens
+  - double_newline: 段数=1, max=2738, mean=2738.0, 可压到<800=否
+  - single_line: 段数=153, max=45, mean=17.9, 可压到<800=是
+  - step_blocks: 段数=1, max=2738, mean=2738.0, 可压到<800=否
+  - title_list_blocks: 段数=1, max=2738, mean=2738.0, 可压到<800=否
+  - sentences: 段数=47, max=203, mean=58.3, 可压到<800=是
+
+[f16c_0202] 在位置已知（POS）模式下使用 | 1186 tokens
+  - double_newline: 段数=1, max=1186, mean=1186.0, 可压到<800=否
+  - single_line: 段数=64, max=42, mean=18.5, 可压到<800=是
+  - step_blocks: 段数=15, max=459, mean=79.1, 可压到<800=是
+  - title_list_blocks: 段数=1, max=1186, mean=1186.0, 可压到<800=否
+  - sentences: 段数=28, max=132, mean=42.4, 可压到<800=是
+
+[f16c_0203] HARM 为传感器（HAS）模式下发射导弹 | 862 tokens
+  - double_newline: 段数=1, max=862, mean=862.0, 可压到<800=否
+  - single_line: 段数=54, max=40, mean=16.0, 可压到<800=是
+  - step_blocks: 段数=16, max=260, mean=53.9, 可压到<800=是
+  - title_list_blocks: 段数=1, max=862, mean=862.0, 可压到<800=否
+  - sentences: 段数=29, max=98, mean=29.7, 可压到<800=是
+
+[f16c_0209] WPN 页面 | 885 tokens
+  - double_newline: 段数=1, max=885, mean=885.0, 可压到<800=否
+  - single_line: 段数=66, max=49, mean=13.4, 可压到<800=是
+  - step_blocks: 段数=1, max=885, mean=885.0, 可压到<800=否
+  - title_list_blocks: 段数=14, max=298, mean=63.2, 可压到<800=是
+  - sentences: 段数=19, max=218, mean=46.6, 可压到<800=是
+
+[f16c_0210] 准备 | 1317 tokens
+  - double_newline: 段数=1, max=1317, mean=1317.0, 可压到<800=否
+  - single_line: 段数=93, max=42, mean=14.2, 可压到<800=是
+  - step_blocks: 段数=23, max=221, mean=57.3, 可压到<800=是
+  - title_list_blocks: 段数=1, max=1317, mean=1317.0, 可压到<800=否
+  - sentences: 段数=48, max=173, mean=27.4, 可压到<800=是
+
+[f16c_0226] CMDS DED 页面 | 1730 tokens
+  - double_newline: 段数=1, max=1730, mean=1730.0, 可压到<800=否
+  - single_line: 段数=254, max=43, mean=6.8, 可压到<800=是
+  - step_blocks: 段数=1, max=1730, mean=1730.0, 可压到<800=否
+  - title_list_blocks: 段数=1, max=1730, mean=1730.0, 可压到<800=否
+  - sentences: 段数=16, max=1063, mean=108.1, 可压到<800=否
+
+本手册方法汇总:
+- double_newline: 有效=0/31 (0.00%), 平均最大子段token=1511.3
+- single_line: 有效=31/31 (100.00%), 平均最大子段token=44.0
+- step_blocks: 有效=12/31 (38.71%), 平均最大子段token=1081.5
+- title_list_blocks: 有效=10/31 (32.26%), 平均最大子段token=1021.1
+- sentences: 有效=30/31 (96.77%), 平均最大子段token=204.5
+
+========================================================================================
+手册: chunks_dcsjf17.json
+========================================================================================
+大Chunk数量: 12
+
+[dcsjf17_0003] 1.1.1.历史 | 14804 tokens
+  - double_newline: 段数=1, max=14804, mean=14804.0, 可压到<800=否
+  - single_line: 段数=683, max=34, mean=21.7, 可压到<800=是
+  - step_blocks: 段数=3, max=7876, mean=4934.7, 可压到<800=否
+  - title_list_blocks: 段数=1, max=14804, mean=14804.0, 可压到<800=否
+  - sentences: 段数=120, max=607, mean=123.4, 可压到<800=是
+
+[dcsjf17_0029] 1.8.3.显示内容 | 939 tokens
+  - double_newline: 段数=1, max=939, mean=939.0, 可压到<800=否
+  - single_line: 段数=100, max=30, mean=9.4, 可压到<800=是
+  - step_blocks: 段数=1, max=939, mean=939.0, 可压到<800=否
+  - title_list_blocks: 段数=4, max=377, mean=234.8, 可压到<800=是
+  - sentences: 段数=26, max=240, mean=36.1, 可压到<800=是
+
+[dcsjf17_0039] 1.12.4.惯导系统 | 1538 tokens
+  - double_newline: 段数=1, max=1538, mean=1538.0, 可压到<800=否
+  - single_line: 段数=91, max=33, mean=16.9, 可压到<800=是
+  - step_blocks: 段数=1, max=1538, mean=1538.0, 可压到<800=否
+  - title_list_blocks: 段数=1, max=1538, mean=1538.0, 可压到<800=否
+  - sentences: 段数=27, max=166, mean=57.0, 可压到<800=是
+
+[dcsjf17_0055] 1.17.告警系统 | 1072 tokens
+  - double_newline: 段数=1, max=1072, mean=1072.0, 可压到<800=否
+  - single_line: 段数=180, max=33, mean=6.0, 可压到<800=是
+  - step_blocks: 段数=1, max=1072, mean=1072.0, 可压到<800=否
+  - title_list_blocks: 段数=1, max=1072, mean=1072.0, 可压到<800=否
+  - sentences: 段数=20, max=599, mean=53.6, 可压到<800=是
+
+[dcsjf17_0157] 4.3.2. ACM-空战机动/格斗模式 | 806 tokens
+  - double_newline: 段数=1, max=806, mean=806.0, 可压到<800=否
+  - single_line: 段数=63, max=37, mean=12.8, 可压到<800=是
+  - step_blocks: 段数=26, max=606, mean=31.0, 可压到<800=是
+  - title_list_blocks: 段数=1, max=806, mean=806.0, 可压到<800=否
+  - sentences: 段数=30, max=144, mean=26.9, 可压到<800=是
+
+[dcsjf17_0158] 4.3.3.航炮瞄准 | 858 tokens
+  - double_newline: 段数=1, max=858, mean=858.0, 可压到<800=否
+  - single_line: 段数=60, max=32, mean=14.3, 可压到<800=是
+  - step_blocks: 段数=16, max=280, mean=53.6, 可压到<800=是
+  - title_list_blocks: 段数=3, max=421, mean=286.0, 可压到<800=是
+  - sentences: 段数=25, max=137, mean=34.3, 可压到<800=是
+
+[dcsjf17_0159] 4.3.4.PL-5E导弹 | 1326 tokens
+  - double_newline: 段数=1, max=1326, mean=1326.0, 可压到<800=否
+  - single_line: 段数=71, max=36, mean=18.7, 可压到<800=是
+  - step_blocks: 段数=12, max=1144, mean=110.5, 可压到<800=否
+  - title_list_blocks: 段数=1, max=1326, mean=1326.0, 可压到<800=否
+  - sentences: 段数=28, max=201, mean=47.4, 可压到<800=是
+
+[dcsjf17_0162] 4.4.2.RWS-边搜索边测距模式 | 1107 tokens
+  - double_newline: 段数=1, max=1107, mean=1107.0, 可压到<800=否
+  - single_line: 段数=64, max=31, mean=17.3, 可压到<800=是
+  - step_blocks: 段数=4, max=1084, mean=276.8, 可压到<800=否
+  - title_list_blocks: 段数=1, max=1107, mean=1107.0, 可压到<800=否
+  - sentences: 段数=13, max=230, mean=85.2, 可压到<800=是
+
+[dcsjf17_0163] 4.4.3.TWS-边搜索边跟踪模式 | 1036 tokens
+  - double_newline: 段数=1, max=1036, mean=1036.0, 可压到<800=否
+  - single_line: 段数=51, max=35, mean=20.3, 可压到<800=是
+  - step_blocks: 段数=4, max=928, mean=259.0, 可压到<800=否
+  - title_list_blocks: 段数=1, max=1036, mean=1036.0, 可压到<800=否
+  - sentences: 段数=12, max=237, mean=86.3, 可压到<800=是
+
+[dcsjf17_0174] 5.1.2.认识SPI | 1046 tokens
+  - double_newline: 段数=1, max=1046, mean=1046.0, 可压到<800=否
+  - single_line: 段数=48, max=34, mean=21.8, 可压到<800=是
+  - step_blocks: 段数=1, max=1046, mean=1046.0, 可压到<800=否
+  - title_list_blocks: 段数=1, max=1046, mean=1046.0, 可压到<800=否
+  - sentences: 段数=17, max=188, mean=61.5, 可压到<800=是
+
+[dcsjf17_0204] 5.7.7.电视武器 | 949 tokens
+  - double_newline: 段数=1, max=949, mean=949.0, 可压到<800=否
+  - single_line: 段数=71, max=33, mean=13.4, 可压到<800=是
+  - step_blocks: 段数=10, max=379, mean=94.9, 可压到<800=是
+  - title_list_blocks: 段数=1, max=949, mean=949.0, 可压到<800=否
+  - sentences: 段数=16, max=138, mean=59.3, 可压到<800=是
+
+[dcsjf17_0220] 8.5.2.飞控指示灯 | 1701 tokens
+  - double_newline: 段数=1, max=1701, mean=1701.0, 可压到<800=否
+  - single_line: 段数=100, max=35, mean=17.0, 可压到<800=是
+  - step_blocks: 段数=1, max=1701, mean=1701.0, 可压到<800=否
+  - title_list_blocks: 段数=7, max=991, mean=243.0, 可压到<800=否
+  - sentences: 段数=44, max=98, mean=38.7, 可压到<800=是
+
+本手册方法汇总:
+- double_newline: 有效=0/12 (0.00%), 平均最大子段token=2265.2
+- single_line: 有效=12/12 (100.00%), 平均最大子段token=33.6
+- step_blocks: 有效=3/12 (25.00%), 平均最大子段token=1549.4
+- title_list_blocks: 有效=2/12 (16.67%), 平均最大子段token=2122.8
+- sentences: 有效=12/12 (100.00%), 平均最大子段token=248.8
+
+========================================================================================
+手册: chunks_f15c.json
+========================================================================================
+大Chunk数量: 15
+
+[f15c_0003] 诞生 | 2574 tokens
+  - double_newline: 段数=1, max=2574, mean=2574.0, 可压到<800=否
+  - single_line: 段数=105, max=43, mean=24.5, 可压到<800=是
+  - step_blocks: 段数=1, max=2574, mean=2574.0, 可压到<800=否
+  - title_list_blocks: 段数=2, max=1986, mean=1287.0, 可压到<800=否
+  - sentences: 段数=27, max=246, mean=95.3, 可压到<800=是
+
+[f15c_0004] 未来发展 | 2492 tokens
+  - double_newline: 段数=1, max=2492, mean=2492.0, 可压到<800=否
+  - single_line: 段数=95, max=37, mean=26.2, 可压到<800=是
+  - step_blocks: 段数=1, max=2492, mean=2492.0, 可压到<800=否
+  - title_list_blocks: 段数=1, max=2492, mean=2492.0, 可压到<800=否
+  - sentences: 段数=21, max=367, mean=118.7, 可压到<800=是
+
+[f15c_0005] 多级改进计划 | 976 tokens
+  - double_newline: 段数=1, max=976, mean=976.0, 可压到<800=否
+  - single_line: 段数=36, max=38, mean=27.1, 可压到<800=是
+  - step_blocks: 段数=1, max=976, mean=976.0, 可压到<800=否
+  - title_list_blocks: 段数=1, max=976, mean=976.0, 可压到<800=否
+  - sentences: 段数=8, max=235, mean=122.0, 可压到<800=是
+
+[f15c_0006] F-15服役 | 953 tokens
+  - double_newline: 段数=1, max=953, mean=953.0, 可压到<800=否
+  - single_line: 段数=37, max=34, mean=25.8, 可压到<800=是
+  - step_blocks: 段数=1, max=953, mean=953.0, 可压到<800=否
+  - title_list_blocks: 段数=1, max=953, mean=953.0, 可压到<800=否
+  - sentences: 段数=10, max=186, mean=95.3, 可压到<800=是
+
+[f15c_0007] F-15在战场 | 2767 tokens
+  - double_newline: 段数=1, max=2767, mean=2767.0, 可压到<800=否
+  - single_line: 段数=105, max=42, mean=26.4, 可压到<800=是
+  - step_blocks: 段数=1, max=2767, mean=2767.0, 可压到<800=否
+  - title_list_blocks: 段数=1, max=2767, mean=2767.0, 可压到<800=否
+  - sentences: 段数=27, max=285, mean=102.5, 可压到<800=是
+
+[f15c_0052] AN/APG-63（V）1雷达 | 1447 tokens
+  - double_newline: 段数=1, max=1447, mean=1447.0, 可压到<800=否
+  - single_line: 段数=54, max=40, mean=26.8, 可压到<800=是
+  - step_blocks: 段数=1, max=1447, mean=1447.0, 可压到<800=否
+  - title_list_blocks: 段数=1, max=1447, mean=1447.0, 可压到<800=否
+  - sentences: 段数=13, max=237, mean=111.3, 可压到<800=是
+
+[f15c_0064] AN/ALR-56C告警接收仪 | 1692 tokens
+  - double_newline: 段数=1, max=1692, mean=1692.0, 可压到<800=否
+  - single_line: 段数=90, max=128, mean=18.8, 可压到<800=是
+  - step_blocks: 段数=1, max=1692, mean=1692.0, 可压到<800=否
+  - title_list_blocks: 段数=1, max=1692, mean=1692.0, 可压到<800=否
+  - sentences: 段数=37, max=156, mean=45.7, 可压到<800=是
+
+[f15c_0068] 空对空导弹 | 1696 tokens
+  - double_newline: 段数=1, max=1696, mean=1696.0, 可压到<800=否
+  - single_line: 段数=82, max=36, mean=20.7, 可压到<800=是
+  - step_blocks: 段数=1, max=1696, mean=1696.0, 可压到<800=否
+  - title_list_blocks: 段数=1, max=1696, mean=1696.0, 可压到<800=否
+  - sentences: 段数=23, max=161, mean=73.7, 可压到<800=是
+
+[f15c_0070] 中距导弹 | 1310 tokens
+  - double_newline: 段数=1, max=1310, mean=1310.0, 可压到<800=否
+  - single_line: 段数=51, max=40, mean=25.7, 可压到<800=是
+  - step_blocks: 段数=1, max=1310, mean=1310.0, 可压到<800=否
+  - title_list_blocks: 段数=1, max=1310, mean=1310.0, 可压到<800=否
+  - sentences: 段数=10, max=304, mean=131.0, 可压到<800=是
+
+[f15c_0071] 中距导弹 | 1240 tokens
+  - double_newline: 段数=1, max=1240, mean=1240.0, 可压到<800=否
+  - single_line: 段数=49, max=38, mean=25.3, 可压到<800=是
+  - step_blocks: 段数=1, max=1240, mean=1240.0, 可压到<800=否
+  - title_list_blocks: 段数=1, max=1240, mean=1240.0, 可压到<800=否
+  - sentences: 段数=17, max=161, mean=72.9, 可压到<800=是
+
+[f15c_0073] 近距导弹 | 1194 tokens
+  - double_newline: 段数=1, max=1194, mean=1194.0, 可压到<800=否
+  - single_line: 段数=47, max=38, mean=25.4, 可压到<800=是
+  - step_blocks: 段数=1, max=1194, mean=1194.0, 可压到<800=否
+  - title_list_blocks: 段数=1, max=1194, mean=1194.0, 可压到<800=否
+  - sentences: 段数=16, max=203, mean=74.6, 可压到<800=是
+
+[f15c_0075] 无线电指令 | 3361 tokens
+  - double_newline: 段数=1, max=3361, mean=3361.0, 可压到<800=否
+  - single_line: 段数=403, max=34, mean=8.3, 可压到<800=是
+  - step_blocks: 段数=1, max=3361, mean=3361.0, 可压到<800=否
+  - title_list_blocks: 段数=1, max=3361, mean=3361.0, 可压到<800=否
+  - sentences: 段数=77, max=220, mean=43.6, 可压到<800=是
+
+[f15c_0076] 无线电消息 | 1443 tokens
+  - double_newline: 段数=1, max=1443, mean=1443.0, 可压到<800=否
+  - single_line: 段数=135, max=27, mean=10.7, 可压到<800=是
+  - step_blocks: 段数=1, max=1443, mean=1443.0, 可压到<800=否
+  - title_list_blocks: 段数=1, max=1443, mean=1443.0, 可压到<800=否
+  - sentences: 段数=29, max=236, mean=49.8, 可压到<800=是
+
+[f15c_0098] 导弹规避 | 1226 tokens
+  - double_newline: 段数=1, max=1226, mean=1226.0, 可压到<800=否
+  - single_line: 段数=51, max=34, mean=24.0, 可压到<800=是
+  - step_blocks: 段数=1, max=1226, mean=1226.0, 可压到<800=否
+  - title_list_blocks: 段数=1, max=1226, mean=1226.0, 可压到<800=否
+  - sentences: 段数=11, max=216, mean=111.5, 可压到<800=是
+
+[f15c_0100] 导弹规避 | 1125 tokens
+  - double_newline: 段数=1, max=1125, mean=1125.0, 可压到<800=否
+  - single_line: 段数=49, max=31, mean=23.0, 可压到<800=是
+  - step_blocks: 段数=1, max=1125, mean=1125.0, 可压到<800=否
+  - title_list_blocks: 段数=1, max=1125, mean=1125.0, 可压到<800=否
+  - sentences: 段数=14, max=233, mean=80.4, 可压到<800=是
+
+本手册方法汇总:
+- double_newline: 有效=0/15 (0.00%), 平均最大子段token=1699.7
+- single_line: 有效=15/15 (100.00%), 平均最大子段token=42.7
+- step_blocks: 有效=0/15 (0.00%), 平均最大子段token=1699.7
+- title_list_blocks: 有效=0/15 (0.00%), 平均最大子段token=1660.5
+- sentences: 有效=15/15 (100.00%), 平均最大子段token=229.7
+
+========================================================================================
+手册: chunks_dcsfa18cearlyaccessguidecn.json
+========================================================================================
+大Chunk数量: 44
+
+[dcsfa18cearlyaccessguidecn_0005] 配置您的游戏 | 1568 tokens
+  - double_newline: 段数=1, max=1568, mean=1568.0, 可压到<800=否
+  - single_line: 段数=107, max=38, mean=14.7, 可压到<800=是
+  - step_blocks: 段数=1, max=1568, mean=1568.0, 可压到<800=否
+  - title_list_blocks: 段数=16, max=601, mean=98.0, 可压到<800=是
+  - sentences: 段数=39, max=88, mean=40.2, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0015] VFAX 计划 | 945 tokens
+  - double_newline: 段数=1, max=945, mean=945.0, 可压到<800=否
+  - single_line: 段数=45, max=39, mean=21.0, 可压到<800=是
+  - step_blocks: 段数=1, max=945, mean=945.0, 可压到<800=否
+  - title_list_blocks: 段数=1, max=945, mean=945.0, 可压到<800=否
+  - sentences: 段数=10, max=133, mean=94.5, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0019] F/A-18C 和D 的研发 | 1114 tokens
+  - double_newline: 段数=1, max=1114, mean=1114.0, 可压到<800=否
+  - single_line: 段数=51, max=47, mean=21.8, 可压到<800=是
+  - step_blocks: 段数=1, max=1114, mean=1114.0, 可压到<800=否
+  - title_list_blocks: 段数=4, max=1039, mean=278.5, 可压到<800=否
+  - sentences: 段数=8, max=294, mean=139.2, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0052] 综合燃油/发动机指示（IFEI） | 982 tokens
+  - double_newline: 段数=1, max=982, mean=982.0, 可压到<800=否
+  - single_line: 段数=49, max=42, mean=20.0, 可压到<800=是
+  - step_blocks: 段数=7, max=629, mean=140.3, 可压到<800=是
+  - title_list_blocks: 段数=1, max=982, mean=982.0, 可压到<800=否
+  - sentences: 段数=17, max=123, mean=57.8, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0060] 前上方控制（UFC） | 2251 tokens
+  - double_newline: 段数=1, max=2251, mean=2251.0, 可压到<800=否
+  - single_line: 段数=109, max=45, mean=20.7, 可压到<800=是
+  - step_blocks: 段数=14, max=1531, mean=160.8, 可压到<800=否
+  - title_list_blocks: 段数=6, max=1840, mean=375.2, 可压到<800=否
+  - sentences: 段数=36, max=240, mean=62.5, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0110] 驾驶杆 | 1712 tokens
+  - double_newline: 段数=1, max=1712, mean=1712.0, 可压到<800=否
+  - single_line: 段数=80, max=45, mean=21.4, 可压到<800=是
+  - step_blocks: 段数=1, max=1712, mean=1712.0, 可压到<800=否
+  - title_list_blocks: 段数=14, max=487, mean=122.3, 可压到<800=是
+  - sentences: 段数=33, max=174, mean=51.9, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0111] 油门 ..................................................................................................................................................... 74 HUD | 1587 tokens
+  - double_newline: 段数=1, max=1587, mean=1587.0, 可压到<800=否
+  - single_line: 段数=106, max=46, mean=15.0, 可压到<800=是
+  - step_blocks: 段数=1, max=1587, mean=1587.0, 可压到<800=否
+  - title_list_blocks: 段数=38, max=253, mean=41.8, 可压到<800=是
+  - sentences: 段数=28, max=321, mean=56.7, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0114] 支援（SUPT）页面 | 3077 tokens
+  - double_newline: 段数=1, max=3077, mean=3077.0, 可压到<800=否
+  - single_line: 段数=184, max=50, mean=16.7, 可压到<800=是
+  - step_blocks: 段数=1, max=3077, mean=3077.0, 可压到<800=否
+  - title_list_blocks: 段数=31, max=929, mean=99.3, 可压到<800=否
+  - sentences: 段数=68, max=166, mean=45.2, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0117] 冷启动 | 1036 tokens
+  - double_newline: 段数=1, max=1036, mean=1036.0, 可压到<800=否
+  - single_line: 段数=90, max=41, mean=11.5, 可压到<800=是
+  - step_blocks: 段数=26, max=107, mean=39.8, 可压到<800=是
+  - title_list_blocks: 段数=1, max=1036, mean=1036.0, 可压到<800=否
+  - sentences: 段数=8, max=330, mean=129.5, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0123] Case 1 航母降落 | 1538 tokens
+  - double_newline: 段数=1, max=1538, mean=1538.0, 可压到<800=否
+  - single_line: 段数=65, max=45, mean=23.7, 可压到<800=是
+  - step_blocks: 段数=1, max=1538, mean=1538.0, 可压到<800=否
+  - title_list_blocks: 段数=5, max=1034, mean=307.6, 可压到<800=否
+  - sentences: 段数=26, max=147, mean=59.2, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0127] 对准程序 | 1741 tokens
+  - double_newline: 段数=1, max=1741, mean=1741.0, 可压到<800=否
+  - single_line: 段数=115, max=41, mean=15.1, 可压到<800=是
+  - step_blocks: 段数=26, max=355, mean=67.0, 可压到<800=是
+  - title_list_blocks: 段数=5, max=936, mean=348.2, 可压到<800=否
+  - sentences: 段数=33, max=190, mean=52.8, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0145] 使用耦合自动驾驶模式 | 942 tokens
+  - double_newline: 段数=1, max=942, mean=942.0, 可压到<800=否
+  - single_line: 段数=48, max=45, mean=19.6, 可压到<800=是
+  - step_blocks: 段数=5, max=433, mean=188.4, 可压到<800=是
+  - title_list_blocks: 段数=1, max=942, mean=942.0, 可压到<800=否
+  - sentences: 段数=15, max=148, mean=62.8, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0149] UFC 无线电台功能 | 921 tokens
+  - double_newline: 段数=1, max=921, mean=921.0, 可压到<800=否
+  - single_line: 段数=66, max=47, mean=14.0, 可压到<800=是
+  - step_blocks: 段数=2, max=669, mean=460.5, 可压到<800=是
+  - title_list_blocks: 段数=13, max=398, mean=70.8, 可压到<800=是
+  - sentences: 段数=16, max=147, mean=57.6, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0154] 边搜索边测距（RWS）模式 | 1339 tokens
+  - double_newline: 段数=1, max=1339, mean=1339.0, 可压到<800=否
+  - single_line: 段数=89, max=41, mean=15.0, 可压到<800=是
+  - step_blocks: 段数=28, max=149, mean=47.8, 可压到<800=是
+  - title_list_blocks: 段数=1, max=1339, mean=1339.0, 可压到<800=否
+  - sentences: 段数=29, max=185, mean=46.2, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0157] 空对空雷达HOTAS 控制 | 850 tokens
+  - double_newline: 段数=1, max=850, mean=850.0, 可压到<800=否
+  - single_line: 段数=53, max=42, mean=16.0, 可压到<800=是
+  - step_blocks: 段数=1, max=850, mean=850.0, 可压到<800=否
+  - title_list_blocks: 段数=13, max=320, mean=65.4, 可压到<800=是
+  - sentences: 段数=9, max=293, mean=94.4, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0159] 空战机动（ACM）模式 | 838 tokens
+  - double_newline: 段数=1, max=838, mean=838.0, 可压到<800=否
+  - single_line: 段数=43, max=41, mean=19.5, 可压到<800=是
+  - step_blocks: 段数=7, max=625, mean=119.7, 可压到<800=是
+  - title_list_blocks: 段数=6, max=267, mean=139.7, 可压到<800=是
+  - sentences: 段数=12, max=148, mean=69.8, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0160] 边扫描边跟踪（TWS）模式 | 1740 tokens
+  - double_newline: 段数=1, max=1740, mean=1740.0, 可压到<800=否
+  - single_line: 段数=85, max=45, mean=20.5, 可压到<800=是
+  - step_blocks: 段数=1, max=1740, mean=1740.0, 可压到<800=否
+  - title_list_blocks: 段数=6, max=892, mean=290.0, 可压到<800=否
+  - sentences: 段数=27, max=165, mean=64.4, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0162] AZ/EL 页面 | 1257 tokens
+  - double_newline: 段数=1, max=1257, mean=1257.0, 可压到<800=否
+  - single_line: 段数=62, max=51, mean=20.3, 可压到<800=是
+  - step_blocks: 段数=1, max=1257, mean=1257.0, 可压到<800=否
+  - title_list_blocks: 段数=1, max=1257, mean=1257.0, 可压到<800=否
+  - sentences: 段数=23, max=156, mean=54.7, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0168] 显示控制开关/按钮 ......................................................................................................................... 182 AG | 1212 tokens
+  - double_newline: 段数=1, max=1212, mean=1212.0, 可压到<800=否
+  - single_line: 段数=50, max=45, mean=24.2, 可压到<800=是
+  - step_blocks: 段数=1, max=1212, mean=1212.0, 可压到<800=否
+  - title_list_blocks: 段数=7, max=614, mean=173.1, 可压到<800=是
+  - sentences: 段数=14, max=261, mean=86.6, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0171] AG 雷达搜索模式操作 | 1516 tokens
+  - double_newline: 段数=1, max=1516, mean=1516.0, 可压到<800=否
+  - single_line: 段数=83, max=50, mean=18.3, 可压到<800=是
+  - step_blocks: 段数=2, max=1144, mean=758.0, 可压到<800=否
+  - title_list_blocks: 段数=11, max=1113, mean=137.8, 可压到<800=否
+  - sentences: 段数=29, max=197, mean=52.3, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0179] 态势感知（SA）页面 | 936 tokens
+  - double_newline: 段数=1, max=936, mean=936.0, 可压到<800=否
+  - single_line: 段数=98, max=41, mean=9.6, 可压到<800=是
+  - step_blocks: 段数=1, max=936, mean=936.0, 可压到<800=否
+  - title_list_blocks: 段数=30, max=227, mean=31.2, 可压到<800=是
+  - sentences: 段数=23, max=132, mean=40.7, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0181] HAFU 符号 | 1491 tokens
+  - double_newline: 段数=1, max=1491, mean=1491.0, 可压到<800=否
+  - single_line: 段数=101, max=46, mean=14.8, 可压到<800=是
+  - step_blocks: 段数=1, max=1491, mean=1491.0, 可压到<800=否
+  - title_list_blocks: 段数=22, max=655, mean=67.8, 可压到<800=是
+  - sentences: 段数=33, max=142, mean=45.2, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0188] 空对地模式 | 1332 tokens
+  - double_newline: 段数=1, max=1332, mean=1332.0, 可压到<800=否
+  - single_line: 段数=76, max=48, mean=17.5, 可压到<800=是
+  - step_blocks: 段数=1, max=1332, mean=1332.0, 可压到<800=否
+  - title_list_blocks: 段数=5, max=1208, mean=266.4, 可压到<800=否
+  - sentences: 段数=25, max=176, mean=53.3, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0202] 空对地（A-G）模式 ............................................................................................................................. 234 / | 1172 tokens
+  - double_newline: 段数=1, max=1172, mean=1172.0, 可压到<800=否
+  - single_line: 段数=54, max=45, mean=21.7, 可压到<800=是
+  - step_blocks: 段数=1, max=1172, mean=1172.0, 可压到<800=否
+  - title_list_blocks: 段数=4, max=1046, mean=293.0, 可压到<800=否
+  - sentences: 段数=26, max=112, mean=45.1, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0213] HMD 页面DDI 页面 | 883 tokens
+  - double_newline: 段数=1, max=883, mean=883.0, 可压到<800=否
+  - single_line: 段数=62, max=40, mean=14.2, 可压到<800=是
+  - step_blocks: 段数=1, max=883, mean=883.0, 可压到<800=否
+  - title_list_blocks: 段数=7, max=379, mean=126.1, 可压到<800=是
+  - sentences: 段数=16, max=146, mean=55.2, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0225] 雷达跟踪模式 | 1929 tokens
+  - double_newline: 段数=1, max=1929, mean=1929.0, 可压到<800=否
+  - single_line: 段数=96, max=48, mean=20.1, 可压到<800=是
+  - step_blocks: 段数=1, max=1929, mean=1929.0, 可压到<800=否
+  - title_list_blocks: 段数=11, max=1148, mean=175.4, 可压到<800=否
+  - sentences: 段数=28, max=234, mean=68.9, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0229] AIM-9 HUD | 1622 tokens
+  - double_newline: 段数=1, max=1622, mean=1622.0, 可压到<800=否
+  - single_line: 段数=132, max=46, mean=12.3, 可压到<800=是
+  - step_blocks: 段数=26, max=670, mean=62.4, 可压到<800=是
+  - title_list_blocks: 段数=7, max=1233, mean=231.7, 可压到<800=否
+  - sentences: 段数=27, max=167, mean=60.1, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0238] AIM-120，发射前雷达跟踪阶段 | 1372 tokens
+  - double_newline: 段数=1, max=1372, mean=1372.0, 可压到<800=否
+  - single_line: 段数=86, max=41, mean=16.0, 可压到<800=是
+  - step_blocks: 段数=10, max=829, mean=137.2, 可压到<800=否
+  - title_list_blocks: 段数=1, max=1372, mean=1372.0, 可压到<800=否
+  - sentences: 段数=29, max=114, mean=47.3, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0246] 空对地挂载管理系统（SMS）投弹页 | 970 tokens
+  - double_newline: 段数=1, max=970, mean=970.0, 可压到<800=否
+  - single_line: 段数=53, max=42, mean=18.3, 可压到<800=是
+  - step_blocks: 段数=12, max=182, mean=80.8, 可压到<800=是
+  - title_list_blocks: 段数=1, max=970, mean=970.0, 可压到<800=否
+  - sentences: 段数=10, max=217, mean=97.0, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0247] 空对地挂载编程 | 855 tokens
+  - double_newline: 段数=1, max=855, mean=855.0, 可压到<800=否
+  - single_line: 段数=86, max=46, mean=9.9, 可压到<800=是
+  - step_blocks: 段数=1, max=855, mean=855.0, 可压到<800=否
+  - title_list_blocks: 段数=15, max=189, mean=57.0, 可压到<800=是
+  - sentences: 段数=10, max=366, mean=85.5, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0249] 无制导连续计算命中点（CCIP）投弹模式HUD | 1020 tokens
+  - double_newline: 段数=1, max=1020, mean=1020.0, 可压到<800=否
+  - single_line: 段数=82, max=45, mean=12.4, 可压到<800=是
+  - step_blocks: 段数=16, max=324, mean=63.8, 可压到<800=是
+  - title_list_blocks: 段数=4, max=808, mean=255.0, 可压到<800=否
+  - sentences: 段数=16, max=264, mean=63.8, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0250] 自动（AUTO）投弹模式HUD | 1902 tokens
+  - double_newline: 段数=1, max=1902, mean=1902.0, 可压到<800=否
+  - single_line: 段数=119, max=45, mean=16.0, 可压到<800=是
+  - step_blocks: 段数=15, max=876, mean=126.8, 可压到<800=否
+  - title_list_blocks: 段数=3, max=1752, mean=634.0, 可压到<800=否
+  - sentences: 段数=29, max=311, mean=65.6, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0256] 宝石路III 系列 | 1593 tokens
+  - double_newline: 段数=1, max=1593, mean=1593.0, 可压到<800=否
+  - single_line: 段数=82, max=45, mean=19.4, 可压到<800=是
+  - step_blocks: 段数=6, max=1225, mean=265.5, 可压到<800=否
+  - title_list_blocks: 段数=1, max=1593, mean=1593.0, 可压到<800=否
+  - sentences: 段数=26, max=160, mean=61.3, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0257] INS/GPS-制导武器 | 1182 tokens
+  - double_newline: 段数=1, max=1182, mean=1182.0, 可压到<800=否
+  - single_line: 段数=151, max=41, mean=7.8, 可压到<800=是
+  - step_blocks: 段数=23, max=902, mean=51.4, 可压到<800=否
+  - title_list_blocks: 段数=1, max=1182, mean=1182.0, 可压到<800=否
+  - sentences: 段数=6, max=430, mean=197.0, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0258] 武器选择 | 4564 tokens
+  - double_newline: 段数=1, max=4564, mean=4564.0, 可压到<800=否
+  - single_line: 段数=257, max=45, mean=17.8, 可压到<800=是
+  - step_blocks: 段数=1, max=4564, mean=4564.0, 可压到<800=否
+  - title_list_blocks: 段数=35, max=1088, mean=130.4, 可压到<800=否
+  - sentences: 段数=57, max=246, mean=80.1, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0269] AGM-65F 红外 “幼畜”SMS 页面 | 1693 tokens
+  - double_newline: 段数=1, max=1693, mean=1693.0, 可压到<800=否
+  - single_line: 段数=74, max=49, mean=22.9, 可压到<800=是
+  - step_blocks: 段数=7, max=1361, mean=241.9, 可压到<800=否
+  - title_list_blocks: 段数=1, max=1693, mean=1693.0, 可压到<800=否
+  - sentences: 段数=19, max=204, mean=89.1, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0271] AGM-65F 红外“幼畜”瞄准 | 828 tokens
+  - double_newline: 段数=1, max=828, mean=828.0, 可压到<800=否
+  - single_line: 段数=37, max=46, mean=22.4, 可压到<800=是
+  - step_blocks: 段数=1, max=828, mean=828.0, 可压到<800=否
+  - title_list_blocks: 段数=3, max=615, mean=276.0, 可压到<800=是
+  - sentences: 段数=10, max=136, mean=82.8, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0277] 自保护（SP）模式 | 939 tokens
+  - double_newline: 段数=1, max=939, mean=939.0, 可压到<800=否
+  - single_line: 段数=59, max=42, mean=15.9, 可压到<800=是
+  - step_blocks: 段数=5, max=858, mean=187.8, 可压到<800=否
+  - title_list_blocks: 段数=4, max=863, mean=234.8, 可压到<800=否
+  - sentences: 段数=20, max=103, mean=47.0, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0278] 随遇目标（TOO）模式 | 1392 tokens
+  - double_newline: 段数=1, max=1392, mean=1392.0, 可压到<800=否
+  - single_line: 段数=106, max=46, mean=13.1, 可压到<800=是
+  - step_blocks: 段数=7, max=1038, mean=198.9, 可压到<800=否
+  - title_list_blocks: 段数=3, max=1018, mean=464.0, 可压到<800=否
+  - sentences: 段数=26, max=218, mean=53.5, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0279] 预设简报（PB）模式 | 1105 tokens
+  - double_newline: 段数=1, max=1105, mean=1105.0, 可压到<800=否
+  - single_line: 段数=63, max=45, mean=17.5, 可压到<800=是
+  - step_blocks: 段数=9, max=831, mean=122.8, 可压到<800=否
+  - title_list_blocks: 段数=1, max=1105, mean=1105.0, 可压到<800=否
+  - sentences: 段数=16, max=301, mean=69.1, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0281] 鱼叉SMS 页面 | 1476 tokens
+  - double_newline: 段数=1, max=1476, mean=1476.0, 可压到<800=否
+  - single_line: 段数=83, max=44, mean=17.8, 可压到<800=是
+  - step_blocks: 段数=1, max=1476, mean=1476.0, 可压到<800=否
+  - title_list_blocks: 段数=11, max=798, mean=134.2, 可压到<800=是
+  - sentences: 段数=23, max=192, mean=64.2, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0287] SLAM 和数据链路SMS 页面 | 2977 tokens
+  - double_newline: 段数=1, max=2977, mean=2977.0, 可压到<800=否
+  - single_line: 段数=177, max=45, mean=16.8, 可压到<800=是
+  - step_blocks: 段数=6, max=2517, mean=496.2, 可压到<800=否
+  - title_list_blocks: 段数=23, max=665, mean=129.4, 可压到<800=是
+  - sentences: 段数=44, max=211, mean=67.7, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0303] EW 页面 | 1239 tokens
+  - double_newline: 段数=1, max=1239, mean=1239.0, 可压到<800=否
+  - single_line: 段数=65, max=48, mean=19.1, 可压到<800=是
+  - step_blocks: 段数=1, max=1239, mean=1239.0, 可压到<800=否
+  - title_list_blocks: 段数=6, max=665, mean=206.5, 可压到<800=是
+  - sentences: 段数=16, max=195, mean=77.4, 可压到<800=是
+
+[dcsfa18cearlyaccessguidecn_0306] ALR-67(V)方位角指示器 | 814 tokens
+  - double_newline: 段数=1, max=814, mean=814.0, 可压到<800=否
+  - single_line: 段数=45, max=44, mean=18.1, 可压到<800=是
+  - step_blocks: 段数=1, max=814, mean=814.0, 可压到<800=否
+  - title_list_blocks: 段数=8, max=341, mean=101.8, 可压到<800=是
+  - sentences: 段数=9, max=192, mean=90.4, 可压到<800=是
+
+本手册方法汇总:
+- double_newline: 有效=0/44 (0.00%), 平均最大子段token=1442.1
+- single_line: 有效=44/44 (100.00%), 平均最大子段token=44.5
+- step_blocks: 有效=10/44 (22.73%), 平均最大子段token=1167.6
+- title_list_blocks: 有效=16/44 (36.36%), 平均最大子段token=905.4
+- sentences: 有效=44/44 (100.00%), 平均最大子段token=201.7
+
+========================================================================================
+四本手册总体方法汇总
+========================================================================================
+- double_newline: 有效=0/102 (0.00%), 平均最大子段token=1597.8
+- single_line: 有效=102/102 (100.00%), 平均最大子段token=42.8
+- step_blocks: 有效=25/102 (24.51%), 平均最大子段token=1264.6
+- title_list_blocks: 有效=28/102 (27.45%), 平均最大子段token=1194.8
+- sentences: 有效=101/102 (99.02%), 平均最大子段token=212.2
+
+推荐顺序（按有效率优先，其次平均最大子段更小）:
+1. single_line | 有效率=100.00% | 平均最大子段=42.8
+2. sentences | 有效率=99.02% | 平均最大子段=212.2
+3. title_list_blocks | 有效率=27.45% | 平均最大子段=1194.8
+4. step_blocks | 有效率=24.51% | 平均最大子段=1264.6
+5. double_newline | 有效率=0.00% | 平均最大子段=1597.8

@@ -1,7 +1,7 @@
-共 4 个 chunks_*.json
+共 8 个 chunks_*.json
 
 ########################################################################
-[1/4] stem=dcsfa18cearlyaccessguidecn
+[1/8] stem=dcsfa18cearlyaccessguidecn
 ########################################################################
 文件: D:\Programs\manual-rag-system\data\chunks_dcsfa18cearlyaccessguidecn.json
 图片目录: D:\Programs\manual-rag-system\data\images\dcsfa18cearlyaccessguidecn
@@ -152,7 +152,156 @@ chunk 总数: 295
 
 
 ########################################################################
-[2/4] stem=dcsjf17
+[2/8] stem=dcsfa18cearlyaccessguidecn_normalized
+########################################################################
+文件: D:\Programs\manual-rag-system\data\chunks_dcsfa18cearlyaccessguidecn_normalized.json
+图片目录: D:\Programs\manual-rag-system\data\images\dcsfa18cearlyaccessguidecn_normalized
+chunk 总数: 297
+
+✅ 结构完整性：通过
+
+✅ text非空率：通过
+
+✅ 链表完整性：通过
+
+所有 chunk 的 image_paths 条目数（可重复引用）: 393
+图片目录不存在: D:\Programs\manual-rag-system\data\images\dcsfa18cearlyaccessguidecn_normalized（跳过磁盘覆盖率）
+
+
+========================================================================
+人工抽查：随机 10 个 chunk
+========================================================================
+[1] chunk_id: dcsfa18cearlyaccessguidecn_0063
+    title_h1: F/A-18C 驾驶舱简介
+    title_h2: 中间仪表板
+    title_h3: 下方控制台仪表组
+    page_start: 53  page_end: 54
+    text 前150字: 下方控制台仪表组  除了座舱压力表，该仪表组还专用于防御系统。这些将在本手册的防御系统部分介绍。
+    image_paths: []
+
+[2] chunk_id: dcsfa18cearlyaccessguidecn_0014
+    title_h1: 飞机历史
+    title_h2: 
+    title_h3: 
+    page_start: 27  page_end: 27
+    text 前150字: 飞机历史  麦道F/A-18 战机自首飞以来便是一架革命性的战机。F/A-18 享有美国海军第一架真正的舰载多用途战机、第一 架带有碳纤维尾翼、第一架搭载全数字电传飞行控制系统飞机等美誉。F/A-18 作为美国空军LWF 计划中“落 败”的战机，之后成为量产前线战机和攻击机，并为美国和其它七个国家服
+    image_paths: []
+
+[3] chunk_id: dcsfa18cearlyaccessguidecn_0155
+    title_h1: APG-73 火控雷达
+    title_h2: 空对空雷达
+    title_h3: 单目标跟踪（STT）模式
+    page_start: 161  page_end: 163
+    text 前150字: 单目标跟踪（STT）模式  在手动或自动截获目标时进入STT。    •  当TDC游标移到RWS的回波信号上时，按下TDC指定按钮。  •  当TDC游标移到一个LTWS跟踪文件上时，按下TDC指定按钮两次。  •  用AACQ模式或ACM模式。 162     STT由雷达攻击页面指示。雷达持续
+    image_paths: ['data/images/dcsfa18cearlyaccessguidecn/page_162_img_0.png', 'data/images/dcsfa18cearlyaccessguidecn/page_163_img_0.png']
+
+[4] chunk_id: dcsfa18cearlyaccessguidecn_0138
+    title_h1: 导航（NAV）
+    title_h2: DATA 选项子页面
+    title_h3: A/C（飞机）子页面
+    page_start: 137  page_end: 139
+    text 前150字: A/C（飞机）子页面    图63. 飞机HSI DATA 子页面  显示页面中央显示的飞机经纬度、风向和风速以及磁差。位于其下方的为水平和垂直GPS 误差，以及当前GPS 时 间。  坡度限制. 设置CPL（耦合）模式下自动驾驶指令的最大坡度。在NAV（坡度最大30°）和TAC（坡度最大 60°）
+    image_paths: ['data/images/dcsfa18cearlyaccessguidecn/page_137_img_0.png']
+
+[5] chunk_id: dcsfa18cearlyaccessguidecn_0126
+    title_h1: 导航（NAV）
+    title_h2: INS 对准
+    title_h3: 
+    page_start: 113  page_end: 114
+    text 前150字: INS 对准  导航系统可以在地面或空中通过各种不同方法来进行对准。将位于传感器控制面板中的INS 模式旋钮转动到所需 的档位来开始导航系统对准。在对准完成后，飞行员通常需要将INS 模式旋钮转动至IFA 档位。    CV （舰上对准）. CV 档位为当飞机处在母舰上时，主要的对准模式。  GND
+    image_paths: ['data/images/dcsfa18cearlyaccessguidecn/page_113_img_0.png']
+
+[6] chunk_id: dcsfa18cearlyaccessguidecn_0080
+    title_h1: F/A-18C 驾驶舱简介
+    title_h2: 左垂直面板
+    title_h3: 襟翼开关
+    page_start: 60  page_end: 60
+    text 前150字: 襟翼开关  FLAP开关可选择激活两个飞控计算机模式（自动升起襟翼或起飞和着陆）中的一个，从而确定这些条件的飞行特 性。  •  AUTO。起落架没有没有负重（WoW），前缘和后缘襟翼则预定为迎角功能。起落架没有负重时，前 缘和后缘襟翼以及副翼下垂则设为0°。 [F]    •  HALF. 低于2
+    image_paths: []
+
+[7] chunk_id: dcsfa18cearlyaccessguidecn_0058
+    title_h1: F/A-18C 驾驶舱简介
+    title_h2: 中间仪表板
+    title_h3: 平视显示器（HUD）
+    page_start: 47  page_end: 47
+    text 前150字: 平视显示器（HUD）  在所有选定条件下，HUD 是飞机的主要仪表，显示飞机的武器状态，以及武器投放。HUD 从左侧和右侧DDI 的符 号生成器（由任务计算机控制）接收攻击、导航、态势和转向控制信息，并将这些符号投影到光学玻璃上以实现 平视显示。关于HUD 我们将在后续章节详细介绍。
+    image_paths: []
+
+[8] chunk_id: dcsfa18cearlyaccessguidecn_0305
+    title_h1: 防御系统
+    title_h2: EW 页面
+    title_h3: EW BIT
+    page_start: 399  page_end: 400
+    text 前150字: EW BIT  进行EW 机内自检时，会进行图形和音频检测。  在EW 页面和方位角指示器上，以下检测图示将以三秒间隔相继显示。    图231. EW BIT 检测图示  同时，ALR-67 各自对应的音调将被播放。这些包括：  •  新威胁（下行半音音阶）  •  防空火炮  •  导弹发射  
+    image_paths: ['data/images/dcsfa18cearlyaccessguidecn/page_399_img_1.png']
+
+[9] chunk_id: dcsfa18cearlyaccessguidecn_0050
+    title_h1: F/A-18C 驾驶舱简介
+    title_h2: 
+    title_h3: 应急投弃按钮
+    page_start: 43  page_end: 43
+    text 前150字: 应急投弃按钮  标记为EMERG JETT的应急投弃按钮，它将在挂点2，3，5，7和8上挂架的外部挂载投弃。按住按钮375毫秒将启 动投弃。
+    image_paths: []
+
+[10] chunk_id: dcsfa18cearlyaccessguidecn_0241
+    title_h1: 空对地武器使用
+    title_h2: 空对地主模式
+    title_h3: 
+    page_start: 290  page_end: 291
+    text 前150字: 空对地主模式  F/A-18C 可以使用制导和非制导两种武器，以及航炮。并且“大黄蜂”还可以使用机载雷达、ATFLIR、瞄准吊舱 和JHMCS 提示来定位和跟踪目标。  要进入F/A-18C 的空对地模式，首先按下左侧仪表面板上主模式的A/G 按钮，并且需要机轮无承重。如果主军械 开关位于“SAFE
+    image_paths: ['data/images/dcsfa18cearlyaccessguidecn/page_290_img_0.png']
+
+========================================================================
+人工抽查：随机 5 个 image_paths 非空的 chunk
+========================================================================
+[1] chunk_id: dcsfa18cearlyaccessguidecn_0283
+    title_h1: 空对地武器使用
+    title_h2: AGM-84D 鱼叉
+    title_h3: 鱼叉HUD
+    page_start: 367
+    image_paths: ['data/images/dcsfa18cearlyaccessguidecn/page_368_img_0.png']
+    text 前100字: 鱼叉HUD  选择一枚鱼叉后，HUD 显示所选武器和模式。 368     选择BOL 模式时，仅有模式字样BOL 和武器识别HPD 字样显示在HUD 右侧。如果没有指定目标，则没有TGT 指示，例如
+
+[2] chunk_id: dcsfa18cearlyaccessguidecn_0064
+    title_h1: F/A-18C 驾驶舱简介
+    title_h2: 右仪表板
+    title_h3: 
+    page_start: 54
+    image_paths: ['data/images/dcsfa18cearlyaccessguidecn/page_54_img_0.png']
+    text 前100字: 右仪表板      图 10. 锁定/射击提示灯    图 11. 右仪表板  锁定/射击提示灯  APU 火警灯  右告警/注意 提示灯  右侧数字显示器（DDI）  备用姿态参考指示仪（SARI）
+
+[3] chunk_id: dcsfa18cearlyaccessguidecn_0015
+    title_h1: 飞机历史
+    title_h2: VFAX 计划
+    title_h3: 
+    page_start: 27
+    image_paths: ['data/images/dcsfa18cearlyaccessguidecn/page_27_img_0.png', 'data/images/dcsfa18cearlyaccessguidecn/page_28_img_0.png']
+    text 前100字: VFAX 计划  在1960 年代初，美国海军最关注的是舰队防御任务。在 美国情报部门发现图-26“逆火”的存在后，便引起了美 国海军将领们的担忧——苏联很快就会拥有在航母防御范 围外，发射掠海反舰导
+
+[4] chunk_id: dcsfa18cearlyaccessguidecn_0157
+    title_h1: APG-73 火控雷达
+    title_h2: 空对空雷达
+    title_h3: 空对空雷达HOTAS 控制
+    page_start: 165
+    image_paths: ['data/images/dcsfa18cearlyaccessguidecn/page_166_img_0.png']
+    text 前100字: 空对空雷达HOTAS 控制  在空战时，把双手放在驾驶杆和油门上，而不是把双手拿开做一些控制对空战会很有用。F/A-18 有着优良的握杆 控制（HOTAS）操纵设备。对于空中作战来说，下面列出一些更加
+
+[5] chunk_id: dcsfa18cearlyaccessguidecn_0146
+    title_h1: 导航（NAV）
+    title_h2: 仪表助降系统（ICLS）
+    title_h3: 
+    page_start: 148
+    image_paths: ['data/images/dcsfa18cearlyaccessguidecn/page_148_img_0.png', 'data/images/dcsfa18cearlyaccessguidecn/page_149_img_0.png', 'data/images/dcsfa18cearlyaccessguidecn/page_150_img_0.png']
+    text 前100字: 仪表助降系统（ICLS）    现实中的美国海军和海军陆战队的F-18 并未装备用于路基着陆的仪表着陆系统（ILS），而是装备了仪表助降系 统（ICLS）。ICLS 的操作与ILS 类似，不过它只在美
+
+========================================================================
+已知章节：title_h1 包含 "驾驶舱仪表" 的 chunk
+========================================================================
+(无匹配)
+
+
+########################################################################
+[3/8] stem=dcsjf17
 ########################################################################
 文件: D:\Programs\manual-rag-system\data\chunks_dcsjf17.json
 图片目录: D:\Programs\manual-rag-system\data\images\dcsjf17
@@ -304,11 +453,11 @@ chunk 总数: 205
 
 
 ########################################################################
-[3/4] stem=f15c
+[4/8] stem=dcsjf17_normalized
 ########################################################################
-文件: D:\Programs\manual-rag-system\data\chunks_f15c.json
-图片目录: D:\Programs\manual-rag-system\data\images\f15c
-chunk 总数: 80
+文件: D:\Programs\manual-rag-system\data\chunks_dcsjf17_normalized.json
+图片目录: D:\Programs\manual-rag-system\data\images\dcsjf17_normalized
+chunk 总数: 212
 
 ✅ 结构完整性：通过
 
@@ -316,22 +465,160 @@ chunk 总数: 80
 
 ✅ 链表完整性：通过
 
-所有 chunk 的 image_paths 条目数（可重复引用）: 82
+所有 chunk 的 image_paths 条目数（可重复引用）: 534
+图片目录不存在: D:\Programs\manual-rag-system\data\images\dcsjf17_normalized（跳过磁盘覆盖率）
+
+
+========================================================================
+人工抽查：随机 10 个 chunk
+========================================================================
+[1] chunk_id: dcsjf17_0187
+    title_h1: 第五章 空对地主模式
+    title_h2: 5.4.雷达导航模式
+    title_h3: 5.4.2.TA-地形回避模式
+    page_start: 267  page_end: 269
+    text 前150字: 5.4.2. TA-地形回避模式 terrain terrain pull up！ 你也不想飞机会这么叫对吧？ JF-17 的KLJ-7 雷达提供了地形回避功能（注意，并不是F-16 Block40/42 的地形跟踪能力），将前方有碰撞危险的地形和障碍物，通过颜色标注出来。 在该模式下，雷达显示距离
+    image_paths: ['data/images/dcsjf17/page_268_img_0.png']
+
+[2] chunk_id: dcsjf17_0023
+    title_h1: 第一章  说明和使用
+    title_h2: 1.7.刹车系统
+    title_h3: 1.7.2.鼻轮转向系统
+    page_start: 52  page_end: 53
+    text 前150字: 1.7.2. 鼻轮转向系统 前轮操纵系统有两种工作状态：一种是操纵状态（此时状态灯盒上的绿色 “NWS”灯亮），主要用于低速滑行时的操纵转弯，一种是减摆状态。 （1）操纵状态：飞机前轮接地轮载开关接通后，当飞机处于低速滑行需要 操纵转弯时，可按下驾驶杆上的前轮操纵开关后松开，使前轮操纵系统处于工作 
+    image_paths: []
+
+[3] chunk_id: dcsjf17_0003_part6
+    title_h1: 第一章  说明和使用
+    title_h2: 1.1.飞机
+    title_h3: 1.1.1.历史
+    page_start: 9  page_end: 36
+    text 前150字: 中国人在 工厂里发现，RD-33 发动机有两个电调盒，一共25kg 重体积达到了36L，要知道 西方的类似配件仅有一本书的大小。中方当即表达了不解，而苏联人回答说这个 东西70 年代就设计出来了，一直没改过而且也不打算改。在谈及进气道匹配的 相关技术问题时，苏联人更是直接说这得问米高扬设计局，他们也
+    image_paths: ['data/images/dcsjf17/page_9_img_0.png', 'data/images/dcsjf17/page_9_img_1.png', 'data/images/dcsjf17/page_10_img_0.png', 'data/images/dcsjf17/page_11_img_0.png', 'data/images/dcsjf17/page_14_img_0.png', 'data/images/dcsjf17/page_15_img_0.png', 'data/images/dcsjf17/page_16_img_0.png', 'data/images/dcsjf17/page_17_img_0.png', 'data/images/dcsjf17/page_19_img_0.png', 'data/images/dcsjf17/page_20_img_0.png', 'data/images/dcsjf17/page_21_img_0.png', 'data/images/dcsjf17/page_22_img_0.png', 'data/images/dcsjf17/page_24_img_0.png', 'data/images/dcsjf17/page_25_img_0.png', 'data/images/dcsjf17/page_25_img_1.png', 'data/images/dcsjf17/page_26_img_0.png', 'data/images/dcsjf17/page_27_img_0.png', 'data/images/dcsjf17/page_29_img_0.png', 'data/images/dcsjf17/page_31_img_0.png', 'data/images/dcsjf17/page_33_img_0.png', 'data/images/dcsjf17/page_34_img_0.png', 'data/images/dcsjf17/page_35_img_0.png']
+
+[4] chunk_id: dcsjf17_0220
+    title_h1: 8.2.滚转飞控系统
+    title_h2: 8.5.状态和显示
+    title_h3: 8.5.2.飞控指示灯
+    page_start: 319  page_end: 326
+    text 前150字: 8.5.2. 飞控指示灯 状态告警灯 在能保证安全飞行的要求下，为了使用更少的专用状态告警灯，状态告警 灯采用累积化点灯逻辑，即：高级别的状态告警灯点亮时，低级别的状态告警 灯保持或被点亮； （1）FCS1 告警灯 由于飞行控制系统的故障，飞机完全可控，宣布为状态Ⅰ。此时，飞机及 其系统的状态允许飞
+    image_paths: ['data/images/dcsjf17/page_319_img_0.png', 'data/images/dcsjf17/page_319_img_1.png', 'data/images/dcsjf17/page_320_img_0.png', 'data/images/dcsjf17/page_320_img_1.png', 'data/images/dcsjf17/page_321_img_0.png', 'data/images/dcsjf17/page_321_img_1.png', 'data/images/dcsjf17/page_322_img_0.png', 'data/images/dcsjf17/page_323_img_0.png', 'data/images/dcsjf17/page_324_img_0.png', 'data/images/dcsjf17/page_326_img_0.png']
+
+[5] chunk_id: dcsjf17_0075
+    title_h1: 第二章 正常程序
+    title_h2: 2.2.开车前座舱检查
+    title_h3: 1.混合控制盒
+    page_start: 132  page_end: 132
+    text 前150字: 1. 混合控制盒 SHARS（捷联航姿）开关→SHARS（接通）位置； EMG HYD（应急液压泵开关）→OFF 位置；
+    image_paths: ['data/images/dcsjf17/page_132_img_0.png']
+
+[6] chunk_id: dcsjf17_0062
+    title_h1: 第一章  说明和使用
+    title_h2: 1.18.通讯
+    title_h3: 1.18.1.甚高频/超高频电台
+    page_start: 117  page_end: 122
+    text 前150字: 1.18.1. 甚高频/超高频电台 工作频段划分 电台 频率 调制 1 108~173.975 AM/FM 2 225~399.975 AM/FM 话音通信模式 频段和模式：电台的工作频段共有200 个预置波道(包括数据链波道199)。 电台模式： Plain – 固定频率的明话/数据传输，显示“P
+    image_paths: ['data/images/dcsjf17/page_117_img_0.png', 'data/images/dcsjf17/page_119_img_0.png', 'data/images/dcsjf17/page_120_img_0.png', 'data/images/dcsjf17/page_120_img_1.png', 'data/images/dcsjf17/page_121_img_0.png', 'data/images/dcsjf17/page_121_img_1.png']
+
+[7] chunk_id: dcsjf17_0057
+    title_h1: 第一章  说明和使用
+    title_h2: 1.17.告警系统
+    title_h3: 1.17.2.二级告警
+    page_start: 112  page_end: 112
+    text 前150字: 1.17.2. 二级告警 当发生二级故障时： （1）主警告灯盒上的红色“MASTER WARNING”（主警告）灯闪烁； （2）警告灯盒上的相应的红色警告灯也闪烁； （3）HUD 上显示闪烁的“WARNING”字样； （4）持续的合成话音告警“WARNING”。 按压UFCP 上的PFL 按钮后，在
+    image_paths: []
+
+[8] chunk_id: dcsjf17_0031
+    title_h1: 第一章  说明和使用
+    title_h2: 1.9.数据传输卡（DTC）
+    title_h3: 1.9.1.如何使用DTC
+    page_start: 65  page_end: 66
+    text 前150字: 1.9.1. 如何使用DTC 数据传输设备以操作文件(APR、SMS、NAV、CNI、EWS 等)形式存储任务参 数；飞行员可单独选择要加载到航空电子子系统的参数文件或所有文件。 在起飞前 按压MFD 上的D3 键进入主菜单, 按主菜单上的L4 键进入DATA 画面, 按DATA 画面中的R4 键进
+    image_paths: ['data/images/dcsjf17/page_65_img_0.png']
+
+[9] chunk_id: dcsjf17_0219
+    title_h1: 8.2.滚转飞控系统
+    title_h2: 8.5.状态和显示
+    title_h3: 8.5.1.飞控告警
+    page_start: 316  page_end: 319
+    text 前150字: 8.5.1. 飞控告警 飞控系统发出的灯光告警信号见图1-28。飞控告警灯分别安装在主告警灯 盒、告警灯盒、状态灯盒及飞控控制盒上。 — 309 — 主告警灯 告警灯 告警内容 等级 FCS 飞控 一级 告警灯 告警灯 告警内容 等级 CONFIG 构型告警 二级 DL 直接连接 二级 FCS3 飞
+    image_paths: ['data/images/dcsjf17/page_316_img_0.png']
+
+[10] chunk_id: dcsjf17_0021
+    title_h1: 第一章  说明和使用
+    title_h2: 1.7.刹车系统
+    title_h3: 
+    page_start: 51  page_end: 51
+    text 前150字: 1.7. 刹车系统 液压刹车系统包括：停机刹车和正常刹车即着陆刹车防滑、中止起飞刹车防 滑、差动刹车和起落架收起后的自动刹住机轮。停机刹车和正常刹车通过转换起 飞着陆系统控制盒面板上的刹车通道开关“PARK”和“NORM”位置来实现。正常刹 车防滑系统的操纵方式为脚刹和脚差动，在刹车过程中，控制装置
+    image_paths: []
+
+========================================================================
+人工抽查：随机 5 个 image_paths 非空的 chunk
+========================================================================
+[1] chunk_id: dcsjf17_0034
+    title_h1: 第一章  说明和使用
+    title_h2: 1.11.航空电子启动板（AAP）
+    title_h3: 
+    page_start: 69
+    image_paths: ['data/images/dcsjf17/page_69_img_0.png']
+    text 前100字: 1.11. 航空电子启动板（AAP） 航空电子启动板(AAP)用于启动航电系统中的航空电子子系统/设备。 （1）单个子系统操作开关 a. 当按压单个子系统操作开关启动子系统时，所选择的子系统开关内的灯
+
+[2] chunk_id: dcsjf17_0003_part6
+    title_h1: 第一章  说明和使用
+    title_h2: 1.1.飞机
+    title_h3: 1.1.1.历史
+    page_start: 9
+    image_paths: ['data/images/dcsjf17/page_9_img_0.png', 'data/images/dcsjf17/page_9_img_1.png', 'data/images/dcsjf17/page_10_img_0.png', 'data/images/dcsjf17/page_11_img_0.png', 'data/images/dcsjf17/page_14_img_0.png', 'data/images/dcsjf17/page_15_img_0.png', 'data/images/dcsjf17/page_16_img_0.png', 'data/images/dcsjf17/page_17_img_0.png', 'data/images/dcsjf17/page_19_img_0.png', 'data/images/dcsjf17/page_20_img_0.png', 'data/images/dcsjf17/page_21_img_0.png', 'data/images/dcsjf17/page_22_img_0.png', 'data/images/dcsjf17/page_24_img_0.png', 'data/images/dcsjf17/page_25_img_0.png', 'data/images/dcsjf17/page_25_img_1.png', 'data/images/dcsjf17/page_26_img_0.png', 'data/images/dcsjf17/page_27_img_0.png', 'data/images/dcsjf17/page_29_img_0.png', 'data/images/dcsjf17/page_31_img_0.png', 'data/images/dcsjf17/page_33_img_0.png', 'data/images/dcsjf17/page_34_img_0.png', 'data/images/dcsjf17/page_35_img_0.png']
+    text 前100字: 中国人在 工厂里发现，RD-33 发动机有两个电调盒，一共25kg 重体积达到了36L，要知道 西方的类似配件仅有一本书的大小。中方当即表达了不解，而苏联人回答说这个 东西70 年代就设计出来了，一直
+
+[3] chunk_id: dcsjf17_0099
+    title_h1: 第二章 正常程序
+    title_h2: 2.3. 开车
+    title_h3: 2.3.9.信号灯检查
+    page_start: 159
+    image_paths: ['data/images/dcsjf17/page_159_img_0.png']
+    text 前100字: 2.3.9. 信号灯检查 起落架到位绿灯亮、“D/CH”（无伞指示）灯应熄灭，“S/B”（减速板）信号 灯应熄灭。
+
+[4] chunk_id: dcsjf17_0091
+    title_h1: 第二章 正常程序
+    title_h2: 2.3. 开车
+    title_h3: 2.3.1. 电源系统
+    page_start: 146
+    image_paths: ['data/images/dcsjf17/page_146_img_0.png']
+    text 前100字: 2.3.1. 电源系统 JF-17 采用交流电源为主的供电系统。交流电源系统由主交流电源系统、应 急交流电源系统和地面电源系统三大部分组成，其中的应急电源系统可以在主交 流系统down 后为飞机的主要
+
+[5] chunk_id: dcsjf17_0079
+    title_h1: 第二章 正常程序
+    title_h2: 2.2.开车前座舱检查
+    title_h3: 5.燃油控制盒
+    page_start: 134
+    image_paths: ['data/images/dcsjf17/page_134_img_1.png']
+    text 前100字: 5. 燃油控制盒 ACTIVE 开关→ACTIVE（接通）位置； FEED 开关→FEED（接通）位置； START PUMP 开关→OFF（断开）位置。
+
+========================================================================
+已知章节：title_h1 包含 "驾驶舱仪表" 的 chunk
+========================================================================
+(无匹配)
+
+
+########################################################################
+[5/8] stem=f15c
+########################################################################
+文件: D:\Programs\manual-rag-system\data\chunks_f15c.json
+图片目录: D:\Programs\manual-rag-system\data\images\f15c
+chunk 总数: 68
+
+✅ 结构完整性：通过
+
+✅ text非空率：通过
+
+✅ 链表完整性：通过
+
+所有 chunk 的 image_paths 条目数（可重复引用）: 93
 磁盘上 PNG 张数: 93
-已被至少一个 chunk 引用的张数: 82  覆盖率: 0.8817 (82/93)
-未被任何 chunk 引用的图（共 11 张）:
-  - data/images/f15c/page_113_img_0.png
-  - data/images/f15c/page_48_img_0.png
-  - data/images/f15c/page_49_img_0.png
-  - data/images/f15c/page_50_img_0.png
-  - data/images/f15c/page_51_img_0.png
-  - data/images/f15c/page_52_img_0.png
-  - data/images/f15c/page_53_img_0.png
-  - data/images/f15c/page_60_img_0.png
-  - data/images/f15c/page_60_img_1.png
-  - data/images/f15c/page_67_img_0.png
-  - data/images/f15c/page_68_img_0.png
-❌ 图片归属覆盖率：未达 95%（按磁盘图被引用比例）
+已被至少一个 chunk 引用的张数: 93  覆盖率: 1.0000 (93/93)
+未被任何 chunk 引用的图: 无
+✅ 图片归属覆盖率：通过（>95% 磁盘图已被引用）
 
 ========================================================================
 人工抽查：随机 10 个 chunk
@@ -352,7 +639,15 @@ chunk 总数: 80
     text 前150字: 多级改进计划  当全新的F-15A 与B 型战机服役后，一些问题便暴露了出来。例如，进气道的结构太 过薄弱，必须更加严格地限制飞机的飞行过载，因此进气道必须重新设计，从而使F-15 能 够满足设计要求，这也意味着要对现有的机身结构进行改造。这是从那时便开始的F-15 多 级改进计划的第一步。美国空军
     image_paths: []
 
-[3] chunk_id: f15c_0063
+[3] chunk_id: f15c_0038
+    title_h1: 驾驶舱仪表
+    title_h2: 空对空导弹
+    title_h3: 近距导弹
+    page_start: 87  page_end: 91
+    text 前150字: 近距导弹  AIM-9 响尾蛇  AIM-9 的研制工作始于1948 年，并于1952 年到1954 年间进行升级版本的飞行测试工 作。第一种型号，AIM-9A 响尾蛇，于1956 年服役。  AIM-9 根据空气动力学的鸭式布局方案设计。它有一个直径为127 毫米的圆柱形主体 和一组横梯形弹翼。陀
+    image_paths: ['data/images/f15c/page_88_img_0.png', 'data/images/f15c/page_89_img_0.png']
+
+[4] chunk_id: f15c_0034
     title_h1: 驾驶舱仪表
     title_h2: 对抗系统
     title_h3: 雷达告警系统
@@ -360,21 +655,220 @@ chunk 总数: 80
     text 前150字: 雷达告警系统  安装在飞机、舰船和地面车辆上的雷达用来捕捉并导引武器攻击多种目标。绝大多数 现代战机都配备有雷达告警系统（RWS），该系统用来探测敌方雷达的照射。虽然各大公 司和官方都有他们自己独特的系统设计方式，但是所有的雷达告警系统都有相同的工作模 式。  雷达告警系统是一个被动的系统，比如说，
     image_paths: []
 
-[4] chunk_id: f15c_0054
+[5] chunk_id: f15c_0031
     title_h1: 驾驶舱仪表
     title_h2: F-15C驾驶舱仪表
     title_h3: AN/APG-63（V）1雷达
-    page_start: 64  page_end: 66
-    text 前150字: 图55. VSD 的STT 模式  非合作目标识别（NCTR）系统可以自动尝试识别被锁定的目标。这个系统在存储器中 存储了不同航空器的雷达信号取样，并尝试将其与被锁定的目标进行对比。这个信号取样 识别方法基于目标反射的雷达回波，回波的强弱一部分取决于目标发动机第一级压气机的 叶片。如果信号特征符合库
-    image_paths: ['data/images/f15c/page_64_img_0.png', 'data/images/f15c/page_65_img_0.png', 'data/images/f15c/page_66_img_0.png']
+    page_start: 61  page_end: 72
+    text 前150字: AN/APG-63（V）1 雷达  自从第二次世界大战以来，"全天候战斗机"的定义性特征就是装备了空中机载雷达。 依靠无线电波可以穿透云层的能力，无论是白天还是夜晚，这种强大的传感器不受能够降 低能见度和红外探测度的天气状况影响，为战斗机提供了探测和导引武器攻击敌机的能力。 雷达也可以提供非常远的探
+    image_paths: ['data/images/f15c/page_62_img_0.png', 'data/images/f15c/page_64_img_0.png', 'data/images/f15c/page_65_img_0.png', 'data/images/f15c/page_66_img_0.png', 'data/images/f15c/page_67_img_0.png', 'data/images/f15c/page_68_img_0.png', 'data/images/f15c/page_69_img_0.png', 'data/images/f15c/page_69_img_1.png', 'data/images/f15c/page_70_img_0.png', 'data/images/f15c/page_71_img_0.png']
 
-[5] chunk_id: f15c_0044
+[6] chunk_id: f15c_0010
+    title_h1: F-15C介绍
+    title_h2: 简易航电模式
+    title_h3: 空对空模式
+    page_start: 31  page_end: 32
+    text 前150字: 空对空模式   图 19.空对空模式  空对空模式中的独有符号如下：    （玩家飞机符号）：玩家的飞机用一个绿色圆圈表示，显示在显示器底部中央    （本方飞机符号）：所有本方战机都用蓝色圆圈表示，每个圆圈上的直线指向该 机现在的飞行方向    （敌方飞机符号）：所有敌方战机都用红色三角形表
+    image_paths: ['data/images/f15c/page_31_img_0.png', 'data/images/f15c/page_32_img_0.png']
+
+[7] chunk_id: f15c_0050
+    title_h1: 驾驶舱仪表
+    title_h2: 理论训练
+    title_h3: 能量控制
+    page_start: 109  page_end: 111
+    text 前150字: 能量控制  一个优秀的飞行员必须在空战中懂得控制他的能量，能量就是飞机动能和势能的总和。 高度决定了飞机的势能，空速决定了飞机的动能。但是由于大迎角飞行产生的阻力会抵消 掉发动机推力和机翼的升力，所以这种状态下，飞机就会失去他的能量。飞行员必须注意 自己的操作，避免在战斗中出现这种情况前提下，使飞机
+    image_paths: ['data/images/f15c/page_110_img_0.png']
+
+[8] chunk_id: f15c_0008
+    title_h1: F-15C介绍
+    title_h2: 简易航电模式
+    title_h3: 
+    page_start: 29  page_end: 30
+    text 前150字: 简易航电模式  简易航电模式提供了简易风格的航电系统，这个系统使得休闲玩家更容易接受与熟悉 这个游戏。这个模式可以在游戏设置中调整游戏的可玩性，或者直接选择游戏中的预设模 式"简易"。  图 17. 简易航电模式雷达屏幕  简易航电模式的雷达屏幕显示在屏幕的右上角，采用俯视视角，底部中央的绿色圆圈 
+    image_paths: ['data/images/f15c/page_29_img_0.png']
+
+[9] chunk_id: f15c_0046
+    title_h1: 驾驶舱仪表
+    title_h2: 理论训练
+    title_h3: 迎角指示器
+    page_start: 104  page_end: 105
+    text 前150字: 迎角指示器  就像前面所说的，飞机的速度矢量可能和飞机的纵轴指向并不一致，飞机速度矢量在 纵向对称面的投影与飞机纵轴的夹角称为迎角（AOA），当飞行员拉动操纵杆后，他会增 加飞机的迎角（AOA），如果飞机在以水平直线飞行，那么减小发动机推力后，由于升力 减小，飞机会降低高度，这个时候如果想保持平飞，
+    image_paths: []
+
+[10] chunk_id: f15c_0066
+    title_h1: 驾驶舱仪表
+    title_h2: F-15C检查单
+    title_h3: 开车
+    page_start: 133  page_end: 133
+    text 前150字: 开车  步骤1  按下[右Ctrl-L]打开导航灯。  步骤2  按下[左Ctrl-C]关闭驾驶舱盖。  步骤3  按下[右Alt-HOME]启动左发动机并设置节流阀到慢车位。  步骤4  按下[右Ctrl-HOME]启动右发动机并设置节流阀到慢车位。
+    image_paths: []
+
+========================================================================
+人工抽查：随机 5 个 image_paths 非空的 chunk
+========================================================================
+[1] chunk_id: f15c_0062
+    title_h1: 驾驶舱仪表
+    title_h2: F-15C飞行动力学
+    title_h3: 高度包线和速度包线
+    page_start: 123
+    image_paths: ['data/images/f15c/page_123_img_0.png', 'data/images/f15c/page_127_img_0.png']
+    text 前100字: 高度包线和速度包线  只有表示飞机高度和速度的飞行包线图，才能表示出飞机在各速度和高度下的气动性 能。  包线范围  能够进行水平飞行的速度和高度范围，会被最小速度、升限和最大速度所限制，这被 称为飞
+
+[2] chunk_id: f15c_0010
+    title_h1: F-15C介绍
+    title_h2: 简易航电模式
+    title_h3: 空对空模式
+    page_start: 31
+    image_paths: ['data/images/f15c/page_31_img_0.png', 'data/images/f15c/page_32_img_0.png']
+    text 前100字: 空对空模式   图 19.空对空模式  空对空模式中的独有符号如下：    （玩家飞机符号）：玩家的飞机用一个绿色圆圈表示，显示在显示器底部中央    （本方飞机符号）：所有本方战机都用蓝色圆圈表
+
+[3] chunk_id: f15c_0003
+    title_h1: F-15C介绍
+    title_h2: F-15的历史
+    title_h3: 诞生
+    page_start: 10
+    image_paths: ['data/images/f15c/page_10_img_0.png', 'data/images/f15c/page_11_img_0.png', 'data/images/f15c/page_12_img_0.png', 'data/images/f15c/page_13_img_0.png', 'data/images/f15c/page_14_img_0.png', 'data/images/f15c/page_15_img_0.png', 'data/images/f15c/page_16_img_0.png']
+    text 前100字: 诞生  诞生于二十世纪七十年代的麦道公司F-15 是世界上最优秀的战斗机之一，取得了很多 令人印象深刻的成就。  F-15 鹰是美国空军的主力。作为一款最初为获得制空权而设计的战机，F-15 是一款未
+
+[4] chunk_id: f15c_0021
+    title_h1: 驾驶舱仪表
+    title_h2: F-15C驾驶舱仪表
+    title_h3: 气压高度表
+    page_start: 39
+    image_paths: ['data/images/f15c/page_40_img_0.png']
+    text 前100字: 气压高度表  高度表指示飞机的气压高度，并以20 英尺为单位。 要求航向飞机航向方位指针航线偏差指示点航线偏差指示条距离窗口 图29. 气压高度表  高度标尺包括一个显示当前高度的数字计数器。
+
+[5] chunk_id: f15c_0019
+    title_h1: 驾驶舱仪表
+    title_h2: F-15C驾驶舱仪表
+    title_h3: 姿态方位指示器
+    page_start: 38
+    image_paths: ['data/images/f15c/page_39_img_0.png']
+    text 前100字: 姿态方位指示器  姿态方位指示器位于仪表面板的中部。旋转的球体指示当前的俯仰和坡度。俯仰角分 度值为5 度，坡度分度值为10 度。垂直水平指示条位于指示器的前部，指示飞机相对于预 计航线的偏差。 最大
+
+========================================================================
+已知章节：title_h1 包含 "驾驶舱仪表" 的 chunk
+========================================================================
+chunk_id=f15c_0012  page_start=33  page_end=34  title_h2='F-15C驾驶舱仪表'  title_h3=''
+chunk_id=f15c_0013  page_start=34  page_end=35  title_h2='F-15C驾驶舱仪表'  title_h3='垂直态势显示器'
+chunk_id=f15c_0014  page_start=35  page_end=35  title_h2='F-15C驾驶舱仪表'  title_h3='战术电子战系统显示器'
+chunk_id=f15c_0015  page_start=35  page_end=37  title_h2='F-15C驾驶舱仪表'  title_h3='多功能彩色显示器武器控制面板'
+chunk_id=f15c_0016  page_start=37  page_end=37  title_h2='F-15C驾驶舱仪表'  title_h3='指示空速与马赫数表'
+chunk_id=f15c_0017  page_start=37  page_end=38  title_h2='F-15C驾驶舱仪表'  title_h3='迎角指示器'
+chunk_id=f15c_0018  page_start=38  page_end=38  title_h2='F-15C驾驶舱仪表'  title_h3='加速度计'
+chunk_id=f15c_0019  page_start=38  page_end=39  title_h2='F-15C驾驶舱仪表'  title_h3='姿态方位指示器'
+chunk_id=f15c_0020  page_start=39  page_end=39  title_h2='F-15C驾驶舱仪表'  title_h3='水平状态指示器'
+chunk_id=f15c_0021  page_start=39  page_end=40  title_h2='F-15C驾驶舱仪表'  title_h3='气压高度表'
+chunk_id=f15c_0022  page_start=40  page_end=40  title_h2='F-15C驾驶舱仪表'  title_h3='垂直速度表'
+chunk_id=f15c_0023  page_start=40  page_end=41  title_h2='F-15C驾驶舱仪表'  title_h3='转速表'
+chunk_id=f15c_0024  page_start=41  page_end=41  title_h2='F-15C驾驶舱仪表'  title_h3='风扇涡轮入口温度表'
+chunk_id=f15c_0025  page_start=41  page_end=42  title_h2='F-15C驾驶舱仪表'  title_h3='发动机燃油流量表'
+chunk_id=f15c_0026  page_start=42  page_end=42  title_h2='F-15C驾驶舱仪表'  title_h3='发动机喷口位置指示器'
+chunk_id=f15c_0027  page_start=42  page_end=43  title_h2='F-15C驾驶舱仪表'  title_h3='油量指示器'
+chunk_id=f15c_0028  page_start=43  page_end=43  title_h2='F-15C驾驶舱仪表'  title_h3='座舱气压计'
+chunk_id=f15c_0029  page_start=43  page_end=45  title_h2='F-15C驾驶舱仪表'  title_h3='箔条和红外干扰弹指示灯'
+chunk_id=f15c_0030  page_start=45  page_end=61  title_h2='F-15C驾驶舱仪表'  title_h3='F-15C HUD操作'
+chunk_id=f15c_0031  page_start=61  page_end=72  title_h2='F-15C驾驶舱仪表'  title_h3='AN/APG-63（V）1雷达'
+chunk_id=f15c_0032  page_start=72  page_end=72  title_h2='对抗系统'  title_h3=''
+chunk_id=f15c_0033  page_start=72  page_end=73  title_h2='对抗系统'  title_h3='AN/ALQ-135内置电子干扰系统'
+chunk_id=f15c_0034  page_start=73  page_end=74  title_h2='对抗系统'  title_h3='雷达告警系统'
+chunk_id=f15c_0035  page_start=74  page_end=81  title_h2='对抗系统'  title_h3='AN/ALR-56C告警接收仪'
+chunk_id=f15c_0036  page_start=81  page_end=83  title_h2='空对空导弹'  title_h3=''
+chunk_id=f15c_0037  page_start=83  page_end=87  title_h2='空对空导弹'  title_h3='中距导弹'
+chunk_id=f15c_0038  page_start=87  page_end=91  title_h2='空对空导弹'  title_h3='近距导弹'
+chunk_id=f15c_0039  page_start=91  page_end=91  title_h2='无线电通信与消息'  title_h3=''
+chunk_id=f15c_0040  page_start=91  page_end=98  title_h2='无线电通信与消息'  title_h3='无线电指令'
+chunk_id=f15c_0041  page_start=98  page_end=101  title_h2='无线电通信与消息'  title_h3='无线电消息'
+chunk_id=f15c_0042  page_start=101  page_end=104  title_h2='无线电通信与消息'  title_h3='语音信息与告警'
+chunk_id=f15c_0043  page_start=104  page_end=104  title_h2='理论训练'  title_h3=''
+chunk_id=f15c_0044  page_start=104  page_end=104  title_h2='理论训练'  title_h3='指示空速和真空速'
+chunk_id=f15c_0045  page_start=104  page_end=104  title_h2='理论训练'  title_h3='速度矢量'
+chunk_id=f15c_0046  page_start=104  page_end=105  title_h2='理论训练'  title_h3='迎角指示器'
+chunk_id=f15c_0047  page_start=105  page_end=107  title_h2='理论训练'  title_h3='转弯半径与转弯速率'
+chunk_id=f15c_0048  page_start=107  page_end=108  title_h2='理论训练'  title_h3='转弯速率'
+chunk_id=f15c_0049  page_start=108  page_end=109  title_h2='理论训练'  title_h3='持续转弯与瞬时转弯'
+chunk_id=f15c_0050  page_start=109  page_end=111  title_h2='理论训练'  title_h3='能量控制'
+chunk_id=f15c_0051  page_start=111  page_end=111  title_h2='空战基本知识'  title_h3=''
+chunk_id=f15c_0052  page_start=111  page_end=115  title_h2='空战基本知识'  title_h3='空战战术'
+chunk_id=f15c_0053  page_start=115  page_end=120  title_h2='空战基本知识'  title_h3='导弹规避'
+chunk_id=f15c_0055  page_start=120  page_end=121  title_h2='F-15C飞行动力学'  title_h3='起飞'
+chunk_id=f15c_0056  page_start=121  page_end=121  title_h2='F-15C飞行动力学'  title_h3='爬升'
+chunk_id=f15c_0057  page_start=121  page_end=122  title_h2='F-15C飞行动力学'  title_h3='飞行中'
+chunk_id=f15c_0058  page_start=122  page_end=122  title_h2='F-15C飞行动力学'  title_h3='进近'
+chunk_id=f15c_0059  page_start=122  page_end=122  title_h2='F-15C飞行动力学'  title_h3='复飞'
+chunk_id=f15c_0060  page_start=122  page_end=122  title_h2='F-15C飞行动力学'  title_h3='着陆'
+chunk_id=f15c_0061  page_start=122  page_end=123  title_h2='F-15C飞行动力学'  title_h3='F-15C的机动性能'
+chunk_id=f15c_0062  page_start=123  page_end=127  title_h2='F-15C飞行动力学'  title_h3='高度包线和速度包线'
+chunk_id=f15c_0063  page_start=127  page_end=131  title_h2='F-15C飞行动力学'  title_h3='过载'
+chunk_id=f15c_0064  page_start=131  page_end=133  title_h2='F-15C飞行动力学'  title_h3='外部因素对首要机动特性的影响'
+chunk_id=f15c_0066  page_start=133  page_end=133  title_h2='F-15C检查单'  title_h3='开车'
+chunk_id=f15c_0067  page_start=133  page_end=134  title_h2='F-15C检查单'  title_h3='滑行与起飞'
+chunk_id=f15c_0068  page_start=134  page_end=134  title_h2='F-15C检查单'  title_h3='导航'
+chunk_id=f15c_0069  page_start=134  page_end=135  title_h2='F-15C检查单'  title_h3='着陆'
+chunk_id=f15c_0070  page_start=135  page_end=139  title_h2='F-15C检查单'  title_h3='空对空导弹应用'
+chunk_id=f15c_0072  page_start=139  page_end=144  title_h2='附录'  title_h3='缩略词表'
+chunk_id=f15c_0073  page_start=144  page_end=144  title_h2='附录'  title_h3='翻译'
+
+
+########################################################################
+[6/8] stem=f15c_normalized
+########################################################################
+文件: D:\Programs\manual-rag-system\data\chunks_f15c_normalized.json
+图片目录: D:\Programs\manual-rag-system\data\images\f15c_normalized
+chunk 总数: 74
+
+✅ 结构完整性：通过
+
+✅ text非空率：通过
+
+✅ 链表完整性：通过
+
+所有 chunk 的 image_paths 条目数（可重复引用）: 168
+图片目录不存在: D:\Programs\manual-rag-system\data\images\f15c_normalized（跳过磁盘覆盖率）
+
+
+========================================================================
+人工抽查：随机 10 个 chunk
+========================================================================
+[1] chunk_id: f15c_0017
+    title_h1: 驾驶舱仪表
+    title_h2: F-15C驾驶舱仪表
+    title_h3: 迎角指示器
+    page_start: 37  page_end: 38
+    text 前150字: 迎角指示器  迎角指示器位于指示空速和马赫数表的下方，也安装在仪表面板上。它用来指示从0 度到45 度的当前迎角数值。指示的迎角值并不对应实际的俯仰角。在着陆迎角范围（20 度 到22 度）内，表上会有一个对应的指针。 图 25.迎角指示器
+    image_paths: ['data/images/f15c/page_38_img_0.png']
+
+[2] chunk_id: f15c_0005
+    title_h1: F-15C介绍
+    title_h2: F-15的历史
+    title_h3: 多级改进计划
+    page_start: 20  page_end: 22
+    text 前150字: 多级改进计划  当全新的F-15A 与B 型战机服役后，一些问题便暴露了出来。例如，进气道的结构太 过薄弱，必须更加严格地限制飞机的飞行过载，因此进气道必须重新设计，从而使F-15 能 够满足设计要求，这也意味着要对现有的机身结构进行改造。这是从那时便开始的F-15 多 级改进计划的第一步。美国空军
+    image_paths: []
+
+[3] chunk_id: f15c_0032
+    title_h1: 驾驶舱仪表
+    title_h2: 对抗系统
+    title_h3: 
+    page_start: 72  page_end: 72
+    text 前150字: 对抗系统  电子战（EW）是一个深入而且复杂的领域，它涵盖了一段快速发展的传感器、战术、 武器和其他来自许多国家装备的悠久历史。在这一部分，我们只考虑几种主动雷达电子干 扰措施（ECM）系统，它在现在又被称为电子攻击（EA），这种系统用来保护安装了它的 飞机。当玩家的飞机装备有这种电子干扰系统（或者
+    image_paths: []
+
+[4] chunk_id: f15c_0031_part0
+    title_h1: 驾驶舱仪表
+    title_h2: F-15C驾驶舱仪表
+    title_h3: AN/APG-63（V）1雷达
+    page_start: 61  page_end: 72
+    text 前150字: AN/APG-63（V）1 雷达  自从第二次世界大战以来，"全天候战斗机"的定义性特征就是装备了空中机载雷达。依靠无线电波可以穿透云层的能力，无论是白天还是夜晚，这种强大的传感器不受能够降 低能见度和红外探测度的天气状况影响，为战斗机提供了探测和导引武器攻击敌机的能力。雷达也可以提供非常远的探测距
+    image_paths: ['data/images/f15c/page_62_img_0.png', 'data/images/f15c/page_64_img_0.png', 'data/images/f15c/page_65_img_0.png', 'data/images/f15c/page_66_img_0.png', 'data/images/f15c/page_67_img_0.png', 'data/images/f15c/page_68_img_0.png', 'data/images/f15c/page_69_img_0.png', 'data/images/f15c/page_69_img_1.png', 'data/images/f15c/page_70_img_0.png', 'data/images/f15c/page_71_img_0.png']
+
+[5] chunk_id: f15c_0030_part1
     title_h1: 驾驶舱仪表
     title_h2: F-15C驾驶舱仪表
     title_h3: F-15C HUD操作
-    page_start: 54  page_end: 56
-    text 前150字: 图47. AIM-7M STT 模式    目标指示框表示目标相对于本机的位置。    ASE 圆指示目标方位角的最大范围。目标方位角数值与目标方位角指示点相对于 ASE 圆中心的距离成比例。ASE 圆显示了目标方位角指示点在本机发射导弹击中 目标之前应该处于的位置区域。当目标距离减少时，圆变大
-    image_paths: ['data/images/f15c/page_54_img_0.png', 'data/images/f15c/page_55_img_0.png']
+    page_start: 45  page_end: 61
+    text 前150字: 为了使子弹击中目标，你必须将机炮瞄 准点移动到目标上。  GDS 里面的内接圆指示目标距离。一格代表1000 英尺。当目标距离减少时，距 离标尺逆时针减少。子弹飞行时间指示点指示机炮开火的有效距离。  在HUD 右下角显示有目标距离数字。距离值显示为数字，显示在R 的后面。  在目标距离数字的
+    image_paths: ['data/images/f15c/page_45_img_0.png', 'data/images/f15c/page_46_img_0.png', 'data/images/f15c/page_48_img_0.png', 'data/images/f15c/page_49_img_0.png', 'data/images/f15c/page_50_img_0.png', 'data/images/f15c/page_51_img_0.png', 'data/images/f15c/page_52_img_0.png', 'data/images/f15c/page_53_img_0.png', 'data/images/f15c/page_54_img_0.png', 'data/images/f15c/page_55_img_0.png', 'data/images/f15c/page_57_img_0.png', 'data/images/f15c/page_58_img_0.png', 'data/images/f15c/page_59_img_0.png', 'data/images/f15c/page_60_img_0.png', 'data/images/f15c/page_60_img_1.png']
 
 [6] chunk_id: f15c_0020
     title_h1: 驾驶舱仪表
@@ -392,15 +886,7 @@ chunk 总数: 80
     text 前150字: 指示空速与马赫数表  指示空速和马赫数表位于多功能彩色显示器的右方，指示当前的指示空速和马赫数。 指示空速的固定读数为50 到1000 节。可移动的马赫数读数表示马赫数值。大于200 节后 开始指示马赫数。  图 24. 指示空速和马赫数表
     image_paths: ['data/images/f15c/page_37_img_0.png']
 
-[8] chunk_id: f15c_0124
-    title_h1: 驾驶舱仪表
-    title_h2: F-15C飞行动力学
-    title_h3: 过载
-    page_start: 128  page_end: 129
-    text 前150字: 过载  正常推力限制过载是在零加速度下，阻力等于发动机推力时的最大过载，此时空速既 不增加也不减少。  最大正常（可持续）推力限制过载  最大推力限制过载是在零加速度下，阻力等于发动机最大推力时的过载。  最大推力限制过载是在匀速下测得。如果飞行员超过了该速度下的最大推力限制过载， 空速就会开始下降
-    image_paths: ['data/images/f15c/page_129_img_0.png']
-
-[9] chunk_id: f15c_0014
+[8] chunk_id: f15c_0014
     title_h1: 驾驶舱仪表
     title_h2: F-15C驾驶舱仪表
     title_h3: 战术电子战系统显示器
@@ -408,7 +894,7 @@ chunk 总数: 80
     text 前150字: 战术电子战系统显示器  战术电子战系统（TEWS）位于仪表面板的右上方。它提供正在照射本机的雷达信息。 一些表示雷达类型和方位还有用于自卫的电子干扰符号用来代表这些雷达信息。关于TEWS 如何运作的详细信息会在相应的章节描述。  图 22. 战术电子战系统
     image_paths: ['data/images/f15c/page_35_img_1.png']
 
-[10] chunk_id: f15c_0086
+[9] chunk_id: f15c_0051
     title_h1: 驾驶舱仪表
     title_h2: 空战基本知识
     title_h3: 
@@ -416,10 +902,18 @@ chunk 总数: 80
     text 前150字: 空战基本知识  在不到一个世纪的时间之内，现代空战的战术技巧已经发生了革命性的变化。几十年 前的螺旋桨战机到今天已经进化成为了先进的喷气式战机。  使虚拟飞行员坠毁或其飞机经常被摧毁的首要原因，就是战场态势与其使用的武器之 间的矛盾。今天的战机比二战时期的战机们更为强大。然而现在，敌军火力往往更精准
     image_paths: []
 
+[10] chunk_id: f15c_0006
+    title_h1: F-15C介绍
+    title_h2: F-15的历史
+    title_h3: F-15服役
+    page_start: 22  page_end: 23
+    text 前150字: F-15 服役  尽管早期的F-15A/B 有很多缺陷，但是在二十世纪八十年代早期，这些飞机曾经是美 国空军最优秀的战术战斗机。部署在西欧的美国空军部队展示出了最高的战备水平。在 1982 年三月，F-15 在位于美国境内的美国空军战备比重达到了64.5%，部署在欧洲的F-15 则达到了73.1%。
+    image_paths: ['data/images/f15c/page_22_img_0.png']
+
 ========================================================================
 人工抽查：随机 5 个 image_paths 非空的 chunk
 ========================================================================
-[1] chunk_id: f15c_0082
+[1] chunk_id: f15c_0047
     title_h1: 驾驶舱仪表
     title_h2: 理论训练
     title_h3: 转弯半径与转弯速率
@@ -443,12 +937,12 @@ chunk 总数: 80
     image_paths: ['data/images/f15c/page_10_img_0.png', 'data/images/f15c/page_11_img_0.png', 'data/images/f15c/page_12_img_0.png', 'data/images/f15c/page_13_img_0.png', 'data/images/f15c/page_14_img_0.png', 'data/images/f15c/page_15_img_0.png', 'data/images/f15c/page_16_img_0.png']
     text 前100字: 诞生  诞生于二十世纪七十年代的麦道公司F-15 是世界上最优秀的战斗机之一，取得了很多 令人印象深刻的成就。  F-15 鹰是美国空军的主力。作为一款最初为获得制空权而设计的战机，F-15 是一款未
 
-[4] chunk_id: f15c_0122
+[4] chunk_id: f15c_0063
     title_h1: 驾驶舱仪表
     title_h2: F-15C飞行动力学
     title_h3: 过载
     page_start: 127
-    image_paths: ['data/images/f15c/page_128_img_0.png']
+    image_paths: ['data/images/f15c/page_128_img_0.png', 'data/images/f15c/page_129_img_0.png', 'data/images/f15c/page_130_img_0.png']
     text 前100字: 过载  一项重要的飞机机动性能，就是其在最大可行过载下改变飞行路径的能力。  F-15C 的高推重比允许它可以在广大的高度范围和速度范围内进行高G 机动并不损失速 度。  过载矢量  过载向量是升力和
 
 [5] chunk_id: f15c_0021
@@ -480,63 +974,57 @@ chunk_id=f15c_0026  page_start=42  page_end=42  title_h2='F-15C驾驶舱仪表' 
 chunk_id=f15c_0027  page_start=42  page_end=43  title_h2='F-15C驾驶舱仪表'  title_h3='油量指示器'
 chunk_id=f15c_0028  page_start=43  page_end=43  title_h2='F-15C驾驶舱仪表'  title_h3='座舱气压计'
 chunk_id=f15c_0029  page_start=43  page_end=45  title_h2='F-15C驾驶舱仪表'  title_h3='箔条和红外干扰弹指示灯'
-chunk_id=f15c_0031  page_start=45  page_end=46  title_h2='F-15C驾驶舱仪表'  title_h3='F-15C HUD操作'
-chunk_id=f15c_0044  page_start=54  page_end=56  title_h2='F-15C驾驶舱仪表'  title_h3='F-15C HUD操作'
-chunk_id=f15c_0047  page_start=57  page_end=59  title_h2='F-15C驾驶舱仪表'  title_h3='F-15C HUD操作'
-chunk_id=f15c_0052  page_start=61  page_end=63  title_h2='F-15C驾驶舱仪表'  title_h3='AN/APG-63（V）1雷达'
-chunk_id=f15c_0054  page_start=64  page_end=66  title_h2='F-15C驾驶舱仪表'  title_h3='AN/APG-63（V）1雷达'
-chunk_id=f15c_0060  page_start=69  page_end=72  title_h2='F-15C驾驶舱仪表'  title_h3='AN/APG-63（V）1雷达'
-chunk_id=f15c_0061  page_start=72  page_end=72  title_h2='对抗系统'  title_h3=''
-chunk_id=f15c_0062  page_start=72  page_end=73  title_h2='对抗系统'  title_h3='AN/ALQ-135内置电子干扰系统'
-chunk_id=f15c_0063  page_start=73  page_end=74  title_h2='对抗系统'  title_h3='雷达告警系统'
-chunk_id=f15c_0064  page_start=74  page_end=78  title_h2='对抗系统'  title_h3='AN/ALR-56C告警接收仪'
-chunk_id=f15c_0067  page_start=78  page_end=81  title_h2='对抗系统'  title_h3='AN/ALR-56C告警接收仪'
-chunk_id=f15c_0068  page_start=81  page_end=83  title_h2='空对空导弹'  title_h3=''
-chunk_id=f15c_0070  page_start=83  page_end=85  title_h2='空对空导弹'  title_h3='中距导弹'
-chunk_id=f15c_0071  page_start=85  page_end=87  title_h2='空对空导弹'  title_h3='中距导弹'
-chunk_id=f15c_0073  page_start=87  page_end=91  title_h2='空对空导弹'  title_h3='近距导弹'
-chunk_id=f15c_0074  page_start=91  page_end=91  title_h2='无线电通信与消息'  title_h3=''
-chunk_id=f15c_0075  page_start=91  page_end=98  title_h2='无线电通信与消息'  title_h3='无线电指令'
-chunk_id=f15c_0076  page_start=98  page_end=101  title_h2='无线电通信与消息'  title_h3='无线电消息'
-chunk_id=f15c_0077  page_start=101  page_end=104  title_h2='无线电通信与消息'  title_h3='语音信息与告警'
-chunk_id=f15c_0078  page_start=104  page_end=104  title_h2='理论训练'  title_h3=''
-chunk_id=f15c_0079  page_start=104  page_end=104  title_h2='理论训练'  title_h3='指示空速和真空速'
-chunk_id=f15c_0080  page_start=104  page_end=104  title_h2='理论训练'  title_h3='速度矢量'
-chunk_id=f15c_0081  page_start=104  page_end=105  title_h2='理论训练'  title_h3='迎角指示器'
-chunk_id=f15c_0082  page_start=105  page_end=107  title_h2='理论训练'  title_h3='转弯半径与转弯速率'
-chunk_id=f15c_0083  page_start=107  page_end=108  title_h2='理论训练'  title_h3='转弯速率'
-chunk_id=f15c_0084  page_start=108  page_end=109  title_h2='理论训练'  title_h3='持续转弯与瞬时转弯'
-chunk_id=f15c_0085  page_start=109  page_end=111  title_h2='理论训练'  title_h3='能量控制'
-chunk_id=f15c_0086  page_start=111  page_end=111  title_h2='空战基本知识'  title_h3=''
-chunk_id=f15c_0088  page_start=111  page_end=112  title_h2='空战基本知识'  title_h3='空战战术'
-chunk_id=f15c_0095  page_start=114  page_end=115  title_h2='空战基本知识'  title_h3='空战战术'
-chunk_id=f15c_0098  page_start=115  page_end=116  title_h2='空战基本知识'  title_h3='导弹规避'
-chunk_id=f15c_0100  page_start=116  page_end=120  title_h2='空战基本知识'  title_h3='导弹规避'
-chunk_id=f15c_0102  page_start=120  page_end=121  title_h2='F-15C飞行动力学'  title_h3='起飞'
-chunk_id=f15c_0103  page_start=121  page_end=121  title_h2='F-15C飞行动力学'  title_h3='爬升'
-chunk_id=f15c_0104  page_start=121  page_end=122  title_h2='F-15C飞行动力学'  title_h3='飞行中'
-chunk_id=f15c_0105  page_start=122  page_end=122  title_h2='F-15C飞行动力学'  title_h3='进近'
-chunk_id=f15c_0106  page_start=122  page_end=122  title_h2='F-15C飞行动力学'  title_h3='复飞'
-chunk_id=f15c_0107  page_start=122  page_end=122  title_h2='F-15C飞行动力学'  title_h3='着陆'
-chunk_id=f15c_0109  page_start=122  page_end=123  title_h2='F-15C飞行动力学'  title_h3='F-15C的机动性能'
-chunk_id=f15c_0111  page_start=123  page_end=124  title_h2='F-15C飞行动力学'  title_h3='高度包线和速度包线'
-chunk_id=f15c_0119  page_start=126  page_end=127  title_h2='F-15C飞行动力学'  title_h3='高度包线和速度包线'
-chunk_id=f15c_0122  page_start=127  page_end=128  title_h2='F-15C飞行动力学'  title_h3='过载'
-chunk_id=f15c_0124  page_start=128  page_end=129  title_h2='F-15C飞行动力学'  title_h3='过载'
-chunk_id=f15c_0125  page_start=129  page_end=131  title_h2='F-15C飞行动力学'  title_h3='过载'
-chunk_id=f15c_0129  page_start=131  page_end=133  title_h2='F-15C飞行动力学'  title_h3='外部因素对首要机动特性的影响'
-chunk_id=f15c_0131  page_start=133  page_end=133  title_h2='F-15C检查单'  title_h3='开车'
-chunk_id=f15c_0132  page_start=133  page_end=134  title_h2='F-15C检查单'  title_h3='滑行与起飞'
-chunk_id=f15c_0133  page_start=134  page_end=134  title_h2='F-15C检查单'  title_h3='导航'
-chunk_id=f15c_0134  page_start=134  page_end=135  title_h2='F-15C检查单'  title_h3='着陆'
-chunk_id=f15c_0137  page_start=135  page_end=136  title_h2='F-15C检查单'  title_h3='空对空导弹应用'
-chunk_id=f15c_0139  page_start=136  page_end=139  title_h2='F-15C检查单'  title_h3='空对空导弹应用'
-chunk_id=f15c_0141  page_start=139  page_end=144  title_h2='附录'  title_h3='缩略词表'
-chunk_id=f15c_0143  page_start=144  page_end=144  title_h2='附录'  title_h3='翻译'
+chunk_id=f15c_0030_part0  page_start=45  page_end=61  title_h2='F-15C驾驶舱仪表'  title_h3='F-15C HUD操作'
+chunk_id=f15c_0030_part1  page_start=45  page_end=61  title_h2='F-15C驾驶舱仪表'  title_h3='F-15C HUD操作'
+chunk_id=f15c_0030_part2  page_start=45  page_end=61  title_h2='F-15C驾驶舱仪表'  title_h3='F-15C HUD操作'
+chunk_id=f15c_0030_part3  page_start=45  page_end=61  title_h2='F-15C驾驶舱仪表'  title_h3='F-15C HUD操作'
+chunk_id=f15c_0031_part0  page_start=61  page_end=72  title_h2='F-15C驾驶舱仪表'  title_h3='AN/APG-63（V）1雷达'
+chunk_id=f15c_0031_part1  page_start=61  page_end=72  title_h2='F-15C驾驶舱仪表'  title_h3='AN/APG-63（V）1雷达'
+chunk_id=f15c_0031_part2  page_start=61  page_end=72  title_h2='F-15C驾驶舱仪表'  title_h3='AN/APG-63（V）1雷达'
+chunk_id=f15c_0031_part3  page_start=61  page_end=72  title_h2='F-15C驾驶舱仪表'  title_h3='AN/APG-63（V）1雷达'
+chunk_id=f15c_0032  page_start=72  page_end=72  title_h2='对抗系统'  title_h3=''
+chunk_id=f15c_0033  page_start=72  page_end=73  title_h2='对抗系统'  title_h3='AN/ALQ-135内置电子干扰系统'
+chunk_id=f15c_0034  page_start=73  page_end=74  title_h2='对抗系统'  title_h3='雷达告警系统'
+chunk_id=f15c_0035  page_start=74  page_end=81  title_h2='对抗系统'  title_h3='AN/ALR-56C告警接收仪'
+chunk_id=f15c_0036  page_start=81  page_end=83  title_h2='空对空导弹'  title_h3=''
+chunk_id=f15c_0037  page_start=83  page_end=87  title_h2='空对空导弹'  title_h3='中距导弹'
+chunk_id=f15c_0038  page_start=87  page_end=91  title_h2='空对空导弹'  title_h3='近距导弹'
+chunk_id=f15c_0039  page_start=91  page_end=91  title_h2='无线电通信与消息'  title_h3=''
+chunk_id=f15c_0040  page_start=91  page_end=98  title_h2='无线电通信与消息'  title_h3='无线电指令'
+chunk_id=f15c_0041  page_start=98  page_end=101  title_h2='无线电通信与消息'  title_h3='无线电消息'
+chunk_id=f15c_0042  page_start=101  page_end=104  title_h2='无线电通信与消息'  title_h3='语音信息与告警'
+chunk_id=f15c_0043  page_start=104  page_end=104  title_h2='理论训练'  title_h3=''
+chunk_id=f15c_0044  page_start=104  page_end=104  title_h2='理论训练'  title_h3='指示空速和真空速'
+chunk_id=f15c_0045  page_start=104  page_end=104  title_h2='理论训练'  title_h3='速度矢量'
+chunk_id=f15c_0046  page_start=104  page_end=105  title_h2='理论训练'  title_h3='迎角指示器'
+chunk_id=f15c_0047  page_start=105  page_end=107  title_h2='理论训练'  title_h3='转弯半径与转弯速率'
+chunk_id=f15c_0048  page_start=107  page_end=108  title_h2='理论训练'  title_h3='转弯速率'
+chunk_id=f15c_0049  page_start=108  page_end=109  title_h2='理论训练'  title_h3='持续转弯与瞬时转弯'
+chunk_id=f15c_0050  page_start=109  page_end=111  title_h2='理论训练'  title_h3='能量控制'
+chunk_id=f15c_0051  page_start=111  page_end=111  title_h2='空战基本知识'  title_h3=''
+chunk_id=f15c_0052  page_start=111  page_end=115  title_h2='空战基本知识'  title_h3='空战战术'
+chunk_id=f15c_0053  page_start=115  page_end=120  title_h2='空战基本知识'  title_h3='导弹规避'
+chunk_id=f15c_0055  page_start=120  page_end=121  title_h2='F-15C飞行动力学'  title_h3='起飞'
+chunk_id=f15c_0056  page_start=121  page_end=121  title_h2='F-15C飞行动力学'  title_h3='爬升'
+chunk_id=f15c_0057  page_start=121  page_end=122  title_h2='F-15C飞行动力学'  title_h3='飞行中'
+chunk_id=f15c_0058  page_start=122  page_end=122  title_h2='F-15C飞行动力学'  title_h3='进近'
+chunk_id=f15c_0059  page_start=122  page_end=122  title_h2='F-15C飞行动力学'  title_h3='复飞'
+chunk_id=f15c_0060  page_start=122  page_end=122  title_h2='F-15C飞行动力学'  title_h3='着陆'
+chunk_id=f15c_0061  page_start=122  page_end=123  title_h2='F-15C飞行动力学'  title_h3='F-15C的机动性能'
+chunk_id=f15c_0062  page_start=123  page_end=127  title_h2='F-15C飞行动力学'  title_h3='高度包线和速度包线'
+chunk_id=f15c_0063  page_start=127  page_end=131  title_h2='F-15C飞行动力学'  title_h3='过载'
+chunk_id=f15c_0064  page_start=131  page_end=133  title_h2='F-15C飞行动力学'  title_h3='外部因素对首要机动特性的影响'
+chunk_id=f15c_0066  page_start=133  page_end=133  title_h2='F-15C检查单'  title_h3='开车'
+chunk_id=f15c_0067  page_start=133  page_end=134  title_h2='F-15C检查单'  title_h3='滑行与起飞'
+chunk_id=f15c_0068  page_start=134  page_end=134  title_h2='F-15C检查单'  title_h3='导航'
+chunk_id=f15c_0069  page_start=134  page_end=135  title_h2='F-15C检查单'  title_h3='着陆'
+chunk_id=f15c_0070  page_start=135  page_end=139  title_h2='F-15C检查单'  title_h3='空对空导弹应用'
+chunk_id=f15c_0072  page_start=139  page_end=144  title_h2='附录'  title_h3='缩略词表'
+chunk_id=f15c_0073  page_start=144  page_end=144  title_h2='附录'  title_h3='翻译'
 
 
 ########################################################################
-[4/4] stem=f16c
+[7/8] stem=f16c
 ########################################################################
 文件: D:\Programs\manual-rag-system\data\chunks_f16c.json
 图片目录: D:\Programs\manual-rag-system\data\images\f16c
@@ -628,6 +1116,155 @@ chunk 总数: 208
     page_start: 310  page_end: 310
     text 前150字: 导弹操作  在AGM-65 可使用前必须先进行预热。在预热过程中，弹载图像稳定陀螺仪起旋到工作速度。在陀螺仪起旋前可 以使用导弹视频，但是视频成像不会相对地面稳定。  在导弹内部的陀螺仪起旋后，导弹视频就将能显示在WPN 页面中。如果玩家想要缩短导弹的预热时间的话，将 WPN 页面设为SOI 并按下
     image_paths: []
+
+[10] chunk_id: f16c_0030
+    title_h1: F-16C“蝰蛇”
+    title_h2: F-16C 挂载
+    title_h3: AGM-154 联合防区外武器（JSOW）
+    page_start: 30  page_end: 30
+    text 前150字: AGM-154 联合防区外武器（JSOW）  JSOW 是一款制导武器，由于采用了滑翔翼从而获得了与众不同 的滑翔距离。与JDAM 类似，JSOW 可以使用预先指定的GPS 坐标来对目标实施精确打击。JSOW 精度不会受天气影响而降低 并且是一款完全发射后不管武器。  JSOW 于1999 年1 月
+    image_paths: ['data/images/f16c/page_30_img_1.png']
+
+========================================================================
+人工抽查：随机 5 个 image_paths 非空的 chunk
+========================================================================
+[1] chunk_id: f16c_0047
+    title_h1: F-16C“蝰蛇”
+    title_h2: 握杆控制（HOTAS）
+    title_h3: 油门
+    page_start: 54
+    image_paths: ['data/images/f16c/page_54_img_0.png']
+    text 前100字: 油门  发动机是由安装在左侧控制台上方的油门进行控制，油门包含OFF（关断）、IDLE（慢车）、MIL（军推）和 MAX AB（最大加力推力）四个限位机构。OFF 档位将中止发动机点火以及燃油流向发动
+
+[2] chunk_id: f16c_0016
+    title_h1: F-16C“蝰蛇”
+    title_h2: 飞机历史
+    title_h3: 轻型战斗机计划
+    page_start: 24
+    image_paths: ['data/images/f16c/page_24_img_1.png']
+    text 前100字: 轻型战斗机计划  时间来到了20 世纪60 年代末，国防部副部长戴维·帕卡德（惠普公司）开始关注即将到来的USAF 和海军前线 战机——F-15 和F-14“雄猫”战机——这两架飞机代表着武装部队的预
+
+[3] chunk_id: f16c_0106
+    title_h1: 程序
+    title_h2: 正常飞行
+    title_h3: 配平飞机
+    page_start: 132
+    image_paths: ['data/images/f16c/page_132_img_0.png']
+    text 前100字: 配平飞机  飞控系统会很好地帮助飞行员保持飞机配平，但仍然有些情况下需要玩家手动配平飞机。当一侧过重，玩家会注 意到飞机会俯仰、横滚或偏航（横滚是最常见的）。   驾驶杆中的配平开关用来移动驾驶杆至新
+
+[4] chunk_id: f16c_0087
+    title_h1: 导航
+    title_h2: 仪表着陆系统（ILS）导航
+    title_h3: 
+    page_start: 101
+    image_paths: ['data/images/f16c/page_101_img_0.png', 'data/images/f16c/page_102_img_0.png']
+    text 前100字: 仪表着陆系统（ILS）导航  由于处于夜间或恶劣天气而采用仪表飞行规则（IFR）条件下，进近时通常会使用仪表着陆系统（ILS）。使用 ILS 时，ILS 将提供垂直和水平方向上的转向信息来帮助飞行员飞
+
+[5] chunk_id: f16c_0082
+    title_h1: 导航
+    title_h2: INS 导航
+    title_h3: 水平状态显示器（HSD）指示
+    page_start: 94
+    image_paths: ['data/images/f16c/page_94_img_0.png']
+    text 前100字: 水平状态显示器（HSD）指示  当一个航路点激活时，激活航路点将会以实心圆显示在HSD 中。其它转向点将以空心圆显示在HSD 中并且转向 点之间将会被线条连接起来从而显示航线。本机标记显示飞机当前的位
+
+========================================================================
+已知章节：title_h1 包含 "驾驶舱仪表" 的 chunk
+========================================================================
+(无匹配)
+
+
+########################################################################
+[8/8] stem=f16c_normalized
+########################################################################
+文件: D:\Programs\manual-rag-system\data\chunks_f16c_normalized.json
+图片目录: D:\Programs\manual-rag-system\data\images\f16c_normalized
+chunk 总数: 204
+
+✅ 结构完整性：通过
+
+✅ text非空率：通过
+
+✅ 链表完整性：通过
+
+所有 chunk 的 image_paths 条目数（可重复引用）: 313
+图片目录不存在: D:\Programs\manual-rag-system\data\images\f16c_normalized（跳过磁盘覆盖率）
+
+
+========================================================================
+人工抽查：随机 10 个 chunk
+========================================================================
+[1] chunk_id: f16c_0184
+    title_h1: 空对地武器使用
+    title_h2: 直接联合攻击弹药（JDAM）
+    title_h3: JDAM SMS 页面
+    page_start: 278  page_end: 280
+    text 前150字: JDAM SMS 页面    使用模式. 在预设计划（PRE）和目视（VIS）使用模式间切换（详情查看预设计划模式使用和目视模式使用）。  激活配置文件. 在四个不同的使用配置文件之间切换（详情查看SMS 控制页面）。  配置文件设定. 按下OSB 来打开控制页面，在控制页面内玩家可以编辑激活配置（
+    image_paths: ['data/images/f16c/page_278_img_0.png', 'data/images/f16c/page_279_img_0.png']
+
+[2] chunk_id: f16c_0032
+    title_h1: F-16C“蝰蛇”
+    title_h2: F-16C 挂载
+    title_h3: 马克80 系列通用航弹
+    page_start: 31  page_end: 31
+    text 前150字: 马克80 系列通用航弹   Mk-80 系列通用航弹是一款最早可追溯到越战时期的非制导炸弹。航弹的 标称重量为500、1000 和2000 磅。航弹的用途十分广泛，可以安装头部 和尾部引信以及不同的制导套件。  GP 航弹可以安装在任意空对地挂架上。Mk82 还可以成对或三联装安装在 三联挂弹架中（
+    image_paths: ['data/images/f16c/page_31_img_0.png']
+
+[3] chunk_id: f16c_0008
+    title_h1: DCS: WORLD 基础知识
+    title_h2: 飞行控制
+    title_h3: 改变空速
+    page_start: 19  page_end: 19
+    text 前150字: 改变空速  如需增加或减小空速，玩家可以使用以下几种方法：  •  飞机发动机动力. 向前推动油门，发动机推力将会变大。   •  飞机俯仰角与俯仰角速度. 一般来说，当机头以正俯仰角指向上方时，飞机将会减速。当机头负俯仰角 指向上方飞行时，飞机将会加速。俯仰角速度同样会影响空速。不论是水平还是垂直
+    image_paths: []
+
+[4] chunk_id: f16c_0210
+    title_h1: 空对地武器使用
+    title_h2: AGM-65“幼畜”
+    title_h3: 准备
+    page_start: 313  page_end: 318
+    text 前150字: 准备  AGM-65 在待机时有一小时的工作周期，在激活时为30 分钟。向AGM-65 通电后，导弹将会开始3 分钟预热 期。过了3 分钟后，导弹就将处在待机模式下并准备好进行使用。在待机模式下，导弹有一小时的工作时间。当 导引头视频激活后，导弹有30 分钟工作时间。当导弹的超出工作时间后，导弹必须
+    image_paths: ['data/images/f16c/page_314_img_0.png', 'data/images/f16c/page_315_img_0.png', 'data/images/f16c/page_315_img_1.png', 'data/images/f16c/page_316_img_0.png', 'data/images/f16c/page_317_img_0.png', 'data/images/f16c/page_317_img_1.png']
+
+[5] chunk_id: f16c_0080
+    title_h1: 导航
+    title_h2: INS 导航
+    title_h3: INS 对准
+    page_start: 87  page_end: 93
+    text 前150字: INS 对准  导航系统可以通过多种方法在地面或空中进行对准。将位于航电电源面板中的INS 功能旋钮转动到所需的位置来 开始对准。当对准完成后，INS 功能旋钮应设置到NAV 档位。          正常（NORM）对准为主要对准模式。NORM 对准大约需要八分钟来完成。   预存航向（STOR 
+    image_paths: ['data/images/f16c/page_87_img_0.png', 'data/images/f16c/page_88_img_0.png', 'data/images/f16c/page_89_img_0.png', 'data/images/f16c/page_89_img_1.png', 'data/images/f16c/page_90_img_0.png', 'data/images/f16c/page_90_img_1.png', 'data/images/f16c/page_91_img_0.png', 'data/images/f16c/page_91_img_1.png', 'data/images/f16c/page_92_img_0.png', 'data/images/f16c/page_92_img_1.png']
+
+[6] chunk_id: f16c_0069
+    title_h1: F-16C“蝰蛇”
+    title_h2: 前上方控制（UFC）
+    title_h3: MAGV 页面
+    page_start: 74  page_end: 75
+    text 前150字: MAGV 页面  MAGV 页面允许飞行员手动输入磁差，即磁北和真北之间的差值。飞机导航系统将用到这项数据。飞行员可以在 LIST 页面中选择选项（0）MISC，然后按下按下数字小键盘2 来访问MAGV 页面。               页面中有两个选项可用：AUTO（自动）和MAN（手动）。按下
+    image_paths: ['data/images/f16c/page_74_img_1.png']
+
+[7] chunk_id: f16c_0061
+    title_h1: F-16C“蝰蛇”
+    title_h2: 前上方控制（UFC）
+    title_h3: VIP 页面
+    page_start: 70  page_end: 71
+    text 前150字: VIP 页面  此页面允许飞行员相对转向点建立目视起始点（VIP）。VIP 用于在目标位置不明确，但相对高辨识度目视参考的 位置已知时使用。详见目视起始点使用部分。                                             VIP STPT  TGT 相对方位  TGT
+    image_paths: ['data/images/f16c/page_70_img_0.png']
+
+[8] chunk_id: f16c_0039
+    title_h1: F-16C“蝰蛇”
+    title_h2: 驾驶舱简介
+    title_h3: 
+    page_start: 33  page_end: 34
+    text 前150字: 驾驶舱简介  当进入“蝰蛇”的驾驶舱时，您最好对各种控制器的位置有一个大致的了解。为了您能更好的熟悉“蝰蛇”驾驶 舱中的各种设备的位置，我们将驾驶舱分为5 个区域：左侧控制台，左侧辅助控制台，仪表面板，右侧辅助控制 台和右侧控制台。  我们将在后续章节中以这些位置为参考。              
+    image_paths: ['data/images/f16c/page_33_img_0.png']
+
+[9] chunk_id: f16c_0209
+    title_h1: 空对地武器使用
+    title_h2: AGM-65“幼畜”
+    title_h3: WPN 页面
+    page_start: 312  page_end: 313
+    text 前150字: WPN 页面    工作模式：在STBY（待机）和OPER（工作）模式间循环选择。  E/O 子模式：在PRE、VIS 或BORE E/O 子模式间切换。不同子模式详情查阅下文的使用部分。玩家还可以使用 油门握把中的光标/启用控制来切换子模式。  TGP 瞄准轴：按下这个选项的相邻OSB 来标记这枚
+    image_paths: ['data/images/f16c/page_312_img_0.png']
 
 [10] chunk_id: f16c_0030
     title_h1: F-16C“蝰蛇”
