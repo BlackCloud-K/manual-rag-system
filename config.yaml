@@ -1,3 +1,6 @@
+# margin_top / margin_bottom: points stripped from top and bottom of each page
+# when extracting chunk text (and images). Increase margin_bottom if footer
+# lines still appear after the clip fix; increase margin_top for persistent headers.
 manuals:
   "DCS FA-18C Early Access Guide CN":
     margin_top: 55

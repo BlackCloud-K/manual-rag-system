@@ -89,7 +89,8 @@ def build_chunks(
 
 def load_margins_from_config(config_path: Path, pdf_name: str) -> tuple[float, float]:
     default_top = 55.0
-    default_bottom = 585.0
+    # Strip this many points from the bottom edge (not an absolute y coordinate).
+    default_bottom = 55.0
     if not config_path.exists():
         return default_top, default_bottom
 
@@ -203,48 +204,46 @@ def find_title_y(
     return matches[0][0]
 
 
-def _extract_blocks_in_y_range(page: fitz.Page, y_min: float, y_max: float) -> str:
-    """Extract text from blocks whose bbox falls fully within [y_min, y_max)."""
-    texts: list[str] = []
-    for block in page.get_text("blocks"):
-        _, y0, _, y1, text, *_ = block
-        if y0 >= y_min and y1 <= y_max:
-            cleaned = str(text).strip()
-            if cleaned:
-                texts.append(cleaned)
-    return "\n".join(texts).strip()
-
-
-def _extract_blocks_from_y_start(
-    page: fitz.Page, y_start: float, y_max: float, title: str | None = None
+def _extract_text_clip_y(
+    page: fitz.Page,
+    y_lo: float,
+    y_hi: float,
+    margin_top: float,
+    margin_bottom: float,
+    title: str | None = None,
+    *,
+    exclusive_end: bool = False,
 ) -> str:
-    """Extract text from blocks that end below y_start (i.e. y1 > y_start).
+    """Extract text in horizontal strip [y_lo, y_hi), clamped to body margins.
 
-    Using y1 instead of y0 ensures the block *containing* the title line is
-    included even when the block's y0 is slightly above y_start.
+    Uses ``page.get_text(..., clip=...)`` so nothing below *body_bottom* is
+    included (blocks that span body+footer no longer pull the footer in).
+
+    *exclusive_end*: when *y_hi* is the next heading line's top (``find_title_y``),
+    shrink slightly so that line is not included.
     """
-    texts: list[str] = []
+    body_bottom = page.rect.height - margin_bottom
+    y_lo = max(float(y_lo), float(margin_top))
+    y_hi = min(float(y_hi), float(body_bottom))
+    if exclusive_end:
+        y_hi = max(y_lo, y_hi - 0.5)
+    if y_lo >= y_hi:
+        return ""
+
+    rect = fitz.Rect(0, y_lo, page.rect.width, y_hi)
+    raw = page.get_text("text", clip=rect)
+    text = str(raw).strip()
+    if not text:
+        return ""
+
     title_clean = (title or "").strip()
-    for block in page.get_text("blocks"):
-        _, y0, _, y1, text, *_ = block
-        if y1 <= y_start or y0 >= y_max:
-            continue
-
-        cleaned = str(text).strip()
-        if not cleaned:
-            continue
-
-        # If block straddles title boundary, keep only content from title onward.
-        if y0 < y_start <= y1 and title_clean:
-            idx = _find_title_substring_index(cleaned, title_clean)
-            if idx >= 0:
-                cleaned = cleaned[idx:].strip()
-            else:
-                continue
-
-        if cleaned:
-            texts.append(cleaned)
-    return "\n".join(texts).strip()
+    if title_clean:
+        idx = _find_title_substring_index(text, title_clean)
+        if idx >= 0:
+            text = text[idx:].strip()
+        else:
+            return ""
+    return text
 
 
 def _fill_text_precise(
@@ -281,17 +280,31 @@ def _fill_text_precise(
                     and int(next_chunk["page_start"]) == int(chunk["page_start"])
                 ):
                     y_end = find_title_y(page, next_title, margin_top, margin_bottom)
+                    cut_exclusive = True
                 else:
                     y_end = body_bottom
-                page_text = _extract_blocks_from_y_start(
-                    page, y_start, y_end, title=current_title
+                    cut_exclusive = False
+                page_text = _extract_text_clip_y(
+                    page,
+                    y_start,
+                    y_end,
+                    margin_top,
+                    margin_bottom,
+                    title=current_title,
+                    exclusive_end=cut_exclusive,
                 )
 
             elif page_idx == start_idx:
                 # First page of a multi-page chunk: from current title to bottom.
                 y_start = find_title_y(page, current_title, margin_top, margin_bottom)
-                page_text = _extract_blocks_from_y_start(
-                    page, y_start, body_bottom, title=current_title
+                page_text = _extract_text_clip_y(
+                    page,
+                    y_start,
+                    body_bottom,
+                    margin_top,
+                    margin_bottom,
+                    title=current_title,
+                    exclusive_end=False,
                 )
 
             elif page_idx == end_idx:
@@ -303,13 +316,37 @@ def _fill_text_precise(
                 )
                 if should_cut:
                     y_end = find_title_y(page, next_title, margin_top, margin_bottom)
-                    page_text = _extract_blocks_in_y_range(page, margin_top, y_end)
+                    page_text = _extract_text_clip_y(
+                        page,
+                        margin_top,
+                        y_end,
+                        margin_top,
+                        margin_bottom,
+                        title=None,
+                        exclusive_end=True,
+                    )
                 else:
-                    page_text = _extract_blocks_in_y_range(page, margin_top, body_bottom)
+                    page_text = _extract_text_clip_y(
+                        page,
+                        margin_top,
+                        body_bottom,
+                        margin_top,
+                        margin_bottom,
+                        title=None,
+                        exclusive_end=False,
+                    )
 
             else:
                 # Middle pages: full body.
-                page_text = _extract_blocks_in_y_range(page, margin_top, body_bottom)
+                page_text = _extract_text_clip_y(
+                    page,
+                    margin_top,
+                    body_bottom,
+                    margin_top,
+                    margin_bottom,
+                    title=None,
+                    exclusive_end=False,
+                )
 
             if page_text:
                 parts.append(page_text)
@@ -350,6 +387,7 @@ def remove_short_same_page_stubs(chunks: list[dict[str, Any]]) -> tuple[list[dic
 
         kept.append(chunk)
 
+    relink_chunk_neighbors(kept)
     return kept, removed
 
 
@@ -357,10 +395,38 @@ def _normalize_ws(s: str) -> str:
     return " ".join((s or "").split())
 
 
-def remove_title_only_chunks(chunks: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], int]:
-    """Remove chunks whose body text is only the section title (no extra prose).
+def relink_chunk_neighbors(chunks: list[dict[str, Any]]) -> None:
+    """Refresh prev_chunk_id / next_chunk_id after filtering or reordering."""
+    for idx, chunk in enumerate(chunks):
+        chunk["prev_chunk_id"] = chunks[idx - 1]["chunk_id"] if idx > 0 else None
+        chunk["next_chunk_id"] = (
+            chunks[idx + 1]["chunk_id"] if idx < len(chunks) - 1 else None
+        )
 
-    Example: TOC points to a heading line; the real content is the next entry.
+
+def _text_matches_heading_only(text: str, chunk: dict[str, Any]) -> bool:
+    """True if body *text* is only a repeat of one of the non-empty title fields."""
+    raw = str(text or "").strip()
+    if not raw:
+        return False
+    text_ws = _normalize_ws(raw)
+    text_compact = _normalize_for_title_match(raw)
+    for key in ("title_h3", "title_h2", "title_h1"):
+        t = str(chunk.get(key, "")).strip()
+        if not t:
+            continue
+        if text_ws == _normalize_ws(t):
+            return True
+        if text_compact == _normalize_for_title_match(t):
+            return True
+    return False
+
+
+def remove_title_only_chunks(chunks: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], int]:
+    """Remove chunks whose body text is only a section heading (no extra prose).
+
+    Matches when *text* equals any non-empty title_h1/h2/h3 (whitespace- or
+    compact-normalized), not only the picked leaf title.
     """
     if not chunks:
         return [], 0
@@ -368,13 +434,13 @@ def remove_title_only_chunks(chunks: list[dict[str, Any]]) -> tuple[list[dict[st
     kept: list[dict[str, Any]] = []
     removed = 0
     for chunk in chunks:
-        title = _pick_chunk_title(chunk)
         text = str(chunk.get("text", "")).strip()
-        if title and _normalize_ws(text) == _normalize_ws(title):
+        if _text_matches_heading_only(text, chunk):
             removed += 1
             continue
         kept.append(chunk)
 
+    relink_chunk_neighbors(kept)
     return kept, removed
 
 
@@ -437,13 +503,7 @@ def merge_chunks_by_identical_title(chunks: list[dict[str, Any]]) -> tuple[list[
 def remove_empty_chunks(chunks: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], int]:
     filtered = [c for c in chunks if str(c.get("text", "")).strip()]
     removed_count = len(chunks) - len(filtered)
-
-    for idx, chunk in enumerate(filtered):
-        chunk["prev_chunk_id"] = filtered[idx - 1]["chunk_id"] if idx > 0 else None
-        chunk["next_chunk_id"] = (
-            filtered[idx + 1]["chunk_id"] if idx < len(filtered) - 1 else None
-        )
-
+    relink_chunk_neighbors(filtered)
     return filtered, removed_count
 
 

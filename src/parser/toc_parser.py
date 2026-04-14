@@ -9,6 +9,11 @@ import fitz
 
 TOC_TRAILING_PAGE_PATTERN = re.compile(r"[\d\s\.。…]+$")
 TOC_LABEL_TITLES = {"目录", "contents", "content"}
+# Continuation TOC pages often omit the word "目录"; treat pages with enough
+# resolvable GOTO links as part of the same spread after the first keyword page.
+TOC_CONTINUATION_MIN_GOTO_LINKS = 5
+# Multi-page TOCs can extend past 15 pages; keep scan bounded to front matter.
+TOC_MAX_SCAN_PAGES = 25
 
 
 def _clean_toc_title(text: str) -> str:
@@ -35,6 +40,41 @@ def _normalize_link_target_page(link: dict[str, Any]) -> int | None:
     if isinstance(page_value, int) and page_value >= 0:
         return page_value + 1
     return None
+
+
+def _goto_resolvable_link_count(page: fitz.Page) -> int:
+    n = 0
+    for link in page.get_links():
+        if _normalize_link_target_page(link) is not None:
+            n += 1
+    return n
+
+
+def _toc_scan_page_indices(doc: fitz.Document, max_scan_pages: int) -> list[int]:
+    """Indices (0-based) of TOC pages: first page with 目录/Contents, then
+    consecutive pages that look like TOC (many GOTO links) without the heading."""
+    max_scan = min(max_scan_pages, len(doc))
+    start_idx: int | None = None
+    for i in range(max_scan):
+        if _has_toc_keyword(doc[i]):
+            start_idx = i
+            break
+    if start_idx is None:
+        return []
+
+    indices: list[int] = []
+    i = start_idx
+    while i < max_scan:
+        if i == start_idx:
+            indices.append(i)
+            i += 1
+            continue
+        if _goto_resolvable_link_count(doc[i]) >= TOC_CONTINUATION_MIN_GOTO_LINKS:
+            indices.append(i)
+            i += 1
+        else:
+            break
+    return indices
 
 
 def extract_toc_from_bookmarks(doc: fitz.Document) -> list[dict[str, Any]] | None:
@@ -68,12 +108,13 @@ def extract_toc_from_bookmarks(doc: fitz.Document) -> list[dict[str, Any]] | Non
 
 def extract_toc_from_links(doc: fitz.Document) -> list[dict[str, Any]] | None:
     link_items: list[dict[str, Any]] = []
-    max_scan_pages = min(15, len(doc))
+    max_scan_pages = min(TOC_MAX_SCAN_PAGES, len(doc))
+    page_indices = _toc_scan_page_indices(doc, max_scan_pages)
+    if not page_indices:
+        return None
 
-    for page_index in range(max_scan_pages):
+    for page_index in page_indices:
         page = doc[page_index]
-        if not _has_toc_keyword(page):
-            continue
 
         for link in page.get_links():
             from_rect = link.get("from")

@@ -16,6 +16,8 @@ from src.parser.chunk_builder import (
     fill_text,
     load_margins_from_config,
     remove_empty_chunks,
+    remove_short_same_page_stubs,
+    remove_title_only_chunks,
 )
 from src.parser.image_extractor import assign_images_to_chunks
 from src.parser.toc_parser import parse_toc
@@ -50,6 +52,8 @@ def main() -> None:
         with fitz.open(pdf_path) as doc:
             chunks = build_chunks(toc, doc, pdf_name)
             chunks = fill_text(chunks, doc, pdf_name=pdf_name, config_path=config_path)
+            chunks, _stub = remove_short_same_page_stubs(chunks)
+            chunks, _title_only = remove_title_only_chunks(chunks)
             chunks, _removed = remove_empty_chunks(chunks)
             margin_top, margin_bottom = load_margins_from_config(config_path, pdf_name)
             chunks = assign_images_to_chunks(
@@ -65,6 +69,9 @@ def main() -> None:
         out_json.write_text(
             json.dumps(chunks, ensure_ascii=False, indent=2),
             encoding="utf-8",
+        )
+        print(
+            f"过滤: 同页短占位={_stub}, 仅标题无正文={_title_only}, 空text={_removed}"
         )
         print(f"Wrote: {out_json}")
 
