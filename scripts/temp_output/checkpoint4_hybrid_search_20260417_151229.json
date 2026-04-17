@@ -1,0 +1,218 @@
+{
+  "collection": "dcs_manuals",
+  "qdrant_url": "http://localhost:6333",
+  "expected_points": 787,
+  "actual_points": 787,
+  "points_check": "PASS",
+  "required_indexes": [
+    "pdf_name",
+    "title_h1",
+    "title_h2",
+    "page_start"
+  ],
+  "missing_indexes": [],
+  "indexes_check": "PASS",
+  "queries": [
+    {
+      "query": "F-16C发动机启动步骤",
+      "top5": [
+        {
+          "chunk_id": "dcsfa18cearlyaccessguidecn_0117",
+          "pdf_name": "DCS FA-18C Early Access Guide CN.pdf",
+          "title_h2": "冷启动",
+          "title_h3": "",
+          "score": 0.5
+        },
+        {
+          "chunk_id": "f16c_0099",
+          "pdf_name": "F-16C“蝰蛇”.pdf",
+          "title_h2": "冷启动",
+          "title_h3": "",
+          "score": 0.33333334
+        },
+        {
+          "chunk_id": "dcsfa18cearlyaccessguidecn_0042",
+          "pdf_name": "DCS FA-18C Early Access Guide CN.pdf",
+          "title_h2": "",
+          "title_h3": "",
+          "score": 0.25
+        },
+        {
+          "chunk_id": "f16c_0019",
+          "pdf_name": "F-16C“蝰蛇”.pdf",
+          "title_h2": "飞机历史",
+          "title_h3": "F-16C 和D",
+          "score": 0.2
+        },
+        {
+          "chunk_id": "f16c_0006",
+          "pdf_name": "F-16C“蝰蛇”.pdf",
+          "title_h2": "开始一个任务",
+          "title_h3": "",
+          "score": 0.16666667
+        }
+      ]
+    },
+    {
+      "query": "F15雷达FCR开机",
+      "top5": [
+        {
+          "chunk_id": "dcsjf17_0151",
+          "pdf_name": "DCS_ JF-17 _雷电_.pdf",
+          "title_h2": "4.2.雷达",
+          "title_h3": "4.2.3.雷达启动",
+          "score": 0.5
+        },
+        {
+          "chunk_id": "f16c_0163",
+          "pdf_name": "F-16C“蝰蛇”.pdf",
+          "title_h2": "AIM-120 AMRAAM",
+          "title_h3": "多目标同时攻击",
+          "score": 0.33333334
+        },
+        {
+          "chunk_id": "f15c_0005",
+          "pdf_name": "F-15C.pdf",
+          "title_h2": "F-15的历史",
+          "title_h3": "多级改进计划",
+          "score": 0.25
+        },
+        {
+          "chunk_id": "f16c_0115",
+          "pdf_name": "F-16C“蝰蛇”.pdf",
+          "title_h2": "空对空模式",
+          "title_h3": "复合雷达模式（CRM）",
+          "score": 0.2
+        },
+        {
+          "chunk_id": "f16c_0114",
+          "pdf_name": "F-16C“蝰蛇”.pdf",
+          "title_h2": "空对空模式",
+          "title_h3": "",
+          "score": 0.16666667
+        }
+      ]
+    },
+    {
+      "query": "FJ17武器投放程序",
+      "top5": [
+        {
+          "chunk_id": "dcsjf17_0192",
+          "pdf_name": "DCS_ JF-17 _雷电_.pdf",
+          "title_h2": "5.6.非精确对地打击",
+          "title_h3": "",
+          "score": 0.5
+        },
+        {
+          "chunk_id": "f16c_0186",
+          "pdf_name": "F-16C“蝰蛇”.pdf",
+          "title_h2": "直接联合攻击弹药（JDAM）",
+          "title_h3": "使用预设计划（PRE）模式",
+          "score": 0.33333334
+        },
+        {
+          "chunk_id": "f16c_0191",
+          "pdf_name": "F-16C“蝰蛇”.pdf",
+          "title_h2": "AGM-154 联合防区外武器（JSOW）",
+          "title_h3": "使用预设计划（RRE）模式",
+          "score": 0.25
+        },
+        {
+          "chunk_id": "dcsjf17_0202",
+          "pdf_name": "DCS_ JF-17 _雷电_.pdf",
+          "title_h2": "5.7.精确打击",
+          "title_h3": "5.7.5.滑翔武器",
+          "score": 0.2
+        },
+        {
+          "chunk_id": "dcsfa18cearlyaccessguidecn_0247",
+          "pdf_name": "DCS FA-18C Early Access Guide CN.pdf",
+          "title_h2": "空对地挂载管理系统（SMS）投弹页",
+          "title_h3": "空对地挂载编程",
+          "score": 0.16666667
+        }
+      ]
+    },
+    {
+      "query": "JFS怎么使用",
+      "top5": [
+        {
+          "chunk_id": "dcsjf17_0093",
+          "pdf_name": "DCS_ JF-17 _雷电_.pdf",
+          "title_h2": "2.3. 开车",
+          "title_h3": "2.3.3.航姿系统",
+          "score": 0.5
+        },
+        {
+          "chunk_id": "dcsjf17_0202",
+          "pdf_name": "DCS_ JF-17 _雷电_.pdf",
+          "title_h2": "5.7.精确打击",
+          "title_h3": "5.7.5.滑翔武器",
+          "score": 0.33333334
+        },
+        {
+          "chunk_id": "dcsjf17_0173",
+          "pdf_name": "DCS_ JF-17 _雷电_.pdf",
+          "title_h2": "5.1.说明",
+          "title_h3": "5.1.1.认识SS",
+          "score": 0.25
+        },
+        {
+          "chunk_id": "dcsjf17_0211",
+          "pdf_name": "DCS_ JF-17 _雷电_.pdf",
+          "title_h2": "7.1.操纵杆",
+          "title_h3": "",
+          "score": 0.2
+        },
+        {
+          "chunk_id": "f16c_0189",
+          "pdf_name": "F-16C“蝰蛇”.pdf",
+          "title_h2": "AGM-154 联合防区外武器（JSOW）",
+          "title_h3": "JSOW SMS 页面",
+          "score": 0.16666667
+        }
+      ]
+    },
+    {
+      "query": "F16 座舱仪表说明",
+      "top5": [
+        {
+          "chunk_id": "f15c_0012",
+          "pdf_name": "F-15C.pdf",
+          "title_h2": "F-15C驾驶舱仪表",
+          "title_h3": "",
+          "score": 0.5
+        },
+        {
+          "chunk_id": "f16c_0125",
+          "pdf_name": "F-16C“蝰蛇”.pdf",
+          "title_h2": "简介",
+          "title_h3": "",
+          "score": 0.33333334
+        },
+        {
+          "chunk_id": "dcsjf17_0043",
+          "pdf_name": "DCS_ JF-17 _雷电_.pdf",
+          "title_h2": "1.13.照明系统",
+          "title_h3": "1.13.1.座舱照明系统",
+          "score": 0.25
+        },
+        {
+          "chunk_id": "dcsfa18cearlyaccessguidecn_0063",
+          "pdf_name": "DCS FA-18C Early Access Guide CN.pdf",
+          "title_h2": "中间仪表板",
+          "title_h3": "下方控制台仪表组",
+          "score": 0.2
+        },
+        {
+          "chunk_id": "dcsfa18cearlyaccessguidecn_0064",
+          "pdf_name": "DCS FA-18C Early Access Guide CN.pdf",
+          "title_h2": "右仪表板",
+          "title_h3": "",
+          "score": 0.16666667
+        }
+      ]
+    }
+  ],
+  "elapsed_seconds": 3.649
+}
