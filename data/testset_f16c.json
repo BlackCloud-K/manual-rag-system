@@ -1,0 +1,137 @@
+[
+  {
+    "id": "t001",
+    "question": "激光测距是如何提高武器投放的准确度的？",
+    "source_chunk_id": "f16c_0139",
+    "title_h1": "“利坦宁”瞄准吊舱",
+    "title_h2": "空对地（A-G）模式",
+    "expected_in_topn": true,
+    "note": ""
+  },
+  {
+    "id": "t002",
+    "question": "如何启用IFF问询功能？",
+    "source_chunk_id": "f16c_0120",
+    "title_h1": "APG-68 火控雷达",
+    "title_h2": "空对空模式",
+    "expected_in_topn": true,
+    "note": ""
+  },
+  {
+    "id": "t003",
+    "question": "在地形测绘模式下，雷达是如何处理不同强度的地物的？",
+    "source_chunk_id": "f16c_0122",
+    "title_h1": "APG-68 火控雷达",
+    "title_h2": "空对地模式",
+    "expected_in_topn": true,
+    "note": ""
+  },
+  {
+    "id": "t004",
+    "question": "使用自动驾驶的俯仰-高度保持模式时，飞机能否在爬升或俯冲时保持高度？",
+    "source_chunk_id": "f16c_0090",
+    "title_h1": "导航",
+    "title_h2": "自动驾驶",
+    "expected_in_topn": true,
+    "note": ""
+  },
+  {
+    "id": "t005",
+    "question": "在使用ILS进行导航时，如何判断我是否处于下滑道上？",
+    "source_chunk_id": "f16c_0089",
+    "title_h1": "导航",
+    "title_h2": "仪表着陆系统（ILS）导航",
+    "expected_in_topn": true,
+    "note": ""
+  },
+  {
+    "id": "t006",
+    "question": "在无指定模式下，HMCS可以显示哪些重要信息？",
+    "source_chunk_id": "f16c_0146",
+    "title_h1": "头盔指示系统",
+    "title_h2": "简介",
+    "expected_in_topn": true,
+    "note": ""
+  },
+  {
+    "id": "t007",
+    "question": "在使用HMCS之前，我需要做哪些准备工作来确保它的对准？",
+    "source_chunk_id": "f16c_0145",
+    "title_h1": "头盔指示系统",
+    "title_h2": "简介",
+    "expected_in_topn": true,
+    "note": ""
+  },
+  {
+    "id": "t008",
+    "question": "在格斗模式下，HUD会显示哪些信息？",
+    "source_chunk_id": "f16c_0150",
+    "title_h1": "空对空武器使用",
+    "title_h2": "格斗和导弹超控模式",
+    "expected_in_topn": true,
+    "note": ""
+  },
+  {
+    "id": "t009",
+    "question": "如何设置MIDS无线电台的传输功率？",
+    "source_chunk_id": "f16c_0130",
+    "title_h1": "LINK 16 数据链路",
+    "title_h2": "DLNK DED 页面",
+    "expected_in_topn": true,
+    "note": ""
+  },
+  {
+    "id": "t010",
+    "question": "如何在CMDS页面中设置红外干扰弹的投放数量和间隔？",
+    "source_chunk_id": "f16c_0226",
+    "title_h1": "防御系统",
+    "title_h2": "对抗措施弹射套件(CMDS)",
+    "expected_in_topn": true,
+    "note": ""
+  },
+  {
+    "id": "t011",
+    "question": "在地面时，我如何访问无线电通信菜单？",
+    "source_chunk_id": "f16c_0095",
+    "title_h1": "无线电通信",
+    "title_h2": "无线电指令",
+    "expected_in_topn": true,
+    "note": ""
+  },
+  {
+    "id": "t012",
+    "question": "我该如何手动更改无线电频率？",
+    "source_chunk_id": "f16c_0094",
+    "title_h1": "无线电通信",
+    "title_h2": "无线电频率",
+    "expected_in_topn": true,
+    "note": ""
+  },
+  {
+    "id": "t013",
+    "question": "着陆后，如何安全关闭飞机的系统电源？",
+    "source_chunk_id": "f16c_0111",
+    "title_h1": "程序",
+    "title_h2": "着陆后",
+    "expected_in_topn": true,
+    "note": ""
+  },
+  {
+    "id": "t014",
+    "question": "如何锁定和发射SD-10",
+    "source_chunk_id": null,
+    "title_h1": null,
+    "title_h2": null,
+    "expected_in_topn": false,
+    "note": "手册外问题，预期不召回相关内容"
+  },
+  {
+    "id": "t015",
+    "question": "如何在DCS多人模式中申请服务器管理员权限",
+    "source_chunk_id": null,
+    "title_h1": null,
+    "title_h2": null,
+    "expected_in_topn": false,
+    "note": "手册外问题，预期不召回相关内容"
+  }
+]

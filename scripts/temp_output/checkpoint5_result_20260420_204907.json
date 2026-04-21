@@ -1,0 +1,654 @@
+{
+  "checkpoint": "checkpoint5",
+  "testset_path": "data\\testset_f16c.json",
+  "f16c_pdf_name": "F-16C“蝰蛇”.pdf",
+  "top_n": 5,
+  "out_of_scope_score_threshold": 0.05,
+  "totals": {
+    "questions": 15,
+    "pass": 13,
+    "fail": 2
+  },
+  "by_category": {
+    "expected_in_topn_true": {
+      "count": 13,
+      "pass": 13,
+      "fail": 0,
+      "hit_rate_percent": 100.0
+    },
+    "expected_in_topn_false": {
+      "count": 2,
+      "pass": 0,
+      "fail": 2,
+      "reject_rate_percent": 0.0
+    }
+  },
+  "timing_seconds": {
+    "total": 17.195,
+    "average_per_question": 1.1464,
+    "slowest": {
+      "question_id": "t001",
+      "seconds": 3.374
+    }
+  },
+  "acceptance": {
+    "hit_rate_above_80": true,
+    "avg_latency_under_3s": true,
+    "out_of_scope_reject_100": false
+  },
+  "per_question": [
+    {
+      "id": "t001",
+      "question": "激光测距是如何提高武器投放的准确度的？",
+      "expected_in_topn": true,
+      "source_chunk_id": "f16c_0139",
+      "elapsed_seconds": 3.3743,
+      "candidate_count_before_rerank": 50,
+      "top_n": 5,
+      "ranked_top": [
+        {
+          "chunk_id": "f16c_0139",
+          "rerank_score": 0.9973989062062492,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0177",
+          "rerank_score": 0.6189531905880024,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0179",
+          "rerank_score": 0.5306469584197625,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0167",
+          "rerank_score": 0.3693150796290264,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0176",
+          "rerank_score": 0.3272381688088603,
+          "source": "search"
+        }
+      ],
+      "judgment": "PASS",
+      "hit_rank": 1,
+      "hit_rerank_score": 0.9973989062062492,
+      "top1_chunk_id": "f16c_0139",
+      "top1_rerank_score": 0.9973989062062492
+    },
+    {
+      "id": "t002",
+      "question": "如何启用IFF问询功能？",
+      "expected_in_topn": true,
+      "source_chunk_id": "f16c_0120",
+      "elapsed_seconds": 0.9934,
+      "candidate_count_before_rerank": 50,
+      "top_n": 5,
+      "ranked_top": [
+        {
+          "chunk_id": "f16c_0120",
+          "rerank_score": 0.9905509186809447,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0051",
+          "rerank_score": 0.01784873844998899,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0085",
+          "rerank_score": 0.011419614645648403,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0054",
+          "rerank_score": 0.011288073899230987,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0050",
+          "rerank_score": 0.01024860192315863,
+          "source": "search"
+        }
+      ],
+      "judgment": "PASS",
+      "hit_rank": 1,
+      "hit_rerank_score": 0.9905509186809447,
+      "top1_chunk_id": "f16c_0120",
+      "top1_rerank_score": 0.9905509186809447
+    },
+    {
+      "id": "t003",
+      "question": "在地形测绘模式下，雷达是如何处理不同强度的地物的？",
+      "expected_in_topn": true,
+      "source_chunk_id": "f16c_0122",
+      "elapsed_seconds": 1.0056,
+      "candidate_count_before_rerank": 50,
+      "top_n": 5,
+      "ranked_top": [
+        {
+          "chunk_id": "f16c_0122",
+          "rerank_score": 0.955816678097593,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0121",
+          "rerank_score": 0.207535754989287,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0117",
+          "rerank_score": 0.02816747285727831,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0115",
+          "rerank_score": 0.014559518620319444,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0114",
+          "rerank_score": 0.012383784637260331,
+          "source": "search"
+        }
+      ],
+      "judgment": "PASS",
+      "hit_rank": 1,
+      "hit_rerank_score": 0.955816678097593,
+      "top1_chunk_id": "f16c_0122",
+      "top1_rerank_score": 0.955816678097593
+    },
+    {
+      "id": "t004",
+      "question": "使用自动驾驶的俯仰-高度保持模式时，飞机能否在爬升或俯冲时保持高度？",
+      "expected_in_topn": true,
+      "source_chunk_id": "f16c_0090",
+      "elapsed_seconds": 0.9917,
+      "candidate_count_before_rerank": 50,
+      "top_n": 5,
+      "ranked_top": [
+        {
+          "chunk_id": "f16c_0090",
+          "rerank_score": 0.9974885364861902,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0009",
+          "rerank_score": 0.8654516767364072,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0010",
+          "rerank_score": 0.23074637508096685,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0106",
+          "rerank_score": 0.11221037236225713,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0007",
+          "rerank_score": 0.09318171046137046,
+          "source": "search"
+        }
+      ],
+      "judgment": "PASS",
+      "hit_rank": 1,
+      "hit_rerank_score": 0.9974885364861902,
+      "top1_chunk_id": "f16c_0090",
+      "top1_rerank_score": 0.9974885364861902
+    },
+    {
+      "id": "t005",
+      "question": "在使用ILS进行导航时，如何判断我是否处于下滑道上？",
+      "expected_in_topn": true,
+      "source_chunk_id": "f16c_0089",
+      "elapsed_seconds": 0.9723,
+      "candidate_count_before_rerank": 50,
+      "top_n": 5,
+      "ranked_top": [
+        {
+          "chunk_id": "f16c_0089",
+          "rerank_score": 0.994180040415741,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0087",
+          "rerank_score": 0.933552071096812,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0088",
+          "rerank_score": 0.027954399477128446,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0082",
+          "rerank_score": 0.014615670100635953,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0080",
+          "rerank_score": 0.011419614645648403,
+          "source": "search"
+        }
+      ],
+      "judgment": "PASS",
+      "hit_rank": 1,
+      "hit_rerank_score": 0.994180040415741,
+      "top1_chunk_id": "f16c_0089",
+      "top1_rerank_score": 0.994180040415741
+    },
+    {
+      "id": "t006",
+      "question": "在无指定模式下，HMCS可以显示哪些重要信息？",
+      "expected_in_topn": true,
+      "source_chunk_id": "f16c_0146",
+      "elapsed_seconds": 0.9831,
+      "candidate_count_before_rerank": 50,
+      "top_n": 5,
+      "ranked_top": [
+        {
+          "chunk_id": "f16c_0146",
+          "rerank_score": 0.9939024378074247,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0144",
+          "rerank_score": 0.4303867404899131,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0072",
+          "rerank_score": 0.36749724599886857,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0157",
+          "rerank_score": 0.3498658556101268,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0156",
+          "rerank_score": 0.34598864660470574,
+          "source": "search"
+        }
+      ],
+      "judgment": "PASS",
+      "hit_rank": 1,
+      "hit_rerank_score": 0.9939024378074247,
+      "top1_chunk_id": "f16c_0146",
+      "top1_rerank_score": 0.9939024378074247
+    },
+    {
+      "id": "t007",
+      "question": "在使用HMCS之前，我需要做哪些准备工作来确保它的对准？",
+      "expected_in_topn": true,
+      "source_chunk_id": "f16c_0145",
+      "elapsed_seconds": 0.9953,
+      "candidate_count_before_rerank": 50,
+      "top_n": 5,
+      "ranked_top": [
+        {
+          "chunk_id": "f16c_0145",
+          "rerank_score": 0.9563904724343743,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0144",
+          "rerank_score": 0.22661243757037472,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0156",
+          "rerank_score": 0.13128455956620533,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0157",
+          "rerank_score": 0.08945460216888064,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0201",
+          "rerank_score": 0.0773781063026379,
+          "source": "search"
+        }
+      ],
+      "judgment": "PASS",
+      "hit_rank": 1,
+      "hit_rerank_score": 0.9563904724343743,
+      "top1_chunk_id": "f16c_0145",
+      "top1_rerank_score": 0.9563904724343743
+    },
+    {
+      "id": "t008",
+      "question": "在格斗模式下，HUD会显示哪些信息？",
+      "expected_in_topn": true,
+      "source_chunk_id": "f16c_0150",
+      "elapsed_seconds": 0.9986,
+      "candidate_count_before_rerank": 50,
+      "top_n": 5,
+      "ranked_top": [
+        {
+          "chunk_id": "f16c_0150",
+          "rerank_score": 0.9913222832950107,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0153",
+          "rerank_score": 0.8842393539373058,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0162",
+          "rerank_score": 0.8337311161465522,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0076",
+          "rerank_score": 0.7588681879577549,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0116",
+          "rerank_score": 0.40780499482245464,
+          "source": "search"
+        }
+      ],
+      "judgment": "PASS",
+      "hit_rank": 1,
+      "hit_rerank_score": 0.9913222832950107,
+      "top1_chunk_id": "f16c_0150",
+      "top1_rerank_score": 0.9913222832950107
+    },
+    {
+      "id": "t009",
+      "question": "如何设置MIDS无线电台的传输功率？",
+      "expected_in_topn": true,
+      "source_chunk_id": "f16c_0130",
+      "elapsed_seconds": 0.9924,
+      "candidate_count_before_rerank": 50,
+      "top_n": 5,
+      "ranked_top": [
+        {
+          "chunk_id": "f16c_0130",
+          "rerank_score": 0.985882106574795,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0094",
+          "rerank_score": 0.09790668605808908,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0095",
+          "rerank_score": 0.08434179503087752,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0125",
+          "rerank_score": 0.05888469953998364,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0093",
+          "rerank_score": 0.04046483553314982,
+          "source": "search"
+        }
+      ],
+      "judgment": "PASS",
+      "hit_rank": 1,
+      "hit_rerank_score": 0.985882106574795,
+      "top1_chunk_id": "f16c_0130",
+      "top1_rerank_score": 0.985882106574795
+    },
+    {
+      "id": "t010",
+      "question": "如何在CMDS页面中设置红外干扰弹的投放数量和间隔？",
+      "expected_in_topn": true,
+      "source_chunk_id": "f16c_0226",
+      "elapsed_seconds": 0.9727,
+      "candidate_count_before_rerank": 50,
+      "top_n": 5,
+      "ranked_top": [
+        {
+          "chunk_id": "f16c_0226",
+          "rerank_score": 0.9958499191637799,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0175",
+          "rerank_score": 0.7796575529570593,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0224",
+          "rerank_score": 0.6420959138319301,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0194",
+          "rerank_score": 0.5013170211850347,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0189",
+          "rerank_score": 0.2692295245928376,
+          "source": "search"
+        }
+      ],
+      "judgment": "PASS",
+      "hit_rank": 1,
+      "hit_rerank_score": 0.9958499191637799,
+      "top1_chunk_id": "f16c_0226",
+      "top1_rerank_score": 0.9958499191637799
+    },
+    {
+      "id": "t011",
+      "question": "在地面时，我如何访问无线电通信菜单？",
+      "expected_in_topn": true,
+      "source_chunk_id": "f16c_0095",
+      "elapsed_seconds": 0.9753,
+      "candidate_count_before_rerank": 50,
+      "top_n": 5,
+      "ranked_top": [
+        {
+          "chunk_id": "f16c_0095",
+          "rerank_score": 0.9839708526340988,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0097",
+          "rerank_score": 0.9569571506599678,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0054",
+          "rerank_score": 0.06853749303199023,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0134",
+          "rerank_score": 0.05271640213673081,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0050",
+          "rerank_score": 0.014728613849722676,
+          "source": "search"
+        }
+      ],
+      "judgment": "PASS",
+      "hit_rank": 1,
+      "hit_rerank_score": 0.9839708526340988,
+      "top1_chunk_id": "f16c_0095",
+      "top1_rerank_score": 0.9839708526340988
+    },
+    {
+      "id": "t012",
+      "question": "我该如何手动更改无线电频率？",
+      "expected_in_topn": true,
+      "source_chunk_id": "f16c_0094",
+      "elapsed_seconds": 0.9941,
+      "candidate_count_before_rerank": 50,
+      "top_n": 5,
+      "ranked_top": [
+        {
+          "chunk_id": "f16c_0094",
+          "rerank_score": 0.9950945942942779,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0097",
+          "rerank_score": 0.5577248630860242,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0093",
+          "rerank_score": 0.5362521923037145,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0092",
+          "rerank_score": 0.3842187612332353,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0095",
+          "rerank_score": 0.020884215894006432,
+          "source": "search"
+        }
+      ],
+      "judgment": "PASS",
+      "hit_rank": 1,
+      "hit_rerank_score": 0.9950945942942779,
+      "top1_chunk_id": "f16c_0094",
+      "top1_rerank_score": 0.9950945942942779
+    },
+    {
+      "id": "t013",
+      "question": "着陆后，如何安全关闭飞机的系统电源？",
+      "expected_in_topn": true,
+      "source_chunk_id": "f16c_0111",
+      "elapsed_seconds": 0.9731,
+      "candidate_count_before_rerank": 50,
+      "top_n": 5,
+      "ranked_top": [
+        {
+          "chunk_id": "f16c_0111",
+          "rerank_score": 0.991422514586288,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0112",
+          "rerank_score": 0.8547634457774486,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0041",
+          "rerank_score": 0.2973679109118185,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0145",
+          "rerank_score": 0.19682620364309852,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0107",
+          "rerank_score": 0.12929275415183486,
+          "source": "search"
+        }
+      ],
+      "judgment": "PASS",
+      "hit_rank": 1,
+      "hit_rerank_score": 0.991422514586288,
+      "top1_chunk_id": "f16c_0111",
+      "top1_rerank_score": 0.991422514586288
+    },
+    {
+      "id": "t014",
+      "question": "如何锁定和发射SD-10",
+      "expected_in_topn": false,
+      "source_chunk_id": null,
+      "elapsed_seconds": 0.9806,
+      "candidate_count_before_rerank": 50,
+      "top_n": 5,
+      "ranked_top": [
+        {
+          "chunk_id": "f16c_0212",
+          "rerank_score": 0.5508489931199614,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0211",
+          "rerank_score": 0.24762336792742873,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0213",
+          "rerank_score": 0.10818895456207037,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0201",
+          "rerank_score": 0.05051766972248091,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0215",
+          "rerank_score": 0.043854563399873446,
+          "source": "search"
+        }
+      ],
+      "judgment": "FAIL",
+      "top1_chunk_id": "f16c_0212",
+      "top1_rerank_score": 0.5508489931199614,
+      "threshold": 0.05
+    },
+    {
+      "id": "t015",
+      "question": "如何在DCS多人模式中申请服务器管理员权限",
+      "expected_in_topn": false,
+      "source_chunk_id": null,
+      "elapsed_seconds": 0.9929,
+      "candidate_count_before_rerank": 50,
+      "top_n": 5,
+      "ranked_top": [
+        {
+          "chunk_id": "f16c_0004",
+          "rerank_score": 0.1562335892466744,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0006",
+          "rerank_score": 0.025083140936028623,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0220",
+          "rerank_score": 0.010570488620307572,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0067",
+          "rerank_score": 0.008283626886030505,
+          "source": "search"
+        },
+        {
+          "chunk_id": "f16c_0200",
+          "rerank_score": 0.008030813216260065,
+          "source": "search"
+        }
+      ],
+      "judgment": "FAIL",
+      "top1_chunk_id": "f16c_0004",
+      "top1_rerank_score": 0.1562335892466744,
+      "threshold": 0.05
+    }
+  ]
+}

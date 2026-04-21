@@ -17,3 +17,11 @@ manuals:
   default:
     margin_top: 55
     margin_bottom: 55
+qdrant_url: "http://localhost:6333"
+collection_name: "dcs_manuals"
+retrieval:
+  hybrid_prefetch: 50
+  rerank_top_n: 10
+  neighbor_expand: false
+data:
+  final_dir: "data/final"
