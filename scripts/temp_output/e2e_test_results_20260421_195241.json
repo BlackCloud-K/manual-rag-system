@@ -1,0 +1,497 @@
+{
+  "test_run": {
+    "timestamp": "2026-04-21T19:52:41",
+    "total_questions": 15,
+    "total_time_seconds": 80.23,
+    "avg_time_seconds": 5.35
+  },
+  "results": [
+    {
+      "id": "q01",
+      "query": "F-16C的冷启动步骤是什么？",
+      "type": "步骤类",
+      "notes": "预期：完整32步冷启动流程",
+      "answer": "F-16C的冷启动步骤如下：\n\n1. 主电源开关\n   BATT 档位\n   a. 核实FLCS RLY 指示灯亮起\n\n2. 飞控系统供电检测开关\n   检测并保持\n   a. 核实电源控制面板面板中的指示灯：\n      • FLCS PMG 亮起\n      • TO FLCS 亮起\n      • FLCS RLY 熄灭\n   b. 核实检测面板种的指示灯：\n      • FLCS PWR（4 盏）亮起\n\n3. 飞控系统供电检测开关\n   释放\n\n4. 主电源开关\n   MAIN PWR 档位\n   核实指示灯亮起：\n      • ENGINE\n      • HYD/OIL PRESS\n      • ELEC SYS\n      • SEC\n      • FLCS RLY\n\n5. EPU GEN 和EPU PMG 指示灯\n   确认熄灭\n\n6. JFS 开关\n   START 2 档位\n\n7. 转速达到20% - 油门\n   推至IDLE\n   按键指令：[右Shift ]+ [Home]\n\n8. SEC 注意灯\n   熄灭\n\n9. ENGINE 警告灯\n   熄灭\n\n10. JFS 开关\n    确认关闭\n\n11. 发动机仪表\n    检查\n\n12. 皮托管加温\n    检查\n\n13. 失火和超温探测检测按钮\n    检测\n\n14. 故障和指示灯检测按钮\n    按下检测\n\n15. 航电电源面板\n    设定\n\n16. INS 功能旋钮\n    ALIGN NORM 档位\n\n17. 传感器电源控制面板\n    设定\n\n18. HUD 控制面板\n    按需\n\n19. 通信与识别旋钮\n    UFC 档位\n\n20. ECM 面板\n    按需\n\n21. 油门减速板开关\n    循环并收起\n\n22. 机轮放下指示灯\n    检查三绿亮起\n\n23. SAI\n    设定\n\n24. 发动机SEC 模式\n    检查\n\n25. FLCS BIT\n    启动并监视\n\n26. 油量选择旋钮\n    检查\n\n27. DBU\n    检查\n\n28. 配平\n    检查\n\n29. MPO\n    检查\n\n30. EPU 油量\n    检查在95%–102%\n\n31. EPU\n    检查\n\n32. 航电\n    按需调定",
+      "used_chunks": [
+        "f16c_0099"
+      ],
+      "sources": [
+        {
+          "chunk_id": "f16c_0099",
+          "page": 113,
+          "title_path": "程序 › 冷启动",
+          "image_paths": []
+        }
+      ],
+      "timing": {
+        "retrieval_seconds": 7.51,
+        "generation_seconds": 13.0,
+        "total_seconds": 20.51
+      },
+      "usage": {
+        "prompt_tokens": 4075,
+        "completion_tokens": 686,
+        "total_tokens": 4761
+      },
+      "cost_usd": 0.001
+    },
+    {
+      "id": "q02",
+      "query": "发动机启动后的正常滑油压力范围是多少？",
+      "type": "参数类",
+      "notes": "预期：15 psi 最小值",
+      "answer": "正常滑油压力范围为15-65 psi。",
+      "used_chunks": [
+        "f16c_0101"
+      ],
+      "sources": [
+        {
+          "chunk_id": "f16c_0101",
+          "page": 126,
+          "title_path": "程序 › 起飞前",
+          "image_paths": []
+        }
+      ],
+      "timing": {
+        "retrieval_seconds": 1.15,
+        "generation_seconds": 2.91,
+        "total_seconds": 4.06
+      },
+      "usage": {
+        "prompt_tokens": 4924,
+        "completion_tokens": 28,
+        "total_tokens": 4952
+      },
+      "cost_usd": 0.0008
+    },
+    {
+      "id": "q03",
+      "query": "如何使用TGP锁定目标？",
+      "type": "操作类",
+      "notes": "预期：TGP操作步骤",
+      "answer": "根据手册，使用TGP锁定目标的步骤如下：\n\n1. 在WPN 页面，使用光标/启用控制[回车]或OSB 2 将投放模式设为PRE 或VIS。确认导引头视频可用。\n2. 使用DMS 将TGP 页面设为SOI[右Alt]+[.]。\n3. 使用光标/启用控制移动光标至目标上方。如果是移动目标，TMS 向上[右Ctrl]+[向上]进入POINT 跟踪。",
+      "used_chunks": [
+        "f16c_0214"
+      ],
+      "sources": [
+        {
+          "chunk_id": "f16c_0214",
+          "page": 322,
+          "title_path": "空对地武器使用 › AGM-65“幼畜” › TGP 交接发射导弹",
+          "image_paths": []
+        }
+      ],
+      "timing": {
+        "retrieval_seconds": 1.31,
+        "generation_seconds": 3.36,
+        "total_seconds": 4.67
+      },
+      "usage": {
+        "prompt_tokens": 4772,
+        "completion_tokens": 137,
+        "total_tokens": 4909
+      },
+      "cost_usd": 0.0008
+    },
+    {
+      "id": "q04",
+      "query": "RWS模式下雷达的搜索范围是多少？",
+      "type": "参数类",
+      "notes": "预期：±60°方位角",
+      "answer": "在RWS模式下，飞行员可以设定显示距离为10、20、40、80或160海里。具体的搜索范围取决于飞行员的设定。",
+      "used_chunks": [
+        "f16c_0115"
+      ],
+      "sources": [
+        {
+          "chunk_id": "f16c_0115",
+          "page": 152,
+          "title_path": "APG-68 火控雷达 › 空对空模式 › 复合雷达模式（CRM）",
+          "image_paths": [
+            "data/images/f16c/page_152_img_0.png",
+            "data/images/f16c/page_153_img_0.png",
+            "data/images/f16c/page_154_img_0.png",
+            "data/images/f16c/page_154_img_1.png",
+            "data/images/f16c/page_155_img_0.png",
+            "data/images/f16c/page_156_img_0.png",
+            "data/images/f16c/page_157_img_0.png",
+            "data/images/f16c/page_158_img_0.png"
+          ]
+        }
+      ],
+      "timing": {
+        "retrieval_seconds": 1.13,
+        "generation_seconds": 1.67,
+        "total_seconds": 2.8
+      },
+      "usage": {
+        "prompt_tokens": 4586,
+        "completion_tokens": 58,
+        "total_tokens": 4644
+      },
+      "cost_usd": 0.0007
+    },
+    {
+      "id": "q05",
+      "query": "HARM导弹有哪几种攻击模式？",
+      "type": "系统说明类",
+      "notes": "预期：列出HARM的攻击模式",
+      "answer": "HARM导弹有三种攻击模式：位置已知（POS）、HARM为传感器（HAS）和数据链路（DL）模式。当前DL模式尚未实装至DCS内。",
+      "used_chunks": [
+        "f16c_0199"
+      ],
+      "sources": [
+        {
+          "chunk_id": "f16c_0199",
+          "page": 298,
+          "title_path": "空对地武器使用 › AGM-88“哈姆”",
+          "image_paths": []
+        }
+      ],
+      "timing": {
+        "retrieval_seconds": 1.1,
+        "generation_seconds": 1.88,
+        "total_seconds": 2.98
+      },
+      "usage": {
+        "prompt_tokens": 1828,
+        "completion_tokens": 63,
+        "total_tokens": 1891
+      },
+      "cost_usd": 0.0003
+    },
+    {
+      "id": "q06",
+      "query": "空中加油的对接步骤是什么？",
+      "type": "步骤类",
+      "notes": "预期：空中加油流程",
+      "answer": "空中加油的对接步骤如下：\n1. 主军械开关 OFF 档位。\n2. 激光解除保险开关 OFF 档位。\n3. 辐射源 OFF/STBY 档位。\n4. 空中受油开关 打开。\n5. AR 状态指示灯 核实 RDY。\n6. 热麦保密开关 HOT MIC 档位。\n7. 机外照明 按需。\n8. DED 返航油量页面 监视。\n\n飞向供油硬管正后方的预对接位，并报告已准备好受油。供油硬管操作员将给出准许前进至对接位指令。使用小幅度、平滑的操纵输入并稍微向前推动一点点油门。耐心等待，让这种动力变化使飞机向前移动。让供油硬管大约在头顶2-3 英尺处超过座舱盖左侧或右侧。继续缓慢向前移动，保持对准加油机底部涂上的黄色线条。和加油机编队飞行，让供油硬管操作员操纵供油硬管移动至飞机座舱盖后方的受油器中。使用加油机底部的指引灯光来将飞机保持在供油硬管的运动限制内。 \n\n当对接成功后，操作员将通告“对接”和“正在受油”。HUD 旁的 AR/NWS 指示灯将会亮起。在 DED 或油量指示器中监视燃油传输。 \n\n如果与供油硬管断开连接，那么请返回预对接位并再次尝试。",
+      "used_chunks": [
+        "f16c_0107"
+      ],
+      "sources": [
+        {
+          "chunk_id": "f16c_0107",
+          "page": 133,
+          "title_path": "程序 › 空中受油",
+          "image_paths": [
+            "data/images/f16c/page_133_img_0.png",
+            "data/images/f16c/page_133_img_1.png",
+            "data/images/f16c/page_135_img_0.png",
+            "data/images/f16c/page_136_img_0.png",
+            "data/images/f16c/page_136_img_1.png"
+          ]
+        }
+      ],
+      "timing": {
+        "retrieval_seconds": 1.12,
+        "generation_seconds": 8.17,
+        "total_seconds": 9.28
+      },
+      "usage": {
+        "prompt_tokens": 4356,
+        "completion_tokens": 405,
+        "total_tokens": 4761
+      },
+      "cost_usd": 0.0009
+    },
+    {
+      "id": "q07",
+      "query": "如何在HSD页面上查看导航信息？",
+      "type": "操作类",
+      "notes": "预期：HSD页面操作说明",
+      "answer": "要在HSD页面上查看导航信息，请按照以下步骤操作：\n\n1. HSD以平面图显示当前的战术态势以及显示对应飞行员飞机位置（本机）的符号、当前转向点、激活的飞行计划和距离圆环。\n2. 激活航路点将会以实心圆显示在HSD中，其他转向点将以空心圆显示，并且转向点之间将会被线条连接，显示航线。\n3. 本机标记显示飞机当前的位置。\n\nHSD页面包括本机标记、转向点、当前所选转向点和导航航线等信息。",
+      "used_chunks": [
+        "f16c_0074",
+        "f16c_0082"
+      ],
+      "sources": [
+        {
+          "chunk_id": "f16c_0074",
+          "page": 79,
+          "title_path": "F-16C“蝰蛇” › 多功能显示器（MFD） › 水平状态显示器（HSD）",
+          "image_paths": [
+            "data/images/f16c/page_79_img_0.png",
+            "data/images/f16c/page_80_img_0.png",
+            "data/images/f16c/page_81_img_0.png"
+          ]
+        },
+        {
+          "chunk_id": "f16c_0082",
+          "page": 94,
+          "title_path": "导航 › INS 导航 › 水平状态显示器（HSD）指示",
+          "image_paths": [
+            "data/images/f16c/page_94_img_0.png"
+          ]
+        }
+      ],
+      "timing": {
+        "retrieval_seconds": 1.12,
+        "generation_seconds": 2.99,
+        "total_seconds": 4.11
+      },
+      "usage": {
+        "prompt_tokens": 4551,
+        "completion_tokens": 173,
+        "total_tokens": 4724
+      },
+      "cost_usd": 0.0008
+    },
+    {
+      "id": "q08",
+      "query": "AIM-9的使用步骤是什么？",
+      "type": "步骤类",
+      "notes": "预期：AIM-9发射流程",
+      "answer": "AIM-9的使用步骤如下：\n\n1. 选择AAM或DGFT超控模式。\n2. 主军械开关设置到ARM档位。\n3. 使用雷达截获目标（可选）。\n4. 操纵飞机直到目标进入发射区内。\n5. 按下解锁按钮来指令导弹进行跟踪（如有需要）。\n6. 核实导弹菱形处在目标上方并且可以听见锁定音频。\n7. 按下武器投放按钮来发射。",
+      "used_chunks": [
+        "f16c_0154",
+        "f16c_0155"
+      ],
+      "sources": [
+        {
+          "chunk_id": "f16c_0154",
+          "page": 221,
+          "title_path": "空对空武器使用 › AIM-9M/X“响尾蛇”导弹",
+          "image_paths": []
+        },
+        {
+          "chunk_id": "f16c_0155",
+          "page": 222,
+          "title_path": "空对空武器使用 › AIM-9M/X“响尾蛇”导弹 › AIM-9M/X 使用",
+          "image_paths": [
+            "data/images/f16c/page_222_img_0.png",
+            "data/images/f16c/page_223_img_0.png",
+            "data/images/f16c/page_224_img_0.png",
+            "data/images/f16c/page_224_img_1.png"
+          ]
+        }
+      ],
+      "timing": {
+        "retrieval_seconds": 1.13,
+        "generation_seconds": 3.12,
+        "total_seconds": 4.25
+      },
+      "usage": {
+        "prompt_tokens": 4425,
+        "completion_tokens": 153,
+        "total_tokens": 4578
+      },
+      "cost_usd": 0.0008
+    },
+    {
+      "id": "q09",
+      "query": "TWS模式有什么使用限制？",
+      "type": "系统说明类",
+      "notes": "预期：TWS限制描述",
+      "answer": "手册中未提供相关信息",
+      "used_chunks": [],
+      "sources": [],
+      "timing": {
+        "retrieval_seconds": 1.07,
+        "generation_seconds": 1.02,
+        "total_seconds": 2.09
+      },
+      "usage": {
+        "prompt_tokens": 4574,
+        "completion_tokens": 21,
+        "total_tokens": 4595
+      },
+      "cost_usd": 0.0007
+    },
+    {
+      "id": "q10",
+      "query": "CCRP投弹的操作流程是什么？",
+      "type": "步骤类",
+      "notes": "预期：CCRP投弹步骤",
+      "answer": "CCRP投弹的操作流程如下：\n\n1. 核实CCRP标识符显示在HUD中。  \n   火控计算机将提供转向线（SL）来转向至指定的目标。将飞行路径标记（FPM）对准SL并按住武器投放按钮，武器在正确的时间并考虑风速/风向后由火控计算机进行投放。  \n   解算提示将显示在SL顶部。随着距离缩短以及将要投放武器时，解算提示将开始向下移动。  \n\n2. 指定目标。  \n   为了在CCRP模式下进行轰炸解算，必须线指定个目标。飞行员可通过以下方式指定目标：  \n   • 选择一位于目标上方的个转向点  \n   • 使用瞄准吊舱指定目标（如果挂载了瞄准吊舱）  \n   监视拉起预期提示确保没有处在飞行路径标记之上。  \n\n3. 按住武器投放按钮。  \n   保持飞行路径标记对准转向线。即使目标处在视线外，对准转向线将使飞机对准目标飞行。  \n   显示在HUD右下角的剩余投弹时机将会继续减少。  \n\n4. 按住武器投放按钮，直到解算提示超过飞行路径标记。  \n   保持飞行路径标记对准转向点飞行，解算提示将继续向下。解算提示穿过飞行路径标记时，火控计算机将会投放航弹。  \n   住武器投放按钮足够长时间来确保武器全部投放完毕。武器投放完毕后FPM将会开始闪烁。",
+      "used_chunks": [
+        "f16c_0178"
+      ],
+      "sources": [
+        {
+          "chunk_id": "f16c_0178",
+          "page": 265,
+          "title_path": "空对地武器使用 › 非制导炸弹 › 非制导炸弹CCRP 攻击",
+          "image_paths": [
+            "data/images/f16c/page_265_img_0.png",
+            "data/images/f16c/page_266_img_0.png",
+            "data/images/f16c/page_267_img_0.png",
+            "data/images/f16c/page_268_img_0.png"
+          ]
+        }
+      ],
+      "timing": {
+        "retrieval_seconds": 1.1,
+        "generation_seconds": 8.22,
+        "total_seconds": 9.32
+      },
+      "usage": {
+        "prompt_tokens": 4647,
+        "completion_tokens": 455,
+        "total_tokens": 5102
+      },
+      "cost_usd": 0.001
+    },
+    {
+      "id": "q11",
+      "query": "如何发射SD-10导弹？",
+      "type": "手册外",
+      "notes": "预期：拒答，SD-10不是F-16武器",
+      "answer": "手册中未提供相关信息",
+      "used_chunks": [],
+      "sources": [],
+      "timing": {
+        "retrieval_seconds": 1.11,
+        "generation_seconds": 1.16,
+        "total_seconds": 2.28
+      },
+      "usage": {
+        "prompt_tokens": 4739,
+        "completion_tokens": 21,
+        "total_tokens": 4760
+      },
+      "cost_usd": 0.0007
+    },
+    {
+      "id": "q12",
+      "query": "如何申请DCS多人服务器的管理员权限？",
+      "type": "手册外",
+      "notes": "预期：拒答，与飞行手册无关",
+      "answer": "手册中未提供相关信息",
+      "used_chunks": [],
+      "sources": [],
+      "timing": {
+        "retrieval_seconds": 1.1,
+        "generation_seconds": 1.23,
+        "total_seconds": 2.33
+      },
+      "usage": {
+        "prompt_tokens": 4869,
+        "completion_tokens": 21,
+        "total_tokens": 4890
+      },
+      "cost_usd": 0.0007
+    },
+    {
+      "id": "q13",
+      "query": "F-16能挂载R-77导弹吗？",
+      "type": "手册外",
+      "notes": "预期：拒答，R-77是俄制导弹",
+      "answer": "手册中未提供相关信息。",
+      "used_chunks": [],
+      "sources": [],
+      "timing": {
+        "retrieval_seconds": 1.1,
+        "generation_seconds": 1.8,
+        "total_seconds": 2.91
+      },
+      "usage": {
+        "prompt_tokens": 4786,
+        "completion_tokens": 21,
+        "total_tokens": 4807
+      },
+      "cost_usd": 0.0007
+    },
+    {
+      "id": "q14",
+      "query": "飞机启动后仪表盘上有个黄色警告灯一直亮着是什么情况？",
+      "type": "模糊描述类",
+      "notes": "预期：基于手册中的警告灯信息给出可能的解释",
+      "answer": "手册中未提供相关信息",
+      "used_chunks": [],
+      "sources": [],
+      "timing": {
+        "retrieval_seconds": 1.2,
+        "generation_seconds": 1.9,
+        "total_seconds": 3.1
+      },
+      "usage": {
+        "prompt_tokens": 4634,
+        "completion_tokens": 21,
+        "total_tokens": 4655
+      },
+      "cost_usd": 0.0007
+    },
+    {
+      "id": "q15",
+      "query": "座舱里怎么调节无线电频率？",
+      "type": "模糊描述类",
+      "notes": "预期：无线电相关操作说明",
+      "answer": "调节无线电频率的步骤如下：\n\n1. 按下ICP 中的COM 1 或COM 2 超控按钮。\n2. 输入所需的预设波道然后按下ENTR 按钮。\n3. 无线电台将会在新的预设波道中进行传输和接收。\n4. 当预设波道显示在DED 主页面后，玩家还能够在可用的预设波道之间循环选择。\n5. 向上或向下拨动DCS，直到箭头显示在预设波道段落旁。\n6. 使用增/减开关来变更波道。\n\n此外，若需要手动输入新的频率，可以按照以下步骤：\n1. 按下ICP 中的COM 1 或COM 2 超控按钮。\n2. 使用ICP 数字小键盘来输入新的频率，然后按下ENTR 按钮。\n3. 无线电台将会在新的预设波道中进行传输和接收。",
+      "used_chunks": [
+        "f16c_0093",
+        "f16c_0094"
+      ],
+      "sources": [
+        {
+          "chunk_id": "f16c_0093",
+          "page": 109,
+          "title_path": "无线电通信 › 无线电频率 › 变更预设波道",
+          "image_paths": [
+            "data/images/f16c/page_109_img_1.png",
+            "data/images/f16c/page_110_img_0.png"
+          ]
+        },
+        {
+          "chunk_id": "f16c_0094",
+          "page": 110,
+          "title_path": "无线电通信 › 无线电频率 › 手动频率变更",
+          "image_paths": [
+            "data/images/f16c/page_110_img_1.png"
+          ]
+        }
+      ],
+      "timing": {
+        "retrieval_seconds": 1.09,
+        "generation_seconds": 4.44,
+        "total_seconds": 5.53
+      },
+      "usage": {
+        "prompt_tokens": 2828,
+        "completion_tokens": 254,
+        "total_tokens": 3082
+      },
+      "cost_usd": 0.0006
+    }
+  ],
+  "summary": {
+    "by_type": {
+      "步骤类": {
+        "count": 4,
+        "avg_time": 10.84,
+        "avg_cost": 0.0009
+      },
+      "参数类": {
+        "count": 2,
+        "avg_time": 3.43,
+        "avg_cost": 0.0008
+      },
+      "操作类": {
+        "count": 2,
+        "avg_time": 4.39,
+        "avg_cost": 0.0008
+      },
+      "系统说明类": {
+        "count": 2,
+        "avg_time": 2.54,
+        "avg_cost": 0.0005
+      },
+      "手册外": {
+        "count": 3,
+        "avg_time": 2.51,
+        "avg_cost": 0.0007
+      },
+      "模糊描述类": {
+        "count": 2,
+        "avg_time": 4.32,
+        "avg_cost": 0.0006
+      }
+    },
+    "total_cost_usd": 0.0112,
+    "total_tokens": {
+      "prompt": 64594,
+      "completion": 2517,
+      "total": 67111
+    }
+  }
+}

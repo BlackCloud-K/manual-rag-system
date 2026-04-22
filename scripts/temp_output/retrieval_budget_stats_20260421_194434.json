@@ -1,0 +1,36 @@
+{
+  "token_budget": 6000,
+  "total_queries": 3,
+  "touched_queries": 1,
+  "removed_tokens_sum": 2308,
+  "removed_chars_sum": 3640,
+  "per_query": [
+    {
+      "query": "TWS模式有什么限制",
+      "token_budget": 6000,
+      "total_tokens_before_crop": 4497,
+      "removed_tokens": 0,
+      "removed_chars": 0,
+      "touched_budget": false,
+      "elapsed_seconds": 4.9076
+    },
+    {
+      "query": "发动机滑油压力正常范围是多少",
+      "token_budget": 6000,
+      "total_tokens_before_crop": 5236,
+      "removed_tokens": 0,
+      "removed_chars": 0,
+      "touched_budget": false,
+      "elapsed_seconds": 0.5473
+    },
+    {
+      "query": "飞机启动后仪表盘上有个黄色警告灯一直亮着是什么情况？",
+      "token_budget": 6000,
+      "total_tokens_before_crop": 8308,
+      "removed_tokens": 2308,
+      "removed_chars": 3640,
+      "touched_budget": true,
+      "elapsed_seconds": 0.529
+    }
+  ]
+}

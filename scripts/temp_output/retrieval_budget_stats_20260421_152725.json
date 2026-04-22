@@ -1,0 +1,36 @@
+{
+  "token_budget": 6000,
+  "total_queries": 3,
+  "touched_queries": 1,
+  "removed_tokens_sum": 1552,
+  "removed_chars_sum": 2837,
+  "per_query": [
+    {
+      "query": "TWS模式有什么限制",
+      "token_budget": 6000,
+      "total_tokens_before_crop": 4497,
+      "removed_tokens": 0,
+      "removed_chars": 0,
+      "touched_budget": false,
+      "elapsed_seconds": 9.1811
+    },
+    {
+      "query": "发动机滑油压力正常范围是多少",
+      "token_budget": 6000,
+      "total_tokens_before_crop": 5236,
+      "removed_tokens": 0,
+      "removed_chars": 0,
+      "touched_budget": false,
+      "elapsed_seconds": 0.614
+    },
+    {
+      "query": "FLCS故障如何处理",
+      "token_budget": 6000,
+      "total_tokens_before_crop": 7552,
+      "removed_tokens": 1552,
+      "removed_chars": 2837,
+      "touched_budget": true,
+      "elapsed_seconds": 0.6589
+    }
+  ]
+}

@@ -23,5 +23,9 @@ retrieval:
   hybrid_prefetch: 50
   rerank_top_n: 10
   neighbor_expand: false
+generation:
+  model: "gpt-4o-mini"
+  max_context_tokens: 6000
+  temperature: 0
 data:
   final_dir: "data/final"

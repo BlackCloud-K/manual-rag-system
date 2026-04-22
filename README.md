@@ -91,6 +91,7 @@ manual-rag-system/
 - `scripts/token_diagnostic.py`：统计 chunk token 分布（区间占比、超长/过短明细）。
 - `scripts/large_chunk_diagnostic.py`：分析 >800 token chunk 的内部结构与可切分性。
 - `scripts/split_strategy_diagnostic.py`：比较多种切分策略有效率并给出推荐顺序。
+- `scripts/run_retrieval_test.py`：执行检索测试并输出命中结果与成本统计（支持结果落盘）。
 
 ### 3) 输出与缓存目录
 
@@ -102,6 +103,8 @@ manual-rag-system/
 - `scripts/temp_output/large_chunk_diagnostic_report.txt`：大 chunk 诊断报告。
 - `scripts/temp_output/split_strategy_diagnostic_report.txt`：切分策略对比报告。
 - `scripts/temp_output/token_diagnostic_report.txt`：token 诊断报告。
+- `scripts/temp_output/retrieval_test_*.txt`：检索测试明细输出（包含命中片段与评估信息）。
+- `scripts/temp_output/retrieval_budget_stats_*.json`：检索测试预算/调用统计输出。
 - `scripts/__pycache__/`：Python 字节码缓存（运行时自动生成）。
 
 ---

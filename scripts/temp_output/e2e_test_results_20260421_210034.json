@@ -1,0 +1,448 @@
+{
+  "test_run": {
+    "timestamp": "2026-04-21T21:00:34",
+    "total_questions": 12,
+    "total_time_seconds": 54.69,
+    "avg_time_seconds": 4.56
+  },
+  "results": [
+    {
+      "id": "e01",
+      "query": "从冷启动到可以滑行需要完成哪些步骤？",
+      "type": "跨chunk边界",
+      "notes": "预期：需要综合冷启动和起飞前检查两个章节的信息",
+      "answer": "从冷启动到可以滑行需要完成以下步骤：\n1. 座舱盖 关闭并锁定\n2. 高度表 设定并检查\n3. 机外照明 按需\n4. INS 功能旋钮 NAV 档位\n5. NWS 接通\n6. 油门 先前推动\n7. 刹车和NWS 检查\n8. 航向和飞行仪表 检查",
+      "used_chunks": [
+        "f16c_0100"
+      ],
+      "sources": [
+        {
+          "chunk_id": "f16c_0100",
+          "page": 123,
+          "title_path": "程序 › 滑行",
+          "image_paths": []
+        }
+      ],
+      "timing": {
+        "retrieval_seconds": 5.33,
+        "generation_seconds": 2.9,
+        "total_seconds": 8.24
+      },
+      "usage": {
+        "prompt_tokens": 2662,
+        "completion_tokens": 121,
+        "total_tokens": 2783
+      },
+      "cost_usd": 0.0005
+    },
+    {
+      "id": "e02",
+      "query": "使用AIM-120从锁定到发射的完整流程是什么？",
+      "type": "跨chunk边界",
+      "notes": "预期：需要雷达操作+武器使用两个章节的信息",
+      "answer": "使用AIM-120从锁定到发射的完整流程如下：\n\n1. 选择A/A 主模式[1]或超控模式[4]。\n2. 主军械开关拨到ARM。\n3. 使用雷达截获目标（可选，但推荐使用）。\n4. 操纵飞机直到目标进入发射区。\n5. 按下武器投放按钮[RAlt]+[空格]发射导弹。\n监视动态发射区并估计威胁的状态来决定最佳导弹发射时机。当目标处在攻击机动目标最大发射距离内时HUD 标识符将会开始闪烁。\n6. 按住武器投放按钮发射导弹。此时导弹会跟踪目标并且序列中下一枚导弹将会被选中。AIM-120 还可以在无雷达锁定的情况下，以BORE 模式发射。BORE 模式通常在必须尽快射击或需要无雷达发射的情况下使用。在这个模式下，导弹将会在发射后立刻开机并飞向首个探测到的目标，所以请小心使用。",
+      "used_chunks": [
+        "f16c_0162"
+      ],
+      "sources": [
+        {
+          "chunk_id": "f16c_0162",
+          "page": 236,
+          "title_path": "空对空武器使用 › AIM-120 AMRAAM › AIM-120 使用",
+          "image_paths": [
+            "data/images/f16c/page_237_img_0.png"
+          ]
+        }
+      ],
+      "timing": {
+        "retrieval_seconds": 0.98,
+        "generation_seconds": 5.36,
+        "total_seconds": 6.34
+      },
+      "usage": {
+        "prompt_tokens": 4538,
+        "completion_tokens": 285,
+        "total_tokens": 4823
+      },
+      "cost_usd": 0.0009
+    },
+    {
+      "id": "e03",
+      "query": "MFD上SMS页面的各个按钮分别是什么功能？",
+      "type": "答案在图里",
+      "notes": "预期：SMS页面布局主要靠图片标注，纯文字可能不完整",
+      "answer": "在MFD上的SMS页面，各个按钮的功能如下：\n1. **库存页面**：按下相邻OSB 显示库存页面。\n2. **控制页面**：按下相邻OSB 来显示控制页面。\n3. **导弹数量和类型**：在挂载的不同类型的AGM-65 间切换。\n4. **自动供电切换**：切换自动供电功能开/关。\n5. **投放脉冲**：用来控制每次按下武器投放按钮时发射导弹的数量，仅适用于AGM-65D 和G。\n6. **挂点**：显示挂载了AGM-65 的挂点，下一个发射的挂点将会高亮显示。\n7. **导弹步进**：在挂载了导弹的挂点间循环选择下一个发射的挂点。",
+      "used_chunks": [
+        "f16c_0207"
+      ],
+      "sources": [
+        {
+          "chunk_id": "f16c_0207",
+          "page": 311,
+          "title_path": "空对地武器使用 › AGM-65“幼畜” › SMS 页面",
+          "image_paths": [
+            "data/images/f16c/page_311_img_0.png"
+          ]
+        }
+      ],
+      "timing": {
+        "retrieval_seconds": 0.99,
+        "generation_seconds": 3.98,
+        "total_seconds": 4.97
+      },
+      "usage": {
+        "prompt_tokens": 3813,
+        "completion_tokens": 221,
+        "total_tokens": 4034
+      },
+      "cost_usd": 0.0007
+    },
+    {
+      "id": "e04",
+      "query": "HUD上显示的各个符号分别代表什么？",
+      "type": "答案在图里",
+      "notes": "预期：HUD符号含义很多在图片标注中，文字描述可能不全",
+      "answer": "HUD上显示的各个符号代表以下信息：\n\n1. **EGI 磁航向** - 显示飞机当前的磁航向。\n2. **转向点距离/转向点编号** - 指示飞行员所选转向点的航向。\n3. **斜距** - 显示飞机到目标的距离。\n4. **到转向点时间** - 预计到达转向点的时间。\n5. **HUD中的低空设置** - 包括雷达高度和气压高度标度。\n6. **姿态基准线** - 显示飞机的姿态。\n7. **坡度指示** - 显示飞机的坡度。\n8. **相对靶眼的方位/距离** - 显示相对于目标的方位和距离。\n9. **运行模式** - 当前的飞行模式。\n10. **最大G** - 最大过载。\n11. **马赫数** - 飞机的马赫数。\n12. **主军械状态** - 当前的武器状态。\n13. **空速标度** - 飞机的空速。\n14. **当前G** - 当前的过载。\n15. **地平线** - 显示地平线位置。\n16. **飞行路径标记** - 指示飞机的飞行路径。\n17. **瞄准轴十字** - 用于瞄准目标。\n18. **转向提示** - 指示飞行员所选转向点的航向。\n19. **转向点符号** - 显示转向点的标识符。",
+      "used_chunks": [
+        "f16c_0076",
+        "f16c_0081",
+        "f16c_0160",
+        "f16c_0190",
+        "f16c_0195"
+      ],
+      "sources": [
+        {
+          "chunk_id": "f16c_0076",
+          "page": 84,
+          "title_path": "F-16C“蝰蛇” › 平视显示器（HUD）",
+          "image_paths": [
+            "data/images/f16c/page_84_img_0.png"
+          ]
+        },
+        {
+          "chunk_id": "f16c_0081",
+          "page": 93,
+          "title_path": "导航 › INS 导航 › HUD 指示",
+          "image_paths": [
+            "data/images/f16c/page_93_img_0.png"
+          ]
+        },
+        {
+          "chunk_id": "f16c_0160",
+          "page": 233,
+          "title_path": "空对空武器使用 › AIM-120 AMRAAM › HUD 标识符",
+          "image_paths": [
+            "data/images/f16c/page_233_img_0.png",
+            "data/images/f16c/page_234_img_0.png"
+          ]
+        },
+        {
+          "chunk_id": "f16c_0190",
+          "page": 286,
+          "title_path": "空对地武器使用 › AGM-154 联合防区外武器（JSOW） › JSOW HUD 标识符",
+          "image_paths": [
+            "data/images/f16c/page_286_img_0.png"
+          ]
+        },
+        {
+          "chunk_id": "f16c_0195",
+          "page": 292,
+          "title_path": "空对地武器使用 › 风向修正布撒器（WCMD） › WCMD HUD 标识符",
+          "image_paths": [
+            "data/images/f16c/page_292_img_0.png"
+          ]
+        }
+      ],
+      "timing": {
+        "retrieval_seconds": 1.0,
+        "generation_seconds": 6.24,
+        "total_seconds": 7.24
+      },
+      "usage": {
+        "prompt_tokens": 2174,
+        "completion_tokens": 417,
+        "total_tokens": 2591
+      },
+      "cost_usd": 0.0006
+    },
+    {
+      "id": "e05",
+      "query": "EPU肼余量的正常范围是多少？",
+      "type": "精确数值埋在长文",
+      "notes": "预期：95%-102%，埋在冷启动第30步里",
+      "answer": "EPU油量指示以百分比显示肼的剩余量。如果剩余量在100%，EPU可以运行10-15分钟。手册中没有提供EPU肼余量的具体正常范围。",
+      "used_chunks": [
+        "f16c_0042"
+      ],
+      "sources": [
+        {
+          "chunk_id": "f16c_0042",
+          "page": 41,
+          "title_path": "F-16C“蝰蛇” › 驾驶舱简介 › 右侧辅助控制面板",
+          "image_paths": [
+            "data/images/f16c/page_41_img_0.png"
+          ]
+        }
+      ],
+      "timing": {
+        "retrieval_seconds": 1.06,
+        "generation_seconds": 3.06,
+        "total_seconds": 4.13
+      },
+      "usage": {
+        "prompt_tokens": 4541,
+        "completion_tokens": 65,
+        "total_tokens": 4606
+      },
+      "cost_usd": 0.0007
+    },
+    {
+      "id": "e06",
+      "query": "FLCS BIT正常完成需要多长时间？",
+      "type": "精确数值埋在长文",
+      "notes": "预期：大约45秒，在冷启动第25步说明文字里",
+      "answer": "提供的片段中没有提及FLCS BIT正常完成所需的时间，因此无法回答该问题。",
+      "used_chunks": [],
+      "sources": [],
+      "timing": {
+        "retrieval_seconds": 1.01,
+        "generation_seconds": 1.49,
+        "total_seconds": 2.5
+      },
+      "usage": {
+        "prompt_tokens": 3062,
+        "completion_tokens": 36,
+        "total_tokens": 3098
+      },
+      "cost_usd": 0.0005
+    },
+    {
+      "id": "e07",
+      "query": "PRI模式和SEC模式有什么区别？",
+      "type": "易混淆概念",
+      "notes": "预期：发动机控制的两种模式对比，信息可能分散在多处",
+      "answer": "提供的手册片段中没有提及PRI模式和SEC模式的具体区别，因此无法回答该问题。",
+      "used_chunks": [],
+      "sources": [],
+      "timing": {
+        "retrieval_seconds": 1.02,
+        "generation_seconds": 1.96,
+        "total_seconds": 2.97
+      },
+      "usage": {
+        "prompt_tokens": 4551,
+        "completion_tokens": 37,
+        "total_tokens": 4588
+      },
+      "cost_usd": 0.0007
+    },
+    {
+      "id": "e08",
+      "query": "STT和TWS锁定有什么区别？",
+      "type": "易混淆概念",
+      "notes": "预期：两种雷达锁定模式对比，可能在同一个大chunk里",
+      "answer": "STT（单目标跟踪）模式和TWS（边扫描边跟踪）模式的主要区别在于目标跟踪的方式和雷达的工作状态。在STT模式下，雷达将集中照射单个目标并提供不间断更新，但不会探测其他接触，且敌机可能会收到雷达锁定告警。而在TWS模式下，雷达可以同时跟踪多个目标，虽然跟踪的可靠性较低，但不会触发敌机的雷达告警。STT模式提供高分辨率和高频率的目标更新，而TWS模式则依赖于历史记录来推断目标位置，可能会因为目标的机动而失去锁定。",
+      "used_chunks": [
+        "f16c_0115",
+        "f16c_0117"
+      ],
+      "sources": [
+        {
+          "chunk_id": "f16c_0115",
+          "page": 152,
+          "title_path": "APG-68 火控雷达 › 空对空模式 › 复合雷达模式（CRM）",
+          "image_paths": [
+            "data/images/f16c/page_152_img_0.png",
+            "data/images/f16c/page_153_img_0.png",
+            "data/images/f16c/page_154_img_0.png",
+            "data/images/f16c/page_154_img_1.png",
+            "data/images/f16c/page_155_img_0.png",
+            "data/images/f16c/page_156_img_0.png",
+            "data/images/f16c/page_157_img_0.png",
+            "data/images/f16c/page_158_img_0.png"
+          ]
+        },
+        {
+          "chunk_id": "f16c_0117",
+          "page": 166,
+          "title_path": "APG-68 火控雷达 › 空对空模式 › 单目标跟踪（STT）模式",
+          "image_paths": [
+            "data/images/f16c/page_166_img_0.png"
+          ]
+        }
+      ],
+      "timing": {
+        "retrieval_seconds": 1.0,
+        "generation_seconds": 3.29,
+        "total_seconds": 4.29
+      },
+      "usage": {
+        "prompt_tokens": 3286,
+        "completion_tokens": 179,
+        "total_tokens": 3465
+      },
+      "cost_usd": 0.0006
+    },
+    {
+      "id": "e09",
+      "query": "怎么打开雷达？",
+      "type": "术语不匹配",
+      "notes": "预期：映射到FCR开关操作，手册不会说'打开雷达'",
+      "answer": "要打开雷达，可以通过以下两种方式进入ACM模式：\n1. 拨动格斗/导弹超控开关至DGFT档位，这将自动选择ACM。\n2. 按下雷达模式旁的OSB，并选择页面左侧的ACM选项。",
+      "used_chunks": [
+        "f16c_0116"
+      ],
+      "sources": [
+        {
+          "chunk_id": "f16c_0116",
+          "page": 159,
+          "title_path": "APG-68 火控雷达 › 空对空模式 › 空战格斗模式（ACM）",
+          "image_paths": [
+            "data/images/f16c/page_159_img_0.png",
+            "data/images/f16c/page_160_img_0.png",
+            "data/images/f16c/page_161_img_0.png",
+            "data/images/f16c/page_162_img_0.png",
+            "data/images/f16c/page_163_img_0.png",
+            "data/images/f16c/page_164_img_0.png"
+          ]
+        }
+      ],
+      "timing": {
+        "retrieval_seconds": 1.0,
+        "generation_seconds": 2.02,
+        "total_seconds": 3.01
+      },
+      "usage": {
+        "prompt_tokens": 4798,
+        "completion_tokens": 84,
+        "total_tokens": 4882
+      },
+      "cost_usd": 0.0008
+    },
+    {
+      "id": "e10",
+      "query": "怎么扔炸弹？",
+      "type": "术语不匹配",
+      "notes": "预期：映射到CCRP/CCIP投弹流程，极其口语化的提问",
+      "answer": "根据提供的手册片段，投放炸弹的步骤如下：\n\n### CCIP 投弹方式：\n1. 核实CCIP 标识符显示在HUD 中。\n2. 操纵飞机将CCIP 准星对准目标。\n3. CCIP 准星位于目标上方时按下武器投放按钮。\n\n### CCRP 投弹方式：\n1. 核实CCRP 标识符显示在HUD 中。\n2. 指定目标。\n3. 按住武器投放按钮。\n4. 按住武器投放按钮，直到解算提示超过飞行路径标记。 \n\n在CCIP模式下，飞行员手动投弹，而在CCRP模式下，计算机会自动投放武器。确保在投弹时监视拉起预期提示，以避免潜在的危险。",
+      "used_chunks": [
+        "f16c_0176",
+        "f16c_0178"
+      ],
+      "sources": [
+        {
+          "chunk_id": "f16c_0176",
+          "page": 259,
+          "title_path": "空对地武器使用 › 非制导炸弹 › 非制导炸弹CCIP 攻击",
+          "image_paths": [
+            "data/images/f16c/page_259_img_0.png",
+            "data/images/f16c/page_260_img_0.png",
+            "data/images/f16c/page_261_img_0.png"
+          ]
+        },
+        {
+          "chunk_id": "f16c_0178",
+          "page": 265,
+          "title_path": "空对地武器使用 › 非制导炸弹 › 非制导炸弹CCRP 攻击",
+          "image_paths": [
+            "data/images/f16c/page_265_img_0.png",
+            "data/images/f16c/page_266_img_0.png",
+            "data/images/f16c/page_267_img_0.png",
+            "data/images/f16c/page_268_img_0.png"
+          ]
+        }
+      ],
+      "timing": {
+        "retrieval_seconds": 0.99,
+        "generation_seconds": 3.62,
+        "total_seconds": 4.61
+      },
+      "usage": {
+        "prompt_tokens": 2545,
+        "completion_tokens": 221,
+        "total_tokens": 2766
+      },
+      "cost_usd": 0.0005
+    },
+    {
+      "id": "e11",
+      "query": "F-16的后座怎么操作雷达？",
+      "type": "否定/不存在",
+      "notes": "预期：F-16C是单座机没有后座，应明确说明而非编造",
+      "answer": "提供的手册片段中没有具体说明F-16后座如何操作雷达的信息。手册中提到的雷达操作主要集中在飞行员的控制和设置上，包括控制菜单的选项和雷达模式的配置，但没有涉及后座操作的细节。",
+      "used_chunks": [],
+      "sources": [],
+      "timing": {
+        "retrieval_seconds": 1.02,
+        "generation_seconds": 2.22,
+        "total_seconds": 3.24
+      },
+      "usage": {
+        "prompt_tokens": 4587,
+        "completion_tokens": 76,
+        "total_tokens": 4663
+      },
+      "cost_usd": 0.0007
+    },
+    {
+      "id": "e12",
+      "query": "如何使用F-16的推力矢量功能？",
+      "type": "否定/不存在",
+      "notes": "预期：F-16没有推力矢量，应明确说明而非编造",
+      "answer": "提供的手册片段中没有关于F-16推力矢量功能的具体信息，因此无法回答该问题。",
+      "used_chunks": [],
+      "sources": [],
+      "timing": {
+        "retrieval_seconds": 1.01,
+        "generation_seconds": 2.13,
+        "total_seconds": 3.14
+      },
+      "usage": {
+        "prompt_tokens": 4759,
+        "completion_tokens": 40,
+        "total_tokens": 4799
+      },
+      "cost_usd": 0.0007
+    }
+  ],
+  "summary": {
+    "by_type": {
+      "跨chunk边界": {
+        "count": 2,
+        "avg_time": 7.29,
+        "avg_cost": 0.0007
+      },
+      "答案在图里": {
+        "count": 2,
+        "avg_time": 6.11,
+        "avg_cost": 0.0006
+      },
+      "精确数值埋在长文": {
+        "count": 2,
+        "avg_time": 3.31,
+        "avg_cost": 0.0006
+      },
+      "易混淆概念": {
+        "count": 2,
+        "avg_time": 3.63,
+        "avg_cost": 0.0006
+      },
+      "术语不匹配": {
+        "count": 2,
+        "avg_time": 3.81,
+        "avg_cost": 0.0006
+      },
+      "否定/不存在": {
+        "count": 2,
+        "avg_time": 3.19,
+        "avg_cost": 0.0007
+      }
+    },
+    "total_cost_usd": 0.0079,
+    "total_tokens": {
+      "prompt": 45316,
+      "completion": 1782,
+      "total": 47098
+    }
+  }
+}

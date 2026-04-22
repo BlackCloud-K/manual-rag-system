@@ -1,0 +1,12 @@
+{"id": "e01", "query": "从冷启动到可以滑行需要完成哪些步骤？", "pdf_filter": "F-16C\u201c蝰蛇\u201d.pdf", "type": "跨chunk边界", "notes": "预期：需要综合冷启动和起飞前检查两个章节的信息"}
+{"id": "e02", "query": "使用AIM-120从锁定到发射的完整流程是什么？", "pdf_filter": "F-16C\u201c蝰蛇\u201d.pdf", "type": "跨chunk边界", "notes": "预期：需要雷达操作+武器使用两个章节的信息"}
+{"id": "e03", "query": "MFD上SMS页面的各个按钮分别是什么功能？", "pdf_filter": "F-16C\u201c蝰蛇\u201d.pdf", "type": "答案在图里", "notes": "预期：SMS页面布局主要靠图片标注，纯文字可能不完整"}
+{"id": "e04", "query": "HUD上显示的各个符号分别代表什么？", "pdf_filter": "F-16C\u201c蝰蛇\u201d.pdf", "type": "答案在图里", "notes": "预期：HUD符号含义很多在图片标注中，文字描述可能不全"}
+{"id": "e05", "query": "EPU肼余量的正常范围是多少？", "pdf_filter": "F-16C\u201c蝰蛇\u201d.pdf", "type": "精确数值埋在长文", "notes": "预期：95%-102%，埋在冷启动第30步里"}
+{"id": "e06", "query": "FLCS BIT正常完成需要多长时间？", "pdf_filter": "F-16C\u201c蝰蛇\u201d.pdf", "type": "精确数值埋在长文", "notes": "预期：大约45秒，在冷启动第25步说明文字里"}
+{"id": "e07", "query": "PRI模式和SEC模式有什么区别？", "pdf_filter": "F-16C\u201c蝰蛇\u201d.pdf", "type": "易混淆概念", "notes": "预期：发动机控制的两种模式对比，信息可能分散在多处"}
+{"id": "e08", "query": "STT和TWS锁定有什么区别？", "pdf_filter": "F-16C\u201c蝰蛇\u201d.pdf", "type": "易混淆概念", "notes": "预期：两种雷达锁定模式对比，可能在同一个大chunk里"}
+{"id": "e09", "query": "怎么打开雷达？", "pdf_filter": "F-16C\u201c蝰蛇\u201d.pdf", "type": "术语不匹配", "notes": "预期：映射到FCR开关操作，手册不会说'打开雷达'"}
+{"id": "e10", "query": "怎么扔炸弹？", "pdf_filter": "F-16C\u201c蝰蛇\u201d.pdf", "type": "术语不匹配", "notes": "预期：映射到CCRP/CCIP投弹流程，极其口语化的提问"}
+{"id": "e11", "query": "F-16的后座怎么操作雷达？", "pdf_filter": "F-16C\u201c蝰蛇\u201d.pdf", "type": "否定/不存在", "notes": "预期：F-16C是单座机没有后座，应明确说明而非编造"}
+{"id": "e12", "query": "如何使用F-16的推力矢量功能？", "pdf_filter": "F-16C\u201c蝰蛇\u201d.pdf", "type": "否定/不存在", "notes": "预期：F-16没有推力矢量，应明确说明而非编造"}
