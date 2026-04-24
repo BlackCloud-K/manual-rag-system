@@ -1,0 +1,44 @@
+{
+  "pdf_name_filter": "F-16C“蝰蛇”.pdf",
+  "q1": "F-16 冷启动的步骤是什么？",
+  "a1": "F-16 冷启动的步骤如下：\n\n1. 主电源开关\n   BATT 档位\n   a. 核实FLCS RLY 指示灯亮起\n\n2. 飞控系统供电检测开关\n   检测并保持\n   a. 核实电源控制面板面板中的指示灯：\n      • FLCS PMG 亮起\n      • TO FLCS 亮起\n      • FLCS RLY 熄灭\n   b. 核实检测面板种的指示灯：\n      • FLCS PWR（4 盏）亮起\n\n3. 飞控系统供电检测开关\n   释放\n\n4. 主电源开关\n   MAIN PWR 档位\n   核实指示灯亮起：\n      • ENGINE\n      • HYD/OIL PRESS\n      • ELEC SYS\n      • SEC\n      • FLCS RLY\n\n5. EPU GEN 和EPU PMG 指示灯\n   确认熄灭\n\n6. JFS 开关\n   START 2 档位\n\n7. 转速达到20% - 油门\n   推至IDLE\n   按键指令：[右Shift ]+ [Home]\n\n8. SEC 注意灯\n   熄灭\n\n9. ENGINE 警告灯\n   熄灭\n\n10. JFS 开关\n    确认关闭\n\n11. 发动机仪表\n    检查\n\n12. 皮托管加温\n    检查\n\n13. 失火和超温探测检测按钮\n    检测\n\n14. 故障和指示灯检测按钮\n    按下检测\n\n15. 航电电源面板\n    设定\n\n16. INS 功能旋钮\n    ALIGN NORM 档位\n\n17. 传感器电源控制面板\n    设定\n\n18. HUD 控制面板\n    按需\n\n19. 通信与识别旋钮\n    UFC 档位\n\n20. ECM 面板\n    按需\n\n21. 油门减速板开关\n    循环并收起\n\n22. 机轮放下指示灯\n    检查三绿亮起\n\n23. SAI\n    设定\n\n24. 发动机SEC 模式\n    检查\n\n25. FLCS BIT\n    启动并监视\n\n26. 油量选择旋钮\n    检查\n\n27. DBU\n    检查\n\n28. 配平\n    检查\n\n29. MPO\n    检查\n\n30. EPU 油量\n    检查在95%–102%\n\n31. EPU\n    检查\n\n32. 航电\n    按需调定",
+  "q2": "第5步具体是什么？",
+  "a2_with_history": "第5步是：四边转弯。使用油门来控制空速，同时使用驾驶杆在转弯过程中保持机头在8-10度和11度迎角。在五边改平并抬起机头来保持合适的下滑线。这样做的原因是为了在离地高度大约300英尺，距离接地点1海里左右改平对准跑道。将HUD中的飞行路径标记以及2.5度俯仰梯度对准跑道入口，以确保在合适的下滑道上，同时保持11度迎角。",
+  "a2_without_history": "第5步是：在五边改平并抬起机头来保持合适的下滑线。这样做的原因是为了在离地高度大约300英尺，距离接地点1海里左右改平对准跑道。将HUD中的飞行路径标记以及2.5度俯仰梯度对准跑道入口来确保在合适的下滑道上，同时保持11度迎角。",
+  "with_history_used_chunks": [
+    "f16c_0109"
+  ],
+  "with_history_sources": [
+    {
+      "chunk_id": "f16c_0109",
+      "page": 142,
+      "title_path": "程序 › 着陆",
+      "image_paths": [
+        "data/images/f16c/page_142_img_0.png"
+      ]
+    }
+  ],
+  "without_history_used_chunks": [
+    "f16c_0109"
+  ],
+  "without_history_sources": [
+    {
+      "chunk_id": "f16c_0109",
+      "page": 142,
+      "title_path": "程序 › 着陆",
+      "image_paths": [
+        "data/images/f16c/page_142_img_0.png"
+      ]
+    }
+  ],
+  "with_history_usage": {
+    "prompt_tokens": 5448,
+    "completion_tokens": 148,
+    "total_tokens": 5596
+  },
+  "without_history_usage": {
+    "prompt_tokens": 4804,
+    "completion_tokens": 113,
+    "total_tokens": 4917
+  }
+}

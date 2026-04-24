@@ -193,6 +193,325 @@ def _strip_json_fence(text: str) -> str:
     return stripped
 
 
+def _generation_system_prompt() -> str:
+    return (
+        "你是 DCS 飞行模拟器手册问答助手。你的唯一知识来源是用户消息中提供的手册片段。\n\n"
+        "规则：\n"
+        "1. 仅根据提供的片段内容回答。你可以对片段内容进行归纳和总结，但不允许补充片段中完全没有提及的信息。\n"
+        "2. 如果片段中找不到相关信息，但是你的预训练知识中有与问题相关的补充信息（例如解释为什么手册中没有、或提供背景知识），可以补充说明，但必须明确标注『以下为模型补充，不来自手册，请自行辨别』。\n"
+        "3. 如果只能部分回答，据实回答能确认的部分，并说明哪些信息在提供的片段中未涉及。\n"
+        "4. 回答步骤类问题时，保持原文的步骤编号和顺序。\n"
+        "你必须以 JSON 格式回复，不要包含 markdown 代码围栏，结构如下：\n"
+        "{\n"
+        '  "answer": "你的回答内容",\n'
+        '  "used_chunks": ["实际使用的片段编号列表，如 chunk_1, chunk_3"]\n'
+        "}\n"
+    )
+
+
+def _chat_completion_json(
+    *,
+    model: str,
+    temperature: float,
+    messages: list[dict[str, str]],
+) -> tuple[str, dict[str, int], str | None]:
+    if OpenAI is None:
+        return "", {}, "生成失败：未安装 openai 库（pip install openai）"
+
+    try:
+        client = OpenAI()
+        response = client.chat.completions.create(
+            model=model,
+            temperature=temperature,
+            stream=False,
+            response_format={"type": "json_object"},
+            messages=messages,
+        )
+    except Exception as exc:  # noqa: BLE001 - 用户要求不向外抛出
+        return "", {}, f"生成失败：{exc}"
+
+    raw_content = (response.choices[0].message.content or "").strip()
+    usage_obj = getattr(response, "usage", None)
+    usage = {
+        "prompt_tokens": int(getattr(usage_obj, "prompt_tokens", 0) or 0),
+        "completion_tokens": int(getattr(usage_obj, "completion_tokens", 0) or 0),
+        "total_tokens": int(getattr(usage_obj, "total_tokens", 0) or 0),
+    }
+    return raw_content, usage, None
+
+
+def _parse_generation_json(raw_content: str, chunk_map: dict[str, str]) -> tuple[str, list[str]]:
+    to_parse = _strip_json_fence(raw_content)
+    try:
+        parsed = json.loads(to_parse)
+        if not isinstance(parsed, dict):
+            raise ValueError("parsed JSON is not an object")
+    except Exception:
+        warnings.warn(
+            f"LLM 返回非 JSON，已回退为纯文本。原始内容前 200 字：{raw_content[:200]!r}",
+            stacklevel=2,
+        )
+        parsed = {"answer": raw_content, "used_chunks": []}
+
+    answer = str(parsed.get("answer", "") or "")
+    raw_used = parsed.get("used_chunks", [])
+    if not isinstance(raw_used, list):
+        raw_used = []
+
+    chunk_values = set(chunk_map.values())
+    used_real_ids: list[str] = []
+    for item in raw_used:
+        label = str(item).strip()
+        if label in chunk_map:
+            used_real_ids.append(chunk_map[label])
+        elif label in chunk_values:
+            used_real_ids.append(label)
+
+    return answer, used_real_ids
+
+
+def trim_history(history: list[dict], max_history_tokens: int = 2000) -> list[dict]:
+    """
+    对历史对话进行 token 裁剪，从最早的轮次开始丢弃，直到总 token 数 <= max_history_tokens。
+    """
+    if not history or max_history_tokens <= 0:
+        return []
+    if tiktoken is None:
+        raise ImportError("trim_history 需要 tiktoken，请先安装：pip install tiktoken")
+
+    enc = tiktoken.get_encoding("cl100k_base")
+    kept_reversed: list[dict] = []
+    used_tokens = 0
+
+    for turn in reversed(history):
+        if not isinstance(turn, dict):
+            continue
+        query = str(turn.get("query", "") or "")
+        answer = str(turn.get("answer", "") or "")
+        turn_tokens = _encode_tokens(query, enc) + _encode_tokens(answer, enc)
+
+        if turn_tokens > max_history_tokens:
+            continue
+        if used_tokens + turn_tokens > max_history_tokens:
+            break
+
+        kept_reversed.append({"query": query, "answer": answer})
+        used_tokens += turn_tokens
+
+    return list(reversed(kept_reversed))
+
+
+def rewrite_query(
+    query: str,
+    history: list[dict],
+) -> str:
+    """
+    根据对话历史判断当前 query 是否依赖上文语境，如果是则改写为自包含问题。
+    """
+    if not history:
+        return query
+
+    # 只使用最近 1-2 轮，控制 token 成本
+    recent = [h for h in history if isinstance(h, dict)][-2:]
+    if not recent:
+        return query
+
+    lines: list[str] = []
+    for turn in recent:
+        hq = str(turn.get("query", "") or "").strip()
+        ha = str(turn.get("answer", "") or "").strip()
+        if not hq and not ha:
+            continue
+        lines.append(f"用户：{hq}")
+        lines.append(f"助手：{ha[:200]}")
+    history_text = "\n".join(lines).strip()
+    if not history_text:
+        return query
+
+    prompt = (
+        "你是一个查询改写助手。根据对话历史判断用户的当前问题是否依赖上文语境。\n\n"
+        "如果当前问题包含指代（如\"它\"、\"这个\"、\"那个步骤\"）、省略了主语或对象、"
+        "或者脱离上文就无法理解，请将其改写为一个独立的、自包含的完整问题。\n\n"
+        "如果当前问题本身就是完整的、不依赖上文的独立问题，请原样输出。\n\n"
+        "只输出最终的问题文本，不要输出任何解释。\n\n"
+        f"对话历史：\n{history_text}\n\n"
+        f"当前问题：{query}\n\n"
+        "输出："
+    )
+
+    def _needs_context_rewrite(text: str) -> bool:
+        q = text.strip()
+        if not q:
+            return False
+        patterns = [
+            r"^第\s*\d+\s*步",
+            r"\b这(个|一步|步)\b",
+            r"\b那(个|一步|步)\b",
+            r"\b它\b",
+            r"具体是什么",
+            r"什么意思",
+            r"怎么做",
+        ]
+        return any(re.search(p, q, flags=re.IGNORECASE) for p in patterns)
+
+    cfg = _load_yaml_config()
+    gen_cfg = cfg.get("generation")
+    if not isinstance(gen_cfg, dict):
+        gen_cfg = {}
+    model = str(gen_cfg.get("model", "gpt-4o-mini"))
+
+    if OpenAI is None:
+        return query
+
+    try:
+        client = OpenAI()
+        response = client.chat.completions.create(
+            model=model,
+            temperature=0,
+            stream=False,
+            messages=[
+                {"role": "system", "content": "你是查询改写助手。"},
+                {"role": "user", "content": prompt},
+            ],
+        )
+        rewritten = str(response.choices[0].message.content or "").strip()
+        rewritten = rewritten.strip("`\"' \n\t")
+        if rewritten and rewritten != query:
+            return rewritten
+    except Exception:
+        return query
+
+    # 兜底：LLM 未有效改写且当前问题显著依赖上下文时，拼接最近问题形成可检索的自包含 query
+    if _needs_context_rewrite(query):
+        last_query = str(recent[-1].get("query", "") or "").strip()
+        if last_query:
+            return f"关于“{last_query}”，{query}"
+    return query
+
+
+def generate_answer_with_history(
+    query: str,
+    context_text: str,
+    chunk_map: dict,
+    history: list[dict] | None = None,
+    max_history_tokens: int = 2000,
+) -> dict:
+    """
+    支持多轮对话历史的生成函数。功能与 generate_answer() 完全相同，
+    区别仅在于 messages 数组中插入了历史对话轮次。
+    """
+    if not history:
+        return generate_answer(query, context_text, chunk_map)
+
+    cfg = _load_yaml_config()
+    gen_cfg = cfg.get("generation")
+    if not isinstance(gen_cfg, dict):
+        gen_cfg = {}
+    model = str(gen_cfg.get("model", "gpt-4o-mini"))
+    temperature = float(gen_cfg.get("temperature", 0))
+    effective_max_history_tokens = int(
+        gen_cfg.get("max_history_tokens", 2000)
+        if max_history_tokens == 2000
+        else max_history_tokens
+    )
+
+    trimmed_history = trim_history(history, max_history_tokens=effective_max_history_tokens)
+    user_prompt = f"{context_text}\n\n用户问题：{query}"
+
+    messages: list[dict[str, str]] = [{"role": "system", "content": _generation_system_prompt()}]
+    for turn in trimmed_history:
+        hq = str(turn.get("query", "") or "")
+        ha = str(turn.get("answer", "") or "")
+        messages.append({"role": "user", "content": hq})
+        messages.append({"role": "assistant", "content": ha})
+    messages.append({"role": "user", "content": user_prompt})
+
+    raw_content, usage, err = _chat_completion_json(
+        model=model,
+        temperature=temperature,
+        messages=messages,
+    )
+    if err is not None:
+        return {
+            "answer": err,
+            "used_chunks": [],
+            "sources": [],
+            "usage": {},
+        }
+
+    answer, used_real_ids = _parse_generation_json(raw_content, chunk_map)
+    return {
+        "answer": answer,
+        "used_chunks": used_real_ids,
+        "sources": [],
+        "usage": usage,
+    }
+
+
+def run_rag_pipeline_with_history(
+    query: str,
+    pdf_name_filter: str | None = None,
+    max_context_tokens: int = 6000,
+    history: list[dict] | None = None,
+    max_history_tokens: int = 2000,
+) -> dict:
+    """
+    支持多轮对话历史的端到端 RAG pipeline。
+    功能与 run_rag_pipeline() 相同，但生成阶段会注入历史对话。
+    """
+    cfg = _load_yaml_config()
+    retrieval_cfg = cfg.get("retrieval")
+    if not isinstance(retrieval_cfg, dict):
+        retrieval_cfg = {}
+    gen_cfg = cfg.get("generation")
+    if not isinstance(gen_cfg, dict):
+        gen_cfg = {}
+
+    top_k = int(retrieval_cfg.get("hybrid_prefetch", 50))
+    rerank_top_n = int(retrieval_cfg.get("rerank_top_n", 5))
+    effective_max_context_tokens = int(
+        gen_cfg.get("max_context_tokens", 6000)
+        if max_context_tokens == 6000
+        else max_context_tokens
+    )
+    effective_max_history_tokens = int(
+        gen_cfg.get("max_history_tokens", 2000)
+        if max_history_tokens == 2000
+        else max_history_tokens
+    )
+
+    trimmed_history = trim_history(history or [], max_history_tokens=effective_max_history_tokens)
+    search_query = query
+    if trimmed_history:
+        search_query = rewrite_query(query, trimmed_history)
+
+    chunks_lookup = retriever_mod.load_chunks_lookup(pdf_name_filter)
+    hits = retriever_mod.hybrid_search(
+        search_query,
+        top_k=top_k,
+        pdf_name_filter=pdf_name_filter,
+    )
+    candidates = retriever_mod.expand_neighbors(hits, chunks_lookup)
+    reranked = retriever_mod.rerank(search_query, candidates, top_n=rerank_top_n)
+
+    chunk_map, context_text = assemble_context(
+        reranked,
+        max_context_tokens=effective_max_context_tokens,
+    )
+    generated = generate_answer_with_history(
+        query=query,
+        context_text=context_text,
+        chunk_map=chunk_map,
+        history=trimmed_history,
+        max_history_tokens=effective_max_history_tokens,
+    )
+    generated["sources"] = extract_sources(reranked, generated.get("used_chunks", []))
+    generated["original_query"] = query
+    generated["search_query"] = search_query
+    generated["query_rewritten"] = search_query != query
+    return generated
+
+
 def generate_answer(
     query: str,
     context_text: str,
