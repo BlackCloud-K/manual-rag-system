@@ -37,3 +37,7 @@ frontend:
     - "F-15C.pdf"
     - "F-16C“蝰蛇”.pdf"
   feedback_log_path: "data/feedback_log.jsonl"
+router:
+  model: "gpt-4o-mini"
+  include_reasoning: true
+  max_history_rounds: 2

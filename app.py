@@ -9,7 +9,8 @@ import streamlit as st
 import yaml
 from dotenv import load_dotenv
 
-from src.generator.generator import run_rag_pipeline_with_history
+from src.generator.generator import generate_answer_with_history, run_rag_pipeline_with_history
+from src.router.router import RouteResult, route
 from src.retriever import retriever as retriever_mod
 
 
@@ -212,6 +213,11 @@ cfg = load_config()
 frontend_cfg = cfg.get("frontend")
 if not isinstance(frontend_cfg, dict):
     frontend_cfg = {}
+include_reasoning = bool(
+    (cfg.get("router", {}) if isinstance(cfg.get("router", {}), dict) else {}).get(
+        "include_reasoning", False
+    )
+)
 
 pdf_options = frontend_cfg.get("pdf_options")
 if not isinstance(pdf_options, list) or not pdf_options:
@@ -227,6 +233,8 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 if "history" not in st.session_state:
     st.session_state.history = []
+if "route_history" not in st.session_state:
+    st.session_state.route_history = []
 if "feedback_submitted" not in st.session_state:
     st.session_state.feedback_submitted = set()
 
@@ -236,11 +244,12 @@ with st.sidebar:
     if st.button("🔄 新对话"):
         st.session_state.messages = []
         st.session_state.history = []
+        st.session_state.route_history = []
         st.session_state.feedback_submitted = set()
         st.rerun()
 
 st.title("DCS 手册问答助手")
-st.caption("基于 F-16C 飞行手册的智能问答系统")
+st.caption("基于DCS飞行手册的智能问答系统")
 st.divider()
 
 warmup_status = init_models()
@@ -254,8 +263,6 @@ for idx, msg in enumerate(st.session_state.messages):
         if role == "assistant":
             render_images(msg.get("images"))
             render_sources(msg.get("sources"))
-            query_text = _associated_query(st.session_state.messages, idx)
-            render_feedback(idx, msg, query_text, feedback_log_path)
 
 prompt = st.chat_input("输入你的问题，例如：F-16 冷启动的步骤是什么？")
 if prompt:
@@ -264,12 +271,58 @@ if prompt:
 
     with st.chat_message("assistant"):
         try:
-            with st.spinner("正在检索手册并生成回答（首次启动可能需要加载模型）..."):
-                result = run_rag_pipeline_with_history(
-                    query=prompt,
+            with st.spinner("正在判断问题类型并规划回答..."):
+                route_result: RouteResult = route(
+                    user_input=prompt,
+                    history=st.session_state.route_history,
                     pdf_name_filter=pdf_filter,
-                    history=st.session_state.history,
+                    include_reasoning=include_reasoning,
                 )
+
+            if route_result.action == "search":
+                with st.spinner("正在检索手册并生成回答（首次启动可能需要加载模型）..."):
+                    result = run_rag_pipeline_with_history(
+                        query=route_result.query if route_result.query else prompt,
+                        pdf_name_filter=pdf_filter,
+                        history=st.session_state.history,
+                    )
+                sources = result.get("sources", [])
+                if not isinstance(sources, list):
+                    sources = []
+                images = extract_unique_images(sources)
+                search_query = str(
+                    result.get(
+                        "search_query",
+                        route_result.query if route_result.query else prompt,
+                    )
+                    or (route_result.query if route_result.query else prompt)
+                )
+                query_rewritten = bool(result.get("query_rewritten", False))
+            elif route_result.action == "reject":
+                result = {
+                    "answer": "这个问题和飞行手册问答无关，或请求内容不安全，我不能按这个方向继续。请改为提问手册相关内容。",
+                }
+                sources = []
+                images = []
+                search_query = prompt
+                query_rewritten = False
+            else:
+                if route_result.reasoning == "injection_rule":
+                    result = {
+                        "answer": "这个请求我不能按你的方式处理。请直接告诉我你想查询的手册内容或操作问题。",
+                    }
+                else:
+                    with st.spinner("正在生成回答..."):
+                        result = generate_answer_with_history(
+                            query=prompt,
+                            context_text="",
+                            chunk_map={},
+                            history=st.session_state.history,
+                        )
+                sources = []
+                images = []
+                search_query = prompt
+                query_rewritten = False
         except Exception as exc:  # noqa: BLE001
             st.error(_friendly_error_message(exc))
             st.stop()
@@ -278,16 +331,25 @@ if prompt:
         if answer.startswith("生成失败："):
             st.error(answer)
             st.stop()
-        sources = result.get("sources", [])
-        if not isinstance(sources, list):
-            sources = []
-        search_query = str(result.get("search_query", prompt) or prompt)
-        query_rewritten = bool(result.get("query_rewritten", False))
-        images = extract_unique_images(sources)
 
         st.markdown(answer)
         render_images(images)
         render_sources(sources)
+        if include_reasoning:
+            if route_result.action == "search":
+                debug_query = route_result.query if route_result.query else prompt
+                st.caption(
+                    f'🔍 路由: search | query: "{debug_query}" | reason: '
+                    f'{route_result.reasoning or "n/a"}'
+                )
+            elif route_result.action == "reject":
+                st.caption(
+                    f"⛔ 路由: reject | reason: {route_result.reasoning or 'n/a'}"
+                )
+            else:
+                st.caption(
+                    f"💬 路由: chat | reason: {route_result.reasoning or 'rule_match'}"
+                )
 
         pending_msg = {
             "role": "assistant",
@@ -297,8 +359,19 @@ if prompt:
             "search_query": search_query,
             "query_rewritten": query_rewritten,
         }
-        render_feedback(len(st.session_state.messages), pending_msg, prompt, feedback_log_path)
 
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.session_state.messages.append(pending_msg)
-    st.session_state.history.append({"query": prompt, "answer": answer})
+    if route_result.action != "reject":
+        st.session_state.history.append({"query": prompt, "answer": answer})
+        st.session_state.route_history.append(
+            {
+                "query": prompt,
+                "answer": answer,
+                "route_query": (
+                    route_result.query
+                    if route_result.action == "search" and route_result.query
+                    else ""
+                ),
+            }
+        )
