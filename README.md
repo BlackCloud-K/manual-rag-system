@@ -10,6 +10,7 @@
 manual-rag-system/
 ├─ .env
 ├─ .gitignore
+├─ app.py
 ├─ config.yaml
 ├─ RAG technical proposal.pdf
 ├─ README.md
@@ -19,13 +20,14 @@ manual-rag-system/
 │  ├─ normalizer/
 │  ├─ vlm/
 │  ├─ retriever/
-│  └─ generator/
+│  ├─ generator/
+│  └─ router/
 ├─ scripts/                       # 流程入口、验收与诊断脚本
 │  └─ temp_output/                # 各类测试/验收输出
 ├─ data/                          # 中间数据与最终数据
 │  ├─ final/
 │  └─ embeddings/
-└─ progress/                      # 阶段总结文档（checkpoint_1~6）
+└─ progress/                      # 阶段总结文档（checkpoint_1~7）
 ```
 
 ---
@@ -37,6 +39,7 @@ manual-rag-system/
 - `.gitignore`：忽略规则（如 `documents/`、`data/images/`、缓存等）。
 - `config.yaml`：PDF 解析相关配置（如页边距裁切参数）。
 - `RAG technical proposal.pdf`：技术方案文档。
+- `app.py`：应用入口（组装检索与生成链路，对外提供调用入口）。
 
 ---
 
@@ -55,6 +58,8 @@ manual-rag-system/
   - `retriever.py`：检索模块（Hybrid/BM25/向量检索相关逻辑）。
 - `src/generator/`
   - `generator.py`：生成模块（基于检索上下文组织回答）。
+- `src/router/`
+  - `router.py`：查询路由模块（问题分类与检索策略分流）。
 
 ---
 
@@ -79,6 +84,7 @@ manual-rag-system/
 - `build_testset.py`：构建测试集（如 `data/testset_f16c.json`）。
 - `run_e2e_test.py`：单次 E2E 测试。
 - `run_e2e_batch_test.py`：批量 E2E 测试。
+- `test_history.py`：历史问答样例回放测试脚本。
 
 ### 诊断/实验脚本
 
@@ -120,6 +126,7 @@ manual-rag-system/
   - `captions_cache.json`：图片摘要缓存。
   - `embeddings/embeddings_cache.pkl`：向量缓存。
   - `testset_f16c.json`：测试集。
+  - `feedback_log.jsonl`：反馈与问答历史日志。
 - 图片目录（通常不入库）：
   - `data/images/<manual_name>/*.png`
 
@@ -133,12 +140,13 @@ manual-rag-system/
 - `checkpoint_4.md`：阶段四总结。
 - `checkpoint_5.md`：阶段五总结。
 - `checkpoint_6.md`：阶段六总结。
+- `checkpoint_7.md`：阶段七总结。
 
 ---
 
 ## 推荐阅读顺序（新成员快速上手）
 
-1. `progress/checkpoint_1.md` -> `progress/checkpoint_6.md`（先看演进全貌）
+1. `progress/checkpoint_1.md` -> `progress/checkpoint_7.md`（先看演进全貌）
 2. `src/parser/`、`src/normalizer/`（理解数据生产链路）
 3. `scripts/process_all.py`、`scripts/run_normalization.py`、`scripts/run_vlm_captioning.py`
 4. `src/retriever/retriever.py`、`scripts/run_retrieval_test.py`

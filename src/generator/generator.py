@@ -622,10 +622,12 @@ def extract_sources(
 ) -> list[dict[str, Any]]:
     """从 rerank 结果中提取 LLM 声明使用的 chunk 的来源信息。"""
     lookup: dict[str, dict[str, Any]] = {}
+    id_to_rank: dict[str, int] = {}
     for row in ranked_chunks:
         cid = row.get("chunk_id")
         if isinstance(cid, str) and cid.strip() and cid not in lookup:
             lookup[cid] = row
+            id_to_rank[cid] = len(id_to_rank) + 1
 
     out: list[dict[str, Any]] = []
     seen: set[str] = set()
@@ -646,6 +648,7 @@ def extract_sources(
         out.append(
             {
                 "chunk_id": cid,
+                "rank": int(id_to_rank.get(cid, 0) or 0),
                 "page": _int_page_start(payload),
                 "title_path": _title_path_from_payload(payload),
                 "image_paths": image_paths,

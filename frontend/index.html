@@ -1,0 +1,924 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DCS 手册问答</title>
+  <style>
+    :root {
+      --bg: #131324;
+      --panel: #1b1b2d;
+      --panel-2: #202039;
+      --line: #2f3148;
+      --text: #e9ecff;
+      --muted: #9aa3c4;
+      --primary: #2563eb;
+      --danger: #e11d48;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    .app {
+      height: 100vh;
+      display: flex;
+    }
+
+    .left {
+      flex: 0 0 58%;
+      min-width: 420px;
+      display: flex;
+      flex-direction: column;
+      background: var(--panel);
+      border-right: 1px solid var(--line);
+    }
+
+    .right {
+      flex: 0 0 42%;
+      display: flex;
+      flex-direction: column;
+      background: #121220;
+    }
+
+    .toolbar {
+      height: 52px;
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      border-bottom: 1px solid var(--line);
+      background: #1a1a30;
+    }
+
+    .title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    select, button, textarea {
+      font: inherit;
+    }
+
+    .manual-select {
+      min-width: 170px;
+      height: 34px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: #262843;
+      padding: 0 10px;
+      outline: none;
+    }
+
+    .new-chat-btn, .send-btn {
+      height: 34px;
+      border: 0;
+      border-radius: 8px;
+      padding: 0 14px;
+      cursor: pointer;
+      color: #fff;
+      background: #374151;
+    }
+
+    .new-chat-btn:hover, .send-btn:hover { filter: brightness(1.08); }
+    .new-chat-btn:disabled, .send-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 16px 24px;
+    }
+
+    .row {
+      width: 100%;
+      display: flex;
+      margin: 10px 0;
+    }
+    .row.user { justify-content: flex-end; }
+    .row.assistant { justify-content: flex-start; }
+
+    .bubble {
+      max-width: 80%;
+      border-radius: 14px;
+      padding: 12px 14px 10px;
+      line-height: 1.6;
+      word-break: break-word;
+      white-space: pre-wrap;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    }
+    .row.user .bubble { background: var(--primary); color: #fff; }
+    .row.assistant .bubble { background: #2d2d44; color: #f5f6ff; }
+    .row.error .bubble { background: rgba(225, 29, 72, 0.2); color: #ffd5df; border: 1px solid rgba(225, 29, 72, 0.5); }
+
+    .assistant-content p { margin: 0.2em 0; }
+    .assistant-content ul, .assistant-content ol { margin: 0.4em 0 0.4em 1.2em; }
+    .assistant-content code { background: #1f2031; padding: 1px 5px; border-radius: 5px; }
+
+    .sources-wrap {
+      margin-top: 10px;
+      background: #23253b;
+      border: 1px solid #353855;
+      border-radius: 10px;
+      padding: 8px 10px;
+      font-size: 13px;
+    }
+    .sources-toggle {
+      color: #c9d0f3;
+      cursor: pointer;
+      user-select: none;
+    }
+    .sources-list {
+      display: none;
+      margin-top: 8px;
+      gap: 6px;
+      flex-direction: column;
+    }
+    .source-item { color: #c4caeb; }
+    .jump-link {
+      margin-left: 8px;
+      color: #8ab4ff;
+      cursor: pointer;
+      text-decoration: underline;
+      background: transparent;
+      border: 0;
+      padding: 0;
+      font: inherit;
+      line-height: inherit;
+    }
+
+    .images-wrap {
+      margin-top: 10px;
+      background: #23253b;
+      border: 1px solid #353855;
+      border-radius: 10px;
+      padding: 8px 10px;
+      font-size: 13px;
+    }
+    .images-toggle {
+      color: #c9d0f3;
+      cursor: pointer;
+      user-select: none;
+    }
+    .images-list {
+      display: none;
+      margin-top: 10px;
+      gap: 8px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .img-card {
+      border: 1px solid #3a3e60;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #1c1e33;
+    }
+    .img-card img {
+      display: block;
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      background: #0f1120;
+      cursor: zoom-in;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(5, 7, 15, 0.86);
+      padding: 24px;
+    }
+    .lightbox.open {
+      display: flex;
+    }
+    .lightbox-inner {
+      width: min(1100px, 95vw);
+      height: min(88vh, 860px);
+      background: #171a2b;
+      border: 1px solid #3a3f62;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    }
+    .lightbox-top {
+      height: 46px;
+      min-height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 12px;
+      border-bottom: 1px solid #323754;
+      color: #e7ebff;
+    }
+    .lightbox-actions {
+      display: flex;
+      gap: 0;
+      margin-left: auto;
+    }
+    .lb-btn {
+      border: 1px solid #485079;
+      background: #262b45;
+      color: #f1f4ff;
+      border-radius: 8px;
+      min-width: 36px;
+      height: 32px;
+      cursor: pointer;
+      font: inherit;
+    }
+    .lb-btn:hover { filter: brightness(1.08); }
+    .lb-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .lightbox-close-btn {
+      min-width: 36px;
+    }
+    .lb-side {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+      width: 44px;
+      height: 64px;
+      border-radius: 10px;
+      font-size: 20px;
+      line-height: 1;
+      background: rgba(38, 43, 69, 0.78);
+      backdrop-filter: blur(1px);
+      opacity: 0.15;
+      transition: opacity 0.18s ease;
+    }
+    .lightbox-body:hover .lb-side {
+      opacity: 1;
+    }
+    .lb-side:focus-visible {
+      opacity: 1;
+      outline: 2px solid #8ab4ff;
+      outline-offset: 1px;
+    }
+    .lb-side-left {
+      left: 14px;
+    }
+    .lb-side-right {
+      right: 14px;
+    }
+    .lightbox-body {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      background: #101324;
+      position: relative;
+    }
+    .lightbox-body img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .feedback {
+      display: flex;
+      justify-content: flex-end;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .feedback button {
+      border: 1px solid #4b5278;
+      border-radius: 7px;
+      background: #2b2e48;
+      color: #dfe4ff;
+      height: 28px;
+      width: 32px;
+      cursor: pointer;
+    }
+    .feedback button:disabled {
+      background: #565b76;
+      color: #b7bcd5;
+      cursor: not-allowed;
+    }
+
+    .typing {
+      display: inline-flex;
+      gap: 5px;
+      align-items: center;
+      min-height: 18px;
+    }
+    .typing span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #e9ecff;
+      opacity: 0.3;
+      animation: blink 1.2s infinite;
+    }
+    .typing span:nth-child(2) { animation-delay: 0.2s; }
+    .typing span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes blink {
+      0%, 80%, 100% { opacity: 0.25; transform: translateY(0); }
+      40% { opacity: 1; transform: translateY(-2px); }
+    }
+
+    .composer {
+      border-top: 1px solid var(--line);
+      background: #1a1b31;
+      padding: 10px 12px 12px;
+    }
+    .composer-inner {
+      display: flex;
+      gap: 10px;
+      align-items: flex-end;
+    }
+    .input {
+      flex: 1;
+      resize: none;
+      min-height: 42px;
+      max-height: 108px;
+      line-height: 1.45;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #252846;
+      color: var(--text);
+      padding: 10px 12px;
+      outline: none;
+      overflow-y: auto;
+    }
+
+    .pdf-header {
+      height: 40px;
+      min-height: 40px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      color: #d4daf7;
+      background: #191a2f;
+      font-size: 14px;
+    }
+    .pdf-body {
+      flex: 1;
+      min-height: 0;
+    }
+    #pdf-viewer {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #0f1120;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <section class="left">
+      <div class="toolbar">
+        <div class="title">DCS 手册问答</div>
+        <div class="toolbar-actions">
+          <select id="manual-select" class="manual-select"></select>
+          <button id="new-chat-btn" class="new-chat-btn" type="button">新对话</button>
+        </div>
+      </div>
+
+      <div id="messages" class="messages"></div>
+
+      <div class="composer">
+        <div class="composer-inner">
+          <textarea id="user-input" class="input" placeholder="请输入问题..." rows="1"></textarea>
+          <button id="send-btn" class="send-btn" type="button">发送</button>
+        </div>
+      </div>
+    </section>
+
+    <aside class="right">
+      <div class="pdf-header" id="pdf-title">当前 PDF：未选择</div>
+      <div class="pdf-body">
+        <iframe id="pdf-viewer" title="PDF Viewer" src=""></iframe>
+      </div>
+    </aside>
+  </div>
+
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <div class="lightbox-inner" role="dialog" aria-modal="true" aria-label="图片查看器">
+      <div class="lightbox-top">
+        <div id="lightbox-counter">图片 0 / 0</div>
+        <div class="lightbox-actions">
+          <button id="lightbox-close" class="lb-btn lightbox-close-btn" type="button" title="关闭">✕</button>
+        </div>
+      </div>
+      <div class="lightbox-body">
+        <button id="lightbox-prev" class="lb-btn lb-side lb-side-left" type="button" title="上一张">◀</button>
+        <img id="lightbox-image" alt="预览图片" />
+        <button id="lightbox-next" class="lb-btn lb-side lb-side-right" type="button" title="下一张">▶</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    // === 状态管理 ===
+    const DEFAULT_MANUALS = [
+      { label: "F-16C蝰蛇", pdfName: "F-16C“蝰蛇”.pdf" },
+      { label: "F-15C", pdfName: "F-15C.pdf" },
+      { label: "JF-17", pdfName: "DCS_ JF-17 _雷电_.pdf" },
+      { label: "FA-18C", pdfName: "DCS FA-18C Early Access Guide CN.pdf" },
+    ];
+    const state = {
+      conversationHistory: [],
+      manuals: [...DEFAULT_MANUALS],
+      selectedManualLabel: "",
+      selectedManualPdfName: "",
+      pending: false,
+      lightboxOpen: false,
+      lightboxImages: [],
+      lightboxIndex: 0,
+    };
+
+    const el = {
+      select: document.getElementById("manual-select"),
+      newChatBtn: document.getElementById("new-chat-btn"),
+      messages: document.getElementById("messages"),
+      input: document.getElementById("user-input"),
+      sendBtn: document.getElementById("send-btn"),
+      pdfTitle: document.getElementById("pdf-title"),
+      pdfViewer: document.getElementById("pdf-viewer"),
+      lightbox: document.getElementById("lightbox"),
+      lightboxCounter: document.getElementById("lightbox-counter"),
+      lightboxImage: document.getElementById("lightbox-image"),
+      lightboxPrev: document.getElementById("lightbox-prev"),
+      lightboxNext: document.getElementById("lightbox-next"),
+      lightboxClose: document.getElementById("lightbox-close"),
+    };
+
+    function escapeHtml(text) {
+      return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    function makeMessageId(index) {
+      return `msg_${Date.now()}_${index}`;
+    }
+
+    function setPending(pending) {
+      state.pending = pending;
+      el.input.disabled = pending;
+      el.sendBtn.disabled = pending;
+      if (!pending) {
+        el.input.focus();
+      }
+    }
+
+    function scrollToBottom() {
+      el.messages.scrollTop = el.messages.scrollHeight;
+    }
+
+    function resizeTextarea() {
+      const maxHeight = 108; // ~3 lines
+      el.input.style.height = "auto";
+      el.input.style.height = Math.min(el.input.scrollHeight, maxHeight) + "px";
+    }
+
+    function buildPdfSrc(pdfNameWithExt, page, cacheBust) {
+      if (!pdfNameWithExt) return "";
+      const basePath = `/pdf/${encodeURIComponent(pdfNameWithExt)}`;
+      const base = cacheBust ? `${basePath}?_ts=${Date.now()}` : basePath;
+      return typeof page === "number" && Number.isFinite(page) ? `${base}#page=${page}` : base;
+    }
+
+    function updatePdfViewer(pdfNameWithExt, page, options) {
+      if (!pdfNameWithExt) return;
+      const force = !!(options && options.force);
+      const target = buildPdfSrc(pdfNameWithExt, page, force);
+      // Some built-in PDF viewers ignore in-place hash-only updates; cache-busting forces reload.
+      el.pdfViewer.src = target;
+      el.pdfTitle.textContent = `当前 PDF：${state.selectedManualLabel || pdfNameWithExt}`;
+    }
+
+    function buildImageSrc(path) {
+      return `/image?path=${encodeURIComponent(path)}`;
+    }
+
+    function renderLightbox() {
+      const total = state.lightboxImages.length;
+      if (!total) return;
+      const safeIndex = Math.max(0, Math.min(state.lightboxIndex, total - 1));
+      state.lightboxIndex = safeIndex;
+      el.lightboxImage.src = buildImageSrc(state.lightboxImages[safeIndex]);
+      el.lightboxCounter.textContent = `图片 ${safeIndex + 1} / ${total}`;
+      el.lightboxPrev.disabled = total <= 1;
+      el.lightboxNext.disabled = total <= 1;
+    }
+
+    function openLightbox(images, index) {
+      if (!Array.isArray(images) || !images.length) return;
+      state.lightboxImages = images.slice();
+      state.lightboxIndex = Number.isFinite(index) ? Number(index) : 0;
+      state.lightboxOpen = true;
+      el.lightbox.classList.add("open");
+      el.lightbox.setAttribute("aria-hidden", "false");
+      renderLightbox();
+    }
+
+    function closeLightbox() {
+      state.lightboxOpen = false;
+      el.lightbox.classList.remove("open");
+      el.lightbox.setAttribute("aria-hidden", "true");
+      el.lightboxImage.src = "";
+    }
+
+    function stepLightbox(delta) {
+      const total = state.lightboxImages.length;
+      if (!total) return;
+      state.lightboxIndex = (state.lightboxIndex + delta + total) % total;
+      renderLightbox();
+    }
+
+    // === API 调用 ===
+    async function postChat(userInput) {
+      const payload = {
+        user_input: userInput,
+        history: state.conversationHistory,
+        pdf_name: state.selectedManualPdfName,
+      };
+
+      const resp = await fetch("/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!resp.ok) {
+        throw new Error(`HTTP ${resp.status}`);
+      }
+      return resp.json();
+    }
+
+    async function fetchManualConfig() {
+      const resp = await fetch("/config", { method: "GET" });
+      if (!resp.ok) {
+        throw new Error(`HTTP ${resp.status}`);
+      }
+      const data = await resp.json();
+      const manuals = Array.isArray(data.manuals) ? data.manuals : [];
+      const normalized = manuals
+        .filter((m) => m && typeof m === "object")
+        .map((m) => ({
+          label: String(m.label || "").trim(),
+          pdfName: String(m.pdf_name || "").trim(),
+        }))
+        .filter((m) => m.label && m.pdfName);
+      if (!normalized.length) {
+        throw new Error("No manuals in config");
+      }
+      return normalized;
+    }
+
+    async function postFeedback(payload) {
+      const resp = await fetch("/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!resp.ok) {
+        throw new Error(`HTTP ${resp.status}`);
+      }
+    }
+
+    // === 消息渲染 ===
+    function appendUserMessage(text) {
+      const row = document.createElement("div");
+      row.className = "row user";
+
+      const bubble = document.createElement("div");
+      bubble.className = "bubble";
+      bubble.textContent = text;
+
+      row.appendChild(bubble);
+      el.messages.appendChild(row);
+      scrollToBottom();
+    }
+
+    function appendLoadingBubble() {
+      const row = document.createElement("div");
+      row.className = "row assistant";
+      row.dataset.loading = "1";
+
+      const bubble = document.createElement("div");
+      bubble.className = "bubble";
+      bubble.innerHTML = '<span class="typing"><span></span><span></span><span></span></span>';
+
+      row.appendChild(bubble);
+      el.messages.appendChild(row);
+      scrollToBottom();
+      return row;
+    }
+
+    function buildSourcesDom(result, currentManualPdfName) {
+      if (result.action !== "search") return null;
+      const sources = Array.isArray(result.sources) ? result.sources : [];
+      if (!sources.length) return null;
+
+      const wrap = document.createElement("div");
+      wrap.className = "sources-wrap";
+
+      const toggle = document.createElement("div");
+      toggle.className = "sources-toggle";
+      toggle.textContent = `📖 查看来源 (${sources.length} 条)`;
+
+      const list = document.createElement("div");
+      list.className = "sources-list";
+
+      toggle.addEventListener("click", () => {
+        const visible = list.style.display === "flex";
+        list.style.display = visible ? "none" : "flex";
+      });
+
+      sources.forEach((src) => {
+        const item = document.createElement("div");
+        item.className = "source-item";
+
+        const page = Number.isFinite(Number(src.page)) ? Number(src.page) : 0;
+        const titlePath = src.title_path ? String(src.title_path) : "（无标题）";
+        const pdfName = src.pdf_name ? String(src.pdf_name) : currentManualPdfName;
+
+        const rank = Number.isFinite(Number(src.rank)) ? Number(src.rank) : 0;
+        const rankText = rank > 0 ? ` · Top ${rank}` : "";
+        item.innerHTML = `第 ${page} 页 · ${escapeHtml(titlePath)}${rankText} <button type="button" class="jump-link" data-pdf="${escapeHtml(pdfName)}" data-page="${page > 0 ? page : 1}">[跳转]</button>`;
+
+        list.appendChild(item);
+      });
+
+      list.addEventListener("click", (e) => {
+        const target = e.target;
+        if (!(target instanceof HTMLElement)) return;
+        const btn = target.closest(".jump-link");
+        if (!(btn instanceof HTMLElement)) return;
+        const pdfName = btn.getAttribute("data-pdf") || currentManualPdfName;
+        const pageNum = Number(btn.getAttribute("data-page") || "1");
+        updatePdfViewer(pdfName, Number.isFinite(pageNum) ? pageNum : 1, { force: true });
+      });
+
+      wrap.appendChild(toggle);
+      wrap.appendChild(list);
+      return wrap;
+    }
+
+    function buildImagesDom(result) {
+      if (result.action !== "search") return null;
+      const images = Array.isArray(result.images) ? result.images.filter((p) => typeof p === "string" && p.trim()) : [];
+      if (!images.length) return null;
+
+      const wrap = document.createElement("div");
+      wrap.className = "images-wrap";
+
+      const toggle = document.createElement("div");
+      toggle.className = "images-toggle";
+      toggle.textContent = `🖼 查看图片 (${images.length} 张)`;
+
+      const list = document.createElement("div");
+      list.className = "images-list";
+
+      toggle.addEventListener("click", () => {
+        const visible = list.style.display === "grid";
+        list.style.display = visible ? "none" : "grid";
+      });
+
+      images.forEach((rawPath, idx) => {
+        const card = document.createElement("div");
+        card.className = "img-card";
+
+        const img = document.createElement("img");
+        img.loading = "lazy";
+        img.alt = "检索图片";
+        img.src = buildImageSrc(rawPath);
+        img.addEventListener("click", () => {
+          openLightbox(images, idx);
+        });
+        card.appendChild(img);
+        list.appendChild(card);
+      });
+
+      wrap.appendChild(toggle);
+      wrap.appendChild(list);
+      return wrap;
+    }
+
+    function buildFeedbackDom(meta) {
+      const box = document.createElement("div");
+      box.className = "feedback";
+
+      const up = document.createElement("button");
+      const down = document.createElement("button");
+      up.type = "button";
+      down.type = "button";
+      up.textContent = "👍";
+      down.textContent = "👎";
+
+      async function submit(which, btnA, btnB) {
+        try {
+          await postFeedback({
+            message_id: meta.messageId,
+            feedback: which,
+            query: meta.query,
+            answer: meta.answer,
+          });
+          btnA.disabled = true;
+          btnB.disabled = true;
+        } catch (e) {
+          console.error("feedback failed", e);
+        }
+      }
+
+      up.addEventListener("click", () => submit("up", up, down));
+      down.addEventListener("click", () => submit("down", up, down));
+
+      box.appendChild(up);
+      box.appendChild(down);
+      return box;
+    }
+
+    function replaceLoadingWithAssistant(loadingRow, result, userQuery) {
+      const row = loadingRow || document.createElement("div");
+      row.className = "row assistant";
+      row.removeAttribute("data-loading");
+
+      const bubble = document.createElement("div");
+      bubble.className = "bubble";
+
+      const content = document.createElement("div");
+      content.className = "assistant-content";
+      content.innerHTML = marked.parse(String(result.answer || ""));
+      bubble.appendChild(content);
+
+      const imagesDom = buildImagesDom(result);
+      if (imagesDom) bubble.appendChild(imagesDom);
+
+      const sourcesDom = buildSourcesDom(result, state.selectedManualPdfName);
+      if (sourcesDom) bubble.appendChild(sourcesDom);
+
+      const messageId = makeMessageId(state.conversationHistory.length);
+      const feedbackDom = buildFeedbackDom({
+        messageId,
+        query: userQuery,
+        answer: String(result.answer || ""),
+      });
+      bubble.appendChild(feedbackDom);
+
+      row.innerHTML = "";
+      row.appendChild(bubble);
+      if (!loadingRow) {
+        el.messages.appendChild(row);
+      }
+      scrollToBottom();
+    }
+
+    function replaceLoadingWithError(loadingRow) {
+      const row = loadingRow || document.createElement("div");
+      row.className = "row assistant error";
+      row.removeAttribute("data-loading");
+
+      const bubble = document.createElement("div");
+      bubble.className = "bubble";
+      bubble.textContent = "请求失败，请稍后重试";
+
+      row.innerHTML = "";
+      row.appendChild(bubble);
+      if (!loadingRow) {
+        el.messages.appendChild(row);
+      }
+      scrollToBottom();
+    }
+
+    function addWelcomeMessage() {
+      const row = document.createElement("div");
+      row.className = "row assistant";
+      const bubble = document.createElement("div");
+      bubble.className = "bubble";
+      bubble.textContent = "你好，我是 DCS 手册问答助手。请选择手册后提问，我会尽量从手册中为你找到答案。";
+      row.appendChild(bubble);
+      el.messages.appendChild(row);
+      scrollToBottom();
+    }
+
+    // === 事件绑定 ===
+    function initManualSelect() {
+      el.select.innerHTML = "";
+      state.manuals.forEach((item) => {
+        const opt = document.createElement("option");
+        opt.value = item.pdfName;
+        opt.textContent = item.label;
+        el.select.appendChild(opt);
+      });
+      const first = state.manuals[0];
+      state.selectedManualLabel = first ? first.label : "";
+      state.selectedManualPdfName = first ? first.pdfName : "";
+      el.select.value = state.selectedManualPdfName;
+      if (state.selectedManualPdfName) {
+        updatePdfViewer(state.selectedManualPdfName);
+      }
+    }
+
+    async function handleSend() {
+      if (state.pending) return;
+      const text = el.input.value.trim();
+      if (!text) return;
+
+      appendUserMessage(text);
+      el.input.value = "";
+      resizeTextarea();
+
+      setPending(true);
+      const loadingRow = appendLoadingBubble();
+
+      try {
+        const result = await postChat(text);
+        replaceLoadingWithAssistant(loadingRow, result, text);
+        state.conversationHistory.push({ query: text, answer: String(result.answer || "") });
+      } catch (e) {
+        console.error(e);
+        replaceLoadingWithError(loadingRow);
+      } finally {
+        setPending(false);
+      }
+    }
+
+    el.select.addEventListener("change", () => {
+      const selected = state.manuals.find((m) => m.pdfName === el.select.value);
+      state.selectedManualLabel = selected ? selected.label : "";
+      state.selectedManualPdfName = selected ? selected.pdfName : "";
+      updatePdfViewer(state.selectedManualPdfName);
+    });
+
+    el.newChatBtn.addEventListener("click", () => {
+      state.conversationHistory = [];
+      el.messages.innerHTML = "";
+      addWelcomeMessage();
+    });
+
+    el.sendBtn.addEventListener("click", handleSend);
+
+    el.input.addEventListener("input", resizeTextarea);
+    el.input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        handleSend();
+      }
+    });
+
+    el.lightboxClose.addEventListener("click", closeLightbox);
+    el.lightboxPrev.addEventListener("click", () => stepLightbox(-1));
+    el.lightboxNext.addEventListener("click", () => stepLightbox(1));
+    el.lightbox.addEventListener("click", (e) => {
+      if (e.target === el.lightbox) closeLightbox();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (!state.lightboxOpen) return;
+      if (e.key === "Escape") {
+        e.preventDefault();
+        closeLightbox();
+      } else if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        stepLightbox(-1);
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        stepLightbox(1);
+      }
+    });
+
+    // init
+    (async function init() {
+      try {
+        state.manuals = await fetchManualConfig();
+      } catch (e) {
+        console.warn("load /config failed, fallback to defaults", e);
+        state.manuals = [...DEFAULT_MANUALS];
+      }
+      initManualSelect();
+      addWelcomeMessage();
+      resizeTextarea();
+    })();
+  </script>
+</body>
+</html>
