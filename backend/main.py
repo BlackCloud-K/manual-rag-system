@@ -9,7 +9,7 @@ from typing import Any, Literal
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, StreamingResponse
 from pydantic import BaseModel, Field
 
 
@@ -224,6 +224,22 @@ def _safe_exists(p: str) -> bool:
         return False
 
 
+def _int_page_val(payload: dict[str, Any]) -> int:
+    raw = payload.get("page_start", 0)
+    try:
+        return int(raw)
+    except (TypeError, ValueError):
+        return 0
+
+
+def _title_path_h1_h2(payload: dict[str, Any]) -> str:
+    h1 = str(payload.get("title_h1", "") or "").strip()
+    h2 = str(payload.get("title_h2", "") or "").strip()
+    if h1 and h2:
+        return f"{h1} › {h2}"
+    return h1 or h2
+
+
 class HistoryTurn(BaseModel):
     query: str = ""
     answer: str = ""
@@ -288,110 +304,187 @@ def get_config() -> Any:
         return _json_error(exc)
 
 
-@app.post("/chat")
-def chat(req: ChatRequest) -> Any:
-    try:
-        from src.router.router import route  # reuse existing module
-        from src.generator import generator as gen
-
-        history_dicts = [t.model_dump() for t in (req.history or [])]
-        pdf_name = (req.pdf_name or "").strip()
-        pdf_filter: str | None = pdf_name if pdf_name else None
-
-        route_result = route(req.user_input, history_dicts, pdf_name_filter=pdf_filter)
-
-        action = str(getattr(route_result, "action", "") or "").strip().lower()
-        if action == "chat":
-            # Spec: prefer generate_chat_response if exists, else fallback.
-            if hasattr(gen, "generate_chat_response"):
-                answer_obj = gen.generate_chat_response(req.user_input, history_dicts)  # type: ignore[attr-defined]
-                answer = (
-                    str(answer_obj.get("answer", "") if isinstance(answer_obj, dict) else answer_obj)
-                    if answer_obj is not None
-                    else ""
-                )
-            else:
-                # Fallback per spec
-                out = gen.generate_answer_with_history(req.user_input, "", {}, history_dicts)
-                answer = str(out.get("answer", "") or "")
-
-            return {"action": "chat", "answer": answer, "sources": [], "images": []}
-
-        if action == "reject":
-            return {
-                "action": "reject",
-                "answer": "抱歉，我只能回答 DCS 飞行手册相关的问题。",
-                "sources": [],
-                "images": [],
-            }
-
-        # action == "search" (default)
-        query = str(getattr(route_result, "query", "") or "").strip() or req.user_input
-        rag = gen.run_rag_pipeline_with_history(query=query, pdf_name_filter=pdf_filter, history=history_dicts)
-
-        answer = str(rag.get("answer", "") or "")
-        query_rewritten = bool(rag.get("query_rewritten", False))
-
-        sources_in = rag.get("sources", [])
-        if not isinstance(sources_in, list):
-            sources_in = []
-
-        # Note: generator.run_rag_pipeline_with_history() currently does NOT return `top_chunks`.
-        # It returns `sources` from extract_sources(), each includes:
-        # {chunk_id, page, title_path, image_paths}. We'll adapt images from that.
-        sources: list[dict[str, Any]] = []
-        image_candidates: list[str] = []
-        for s in sources_in:
-            if not isinstance(s, dict):
+def _sse_images_from_chunks(reranked: list[dict[str, Any]]) -> list[str]:
+    ordered: list[str] = []
+    seen_src: set[str] = set()
+    for row in reranked:
+        payload = row.get("payload")
+        if not isinstance(payload, dict):
+            continue
+        paths = payload.get("image_paths", [])
+        if not isinstance(paths, list):
+            continue
+        for p in paths:
+            if not isinstance(p, str):
                 continue
-            chunk_id = str(s.get("chunk_id", "") or "")
-            page = s.get("page", 0)
-            try:
-                page_i = int(page)
-            except Exception:
-                page_i = 0
-            title_path = str(s.get("title_path", "") or "")
-            rank = s.get("rank", 0)
-            try:
-                rank_i = int(rank)
-            except Exception:
-                rank_i = 0
+            t = p.strip()
+            if not t or t in seen_src:
+                continue
+            if not _safe_exists(t):
+                continue
+            seen_src.add(t)
+            ordered.append(t)
+            if len(ordered) >= 5:
+                return ordered
+    return ordered
 
-            sources.append(
-                {
-                    "page": page_i,
-                    "title_path": title_path,
-                    "pdf_name": pdf_name,
-                    "chunk_id": chunk_id,
-                    "rank": rank_i,
-                }
+
+@app.post("/chat")
+def chat(req: ChatRequest) -> StreamingResponse:
+    history_dicts = [t.model_dump() for t in (req.history or [])]
+    pdf_name = (req.pdf_name or "").strip()
+    pdf_filter: str | None = pdf_name if pdf_name else None
+
+    def event_stream():  # type: ignore[misc]
+        try:
+            from src.router.router import route
+            from src.generator import generator as gen
+
+            yield (
+                "event: status\ndata: "
+                f"{json.dumps({'text': '正在思考...'}, ensure_ascii=False)}\n\n"
+            )
+            route_result = route(req.user_input, history_dicts, pdf_name_filter=pdf_filter)
+
+            action = str(getattr(route_result, "action", "") or "").strip().lower()
+
+            if action == "chat":
+                if hasattr(gen, "generate_chat_response"):
+                    answer_obj = gen.generate_chat_response(req.user_input, history_dicts)  # type: ignore[attr-defined]
+                    ans = (
+                        str(answer_obj.get("answer", "") if isinstance(answer_obj, dict) else answer_obj)
+                        if answer_obj is not None
+                        else ""
+                    )
+                else:
+                    out = gen.generate_answer_with_history(req.user_input, "", {}, history_dicts)
+                    ans = str(out.get("answer", "") or "")
+
+                payload = {"sources": [], "images": [], "action": "chat"}
+                yield f"event: answer_token\ndata: {json.dumps({'content': ans}, ensure_ascii=False)}\n\n"
+                yield (
+                    "event: sources\ndata: "
+                    f"{json.dumps(payload, ensure_ascii=False)}\n\n"
+                )
+                yield "event: done\ndata: {}\n\n"
+                return
+
+            if action == "reject":
+                msg = "抱歉，我只能回答 DCS 飞行手册相关的问题。"
+                payload = {"sources": [], "images": [], "action": "reject"}
+                yield f"event: answer_token\ndata: {json.dumps({'content': msg}, ensure_ascii=False)}\n\n"
+                yield (
+                    "event: sources\ndata: "
+                    f"{json.dumps(payload, ensure_ascii=False)}\n\n"
+                )
+                yield "event: done\ndata: {}\n\n"
+                return
+
+            yield (
+                "event: status\ndata: "
+                f"{json.dumps({'text': '正在检索手册...'}, ensure_ascii=False)}\n\n"
+            )
+            query_q = str(getattr(route_result, "query", "") or "").strip() or req.user_input
+            retr = gen.retrieve_for_stream(
+                query=query_q,
+                pdf_name_filter=pdf_filter,
+                history=history_dicts,
+            )
+            reranked = retr["reranked"]
+            if not isinstance(reranked, list):
+                reranked = []
+            chunk_map = retr["chunk_map"]
+            if not isinstance(chunk_map, dict):
+                chunk_map = {}
+            ctx = str(retr["context_text"] or "")
+
+            id_to_rank: dict[str, int] = {}
+            cid_to_payload: dict[str, dict[str, Any]] = {}
+            for idx, row in enumerate(reranked, start=1):
+                cid = row.get("chunk_id")
+                if not isinstance(cid, str) or not cid.strip():
+                    continue
+                if cid not in id_to_rank:
+                    id_to_rank[cid] = idx
+                pl = row.get("payload")
+                if isinstance(pl, dict) and cid not in cid_to_payload:
+                    cid_to_payload[cid] = pl
+
+            stream_gen = gen.generate_answer_stream(
+                query=query_q,
+                context_text=ctx,
+                chunk_map=chunk_map,
+                history=history_dicts,
+            )
+            yield (
+                "event: status\ndata: "
+                f"{json.dumps({'text': '正在生成回答...'}, ensure_ascii=False)}\n\n"
             )
 
-            imgs = s.get("image_paths", [])
-            if isinstance(imgs, list):
-                for p in imgs:
-                    if isinstance(p, str) and p.strip():
-                        image_candidates.append(p)
+            sse_images = _sse_images_from_chunks(reranked)
 
-        dedup_images: list[str] = []
-        seen: set[str] = set()
-        for p in image_candidates:
-            if p in seen:
-                continue
-            seen.add(p)
-            if _safe_exists(p):
-                dedup_images.append(p)
+            for item in stream_gen:
+                it = item if isinstance(item, dict) else {}
+                ty = str(it.get("type", "") or "").strip()
 
-        return {
-            "action": "search",
-            "answer": answer,
-            "sources": sources,
-            "images": dedup_images,
-            "search_query": str(getattr(route_result, "query", "") or query),
-            "query_rewritten": query_rewritten,
-        }
-    except Exception as exc:
-        return _json_error(exc)
+                if ty == "answer_token":
+                    ct = str(it.get("content", "") or "")
+                    yield (
+                        "event: answer_token\ndata: "
+                        f"{json.dumps({'content': ct}, ensure_ascii=False)}\n\n"
+                    )
+                    continue
+
+                if ty == "sources_raw":
+                    raw = str(it.get("content", "") or "")
+                    normalized = raw.replace("\uff0c", ",").replace("，", ",")
+                    keys = [x.strip() for x in normalized.split(",") if x.strip()]
+                    sources_list: list[dict[str, Any]] = []
+                    for k in keys:
+                        real_id = chunk_map.get(k)
+                        if not isinstance(real_id, str):
+                            continue
+                        pl = cid_to_payload.get(real_id)
+                        if pl is None:
+                            continue
+                        pdf_n = str(pl.get("pdf_name", "") or "").strip()
+                        sources_list.append(
+                            {
+                                "page": _int_page_val(pl),
+                                "title_path": _title_path_h1_h2(pl),
+                                "pdf_name": pdf_n if pdf_n else pdf_name,
+                                "chunk_id": real_id,
+                                "rank": int(id_to_rank.get(real_id, 0) or 0),
+                            }
+                        )
+                    out_payload = {
+                        "sources": sources_list,
+                        "images": sse_images,
+                        "action": "search",
+                    }
+                    yield (
+                        "event: sources\ndata: "
+                        f"{json.dumps(out_payload, ensure_ascii=False)}\n\n"
+                    )
+                    continue
+
+                if ty == "done":
+                    yield "event: done\ndata: {}\n\n"
+
+        except Exception as exc:  # noqa: BLE001
+            yield (
+                "event: error\ndata: "
+                f"{json.dumps({'error': str(exc)}, ensure_ascii=False)}\n\n"
+            )
+
+    return StreamingResponse(
+        event_stream(),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "X-Accel-Buffering": "no",
+        },
+    )
 
 
 @app.get("/pdf/{filename}")

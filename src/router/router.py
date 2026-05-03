@@ -7,11 +7,7 @@ from pathlib import Path
 from typing import Any
 
 import yaml
-
-try:
-    from openai import OpenAI
-except ImportError:  # pragma: no cover
-    OpenAI = None  # type: ignore[assignment,misc]
+from src.generator.llm_client import chat_complete
 
 
 @dataclass
@@ -39,6 +35,14 @@ INJECTION_PATTERNS = [
 ]
 
 _toc_cache: dict[str, str] = {}
+
+
+def _strip_json_fence(text: str) -> str:
+    stripped = text.strip()
+    match = re.match(r"^```(?:json)?\s*([\s\S]*?)\s*```$", stripped, flags=re.IGNORECASE)
+    if match:
+        return match.group(1).strip()
+    return stripped
 
 
 def _find_project_root() -> Path:
@@ -161,7 +165,11 @@ def llm_route(
     """
     cfg = _load_config()
     router_cfg = _get_router_config(cfg)
-    model = str(router_cfg.get("model", "gpt-4o-mini"))
+    model = str(router_cfg.get("model", "gemini-2.5-flash-lite"))
+    provider_raw = router_cfg.get("provider")
+    provider = str(provider_raw).strip().lower() if provider_raw is not None else ""
+    temperature = float(router_cfg.get("temperature", 0))
+    max_tokens = int(router_cfg.get("max_tokens", 150))
     max_history_rounds = int(router_cfg.get("max_history_rounds", 2))
 
     toc_block = toc_str.strip() or "（目录不可用）"
@@ -262,23 +270,23 @@ def llm_route(
     messages.append({"role": "user", "content": str(user_input or "")})
 
     try:
-        if OpenAI is None:
-            return RouteResult(action="search", query=str(user_input or ""), reasoning="api_error")
-
-        client = OpenAI()
-        response = client.chat.completions.create(
-            model=model,
-            temperature=0,
-            max_tokens=150,
-            response_format={"type": "json_object"},
-            messages=messages,
-        )
-        raw = (response.choices[0].message.content or "").strip()
+        raw = str(
+            chat_complete(
+                messages=messages,
+                stream=False,
+                json_mode=True,
+                model_name=model,
+                provider=provider if provider else None,
+                temperature=temperature,
+                max_tokens=max_tokens,
+            )
+            or ""
+        ).strip()
     except Exception:
         return RouteResult(action="search", query=str(user_input or ""), reasoning="api_error")
 
     try:
-        parsed = json.loads(raw)
+        parsed = json.loads(_strip_json_fence(raw))
         if not isinstance(parsed, dict):
             raise ValueError("route response is not json object")
     except Exception:

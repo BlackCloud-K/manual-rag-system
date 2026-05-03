@@ -24,10 +24,18 @@ retrieval:
   rerank_top_n: 3
   neighbor_expand: false
 generation:
-  model: "gpt-4o-mini"
+  model: "gemini-2.5-flash-lite"
+  provider: "google"
   max_context_tokens: 5000
-  max_history_tokens: 2000
-  temperature: 0
+  max_history_tokens: 1500
+  temperature: 0.3
+  max_tokens: 3000
+  source_extraction:
+    model: "gpt-4o-mini"
+    provider: "openai"
+    temperature: 0
+    max_tokens: 1000
+  debug_used_chunks: true
 data:
   final_dir: "data/final"
 frontend:
@@ -38,6 +46,9 @@ frontend:
     - "F-16C“蝰蛇”.pdf"
   feedback_log_path: "data/feedback_log.jsonl"
 router:
-  model: "gpt-4o-mini"
-  include_reasoning: true
+  model: "gemini-2.5-flash-lite"
+  provider: "google"
+  temperature: 0
+  max_tokens: 150
+  include_reasoning: false
   max_history_rounds: 2

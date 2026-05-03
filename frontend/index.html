@@ -132,6 +132,18 @@
     .assistant-content p { margin: 0.2em 0; }
     .assistant-content ul, .assistant-content ol { margin: 0.4em 0 0.4em 1.2em; }
     .assistant-content code { background: #1f2031; padding: 1px 5px; border-radius: 5px; }
+    .status-hint {
+      color: #888;
+      font-style: italic;
+      font-size: 0.9em;
+      padding: 4px 0;
+    }
+    .timing-hint {
+      margin-top: 8px;
+      color: #8e95b8;
+      font-size: 12px;
+      line-height: 1.4;
+    }
 
     .sources-wrap {
       margin-top: 10px;
@@ -556,23 +568,30 @@
       renderLightbox();
     }
 
-    // === API 调用 ===
-    async function postChat(userInput) {
-      const payload = {
-        user_input: userInput,
-        history: state.conversationHistory,
-        pdf_name: state.selectedManualPdfName,
-      };
+    function renderSources(result, currentManualPdfName) {
+      return buildSourcesDom(result, currentManualPdfName);
+    }
 
-      const resp = await fetch("/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (!resp.ok) {
-        throw new Error(`HTTP ${resp.status}`);
-      }
-      return resp.json();
+    function appendEmptyAssistantBubble() {
+      const row = document.createElement("div");
+      row.className = "row assistant";
+
+      const bubble = document.createElement("div");
+      bubble.className = "bubble";
+
+      const statusEl = document.createElement("div");
+      statusEl.className = "status-hint";
+      statusEl.textContent = "正在思考...";
+
+      const answerEl = document.createElement("div");
+      answerEl.className = "answer-content assistant-content";
+
+      bubble.appendChild(statusEl);
+      bubble.appendChild(answerEl);
+      row.appendChild(bubble);
+      el.messages.appendChild(row);
+      scrollToBottom();
+      return { row, bubble, answerEl, statusEl };
     }
 
     async function fetchManualConfig() {
@@ -850,15 +869,239 @@
       resizeTextarea();
 
       setPending(true);
-      const loadingRow = appendLoadingBubble();
+      const { row, bubble, answerEl, statusEl: initialStatusEl } = appendEmptyAssistantBubble();
+      let statusEl = initialStatusEl;
+      const messageId = makeMessageId(state.conversationHistory.length);
+      const timing = {
+        start: Date.now(),
+        retrieveStart: null,
+        generateStart: null,
+      };
+
+      let answerBuffer = "";
+      let feedbackAppended = false;
+      let historyRecorded = false;
+      let sawErrorEvent = false;
+      let timingAppended = false;
+
+      function appendFeedback(meta) {
+        if (feedbackAppended) return;
+        feedbackAppended = true;
+        bubble.appendChild(buildFeedbackDom(meta));
+        scrollToBottom();
+      }
+
+      function recordHistory() {
+        if (historyRecorded) return;
+        historyRecorded = true;
+        state.conversationHistory.push({ query: text, answer: answerBuffer });
+      }
+
+      function fmtMs(ms) {
+        const val = Math.max(0, Number(ms) || 0);
+        if (val < 1000) return `${val}ms`;
+        return `${(val / 1000).toFixed(2)}s`;
+      }
+
+      function appendTimingHint() {
+        if (timingAppended) return;
+        timingAppended = true;
+        const end = Date.now();
+        const total = end - timing.start;
+
+        let thinkMs = 0;
+        let retrieveMs = 0;
+        let genMs = 0;
+
+        if (timing.retrieveStart != null) {
+          thinkMs = timing.retrieveStart - timing.start;
+          if (timing.generateStart != null) {
+            retrieveMs = timing.generateStart - timing.retrieveStart;
+            genMs = end - timing.generateStart;
+          } else {
+            retrieveMs = end - timing.retrieveStart;
+          }
+        } else if (timing.generateStart != null) {
+          thinkMs = timing.generateStart - timing.start;
+          genMs = end - timing.generateStart;
+        } else {
+          genMs = total;
+        }
+
+        const tip = document.createElement("div");
+        tip.className = "timing-hint";
+        tip.textContent =
+          `耗时：思考 ${fmtMs(thinkMs)} ｜ 检索 ${fmtMs(retrieveMs)} ｜ 生成 ${fmtMs(genMs)} ｜ 总计 ${fmtMs(total)}`;
+        bubble.appendChild(tip);
+        scrollToBottom();
+      }
 
       try {
-        const result = await postChat(text);
-        replaceLoadingWithAssistant(loadingRow, result, text);
-        state.conversationHistory.push({ query: text, answer: String(result.answer || "") });
+        const payload = {
+          user_input: text,
+          history: state.conversationHistory,
+          pdf_name: state.selectedManualPdfName,
+        };
+
+        const resp = await fetch("/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "text/event-stream" },
+          body: JSON.stringify(payload),
+        });
+        if (!resp.ok) {
+          throw new Error(`HTTP ${resp.status}`);
+        }
+
+        const reader = resp.body.getReader();
+        const decoder = new TextDecoder();
+        let raw = "";
+
+        outer: while (true) {
+          const { done: streamDone, value } = await reader.read();
+
+          if (value) {
+            raw += decoder.decode(value, { stream: true });
+          }
+          if (streamDone) {
+            raw += decoder.decode();
+          }
+
+          let sep;
+          while ((sep = raw.indexOf("\n\n")) !== -1) {
+            const block = raw.slice(0, sep).replace(/\r$/, "");
+            raw = raw.slice(sep + 2);
+
+            let eventName = "";
+            let dataStr = "";
+            const lines = block.split(/\r?\n/);
+            for (let i = 0; i < lines.length; i++) {
+              const line = lines[i];
+              if (line.startsWith("event:")) {
+                eventName = line.slice(6).trim();
+              } else if (line.startsWith("data:")) {
+                dataStr += (dataStr ? "\n" : "") + line.slice(5).trimEnd();
+              }
+            }
+
+            if (!eventName) continue;
+
+            if (eventName === "answer_token") {
+              try {
+                const j = JSON.parse(dataStr || "{}");
+                const ct = typeof j.content === "string" ? j.content : "";
+                if (statusEl) {
+                  statusEl.remove();
+                  statusEl = null;
+                }
+                answerBuffer += ct;
+                answerEl.innerHTML = marked.parse(answerBuffer);
+              } catch (_) {
+                //
+              }
+              scrollToBottom();
+              continue;
+            }
+
+            if (eventName === "status") {
+              try {
+                const j = JSON.parse(dataStr || "{}");
+                if (statusEl) {
+                  statusEl.textContent = String(j.text || "");
+                }
+                const txt = String(j.text || "");
+                if (txt === "正在检索手册..." && timing.retrieveStart == null) {
+                  timing.retrieveStart = Date.now();
+                }
+                if (txt === "正在生成回答..." && timing.generateStart == null) {
+                  timing.generateStart = Date.now();
+                }
+              } catch (_) {
+                //
+              }
+              continue;
+            }
+
+            if (eventName === "sources") {
+              let parsed = {};
+              try {
+                parsed = JSON.parse(dataStr || "{}");
+              } catch (_) {
+                parsed = {};
+              }
+              const act = parsed.action;
+              const actionStr =
+                act === "reject" ? "reject" : act === "chat" ? "chat" : "search";
+
+              if (actionStr === "search") {
+                const resultStub = {
+                  action: "search",
+                  sources: parsed.sources || [],
+                  images: parsed.images || [],
+                };
+                const imagesDom = buildImagesDom(resultStub);
+                if (imagesDom) bubble.appendChild(imagesDom);
+                const sourcesDom = renderSources(resultStub, state.selectedManualPdfName);
+                if (sourcesDom) bubble.appendChild(sourcesDom);
+              }
+
+              appendFeedback({
+                messageId,
+                query: text,
+                answer: answerBuffer || "",
+              });
+              continue;
+            }
+
+            if (eventName === "error") {
+              sawErrorEvent = true;
+              let ej = "请求出错";
+              try {
+                ej = JSON.parse(dataStr || "{}").error || ej;
+              } catch (_) {
+                //
+              }
+              answerEl.innerHTML = `<span style="color:var(--danger)">${escapeHtml(String(ej))}</span>`;
+              scrollToBottom();
+              continue;
+            }
+
+            if (eventName === "done") {
+              appendFeedback({
+                messageId,
+                query: text,
+                answer: answerBuffer || "",
+              });
+              appendTimingHint();
+              if (!sawErrorEvent) {
+                recordHistory();
+              }
+              break outer;
+            }
+          }
+
+          if (streamDone) {
+            appendFeedback({
+              messageId,
+              query: text,
+              answer: answerBuffer || "",
+            });
+            appendTimingHint();
+            if (!sawErrorEvent) {
+              recordHistory();
+            }
+            break outer;
+          }
+        }
+
       } catch (e) {
         console.error(e);
-        replaceLoadingWithError(loadingRow);
+        row.className = "row assistant error";
+        row.innerHTML = "";
+        const eb = document.createElement("div");
+        eb.className = "bubble";
+        eb.textContent = "请求失败，请稍后重试";
+        row.appendChild(eb);
+        scrollToBottom();
       } finally {
         setPending(false);
       }
