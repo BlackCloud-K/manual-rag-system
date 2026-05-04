@@ -26,8 +26,8 @@ OUT_OF_SCOPE = [
     "如何在DCS多人模式中申请服务器管理员权限",
 ]
 
-SYSTEM_PROMPT = """你是一个DCS飞行手册问答测试集构建助手。
-你的任务是根据给定的手册片段，生成一个真实用户会提出的中文问题。
+SYSTEM_PROMPT = """你是一个 handbook / manual 节选问答测试集的构造助手。
+你的任务是根据给定的节选片段，生成一个真实用户可能提出的中文问题。
 
 判断好问题的标准：
 - 问题能且只能从给定片段中找到答案
@@ -173,11 +173,11 @@ def _generate_question(client: OpenAI, chunk: dict) -> str | None:
     if not isinstance(text, str):
         text = str(text or "")
     fragment = text[:FRAGMENT_LEN]
-    user_content = f"""以下是F-16C飞行手册的一个片段：
+    user_content = f"""以下为节选片段：
 
 {fragment}
 
-请根据这个片段生成一个自然的中文问题。"""
+请据此生成一个自然的中文问题。"""
     try:
         response = client.chat.completions.create(
             model="gpt-4o-mini",

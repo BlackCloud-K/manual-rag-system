@@ -5,7 +5,7 @@ import asyncio
 from openai import AsyncOpenAI
 
 SYSTEM_PROMPT = (
-    "你是一个飞行模拟器界面分析助手。请严格只描述图片中实际可见的内容，"
+    "你是一个技术文档/软件界面插图分析助手。请严格只描述图片中实际可见的内容，"
     "禁止推断或补充图中未显示的信息。用中文回答。"
 )
 

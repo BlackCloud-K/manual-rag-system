@@ -39,11 +39,8 @@ generation:
 data:
   final_dir: "data/final"
 frontend:
-  pdf_options:
-    - "DCS FA-18C Early Access Guide CN.pdf"
-    - "DCS_ JF-17 _雷电_.pdf"
-    - "F-15C.pdf"
-    - "F-16C“蝰蛇”.pdf"
+  # Manual list for `/config` / UI: omit `pdf_options` to auto-list all *.pdf under pdf_dir (sorted).
+  pdf_dir: "documents"
   feedback_log_path: "data/feedback_log.jsonl"
 router:
   model: "gemini-2.5-flash-lite"

@@ -1,0 +1,31 @@
+{
+  "stem": "cmo",
+  "pdf_name": "CMO用户手册简体中文版.pdf",
+  "updated_at": "2026-05-03T20:01:34.889759+00:00",
+  "stages": {
+    "parse": {
+      "done": true,
+      "finished_at": "2026-05-03T19:53:24.395468+00:00"
+    },
+    "normalize": {
+      "done": true,
+      "finished_at": "2026-05-03T19:53:24.532014+00:00"
+    },
+    "vlm": {
+      "done": true,
+      "finished_at": "2026-05-03T20:01:14.595911+00:00"
+    },
+    "inject": {
+      "done": true,
+      "finished_at": "2026-05-03T20:01:14.617757+00:00"
+    },
+    "embed": {
+      "done": true,
+      "finished_at": "2026-05-03T20:01:32.922956+00:00"
+    },
+    "upload": {
+      "done": true,
+      "finished_at": "2026-05-03T20:01:34.889759+00:00"
+    }
+  }
+}

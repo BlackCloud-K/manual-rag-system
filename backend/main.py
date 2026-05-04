@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import mimetypes
 import os
 import sys
 from datetime import datetime, timezone
@@ -213,6 +214,36 @@ def _label_from_pdf_name(pdf_name: str) -> str:
     return base
 
 
+def _frontend_pdf_directory(cfg_path: Path) -> Path:
+    """Directory that holds downloadable PDFs; same default as `/pdf/` route."""
+    pdf_dir_raw = _read_yaml_scalar(cfg_path, "frontend.pdf_dir")
+    pdf_dir = (pdf_dir_raw or "documents").strip()
+    p = Path(pdf_dir)
+    if not p.is_absolute():
+        p = ROOT / p
+    return p.resolve()
+
+
+def _manual_pdf_basenames(cfg_path: Path) -> list[str]:
+    """
+    Dropdown + filter values for retrieval. Prefer explicit `frontend.pdf_options`
+    when set; otherwise list all *.pdf under `frontend.pdf_dir`.
+    Names must match `pdf_name` in chunk payloads / Qdrant.
+    """
+    explicit = [
+        s for s in (str(x).strip() for x in _read_yaml_list(cfg_path, "frontend.pdf_options")) if s
+    ]
+    if explicit:
+        return explicit
+
+    pdf_dir = _frontend_pdf_directory(cfg_path)
+    if not pdf_dir.is_dir():
+        return []
+
+    names = [x.name for x in pdf_dir.glob("*.pdf") if x.is_file()]
+    return sorted(names, key=str.casefold)
+
+
 def _json_error(exc: Exception) -> JSONResponse:
     return JSONResponse(status_code=500, content={"error": str(exc)})
 
@@ -222,6 +253,40 @@ def _safe_exists(p: str) -> bool:
         return Path(p).exists()
     except Exception:
         return False
+
+
+def _images_serve_base() -> Path:
+    return (ROOT / "data" / "images").resolve()
+
+
+def _safe_resolve_under_images_dir(file_path: str) -> Path | None:
+    """
+    Resolve file_path under ROOT/data/images/, rejecting path traversal.
+    file_path is the URL subpath (forward slashes only).
+    """
+    raw = str(file_path or "").strip()
+    if not raw:
+        return None
+
+    norm = raw.replace("\\", "/").strip("/")
+    for segment in norm.split("/"):
+        if segment in ("", ".", ".."):
+            return None
+
+    base = _images_serve_base()
+    try:
+        target = (base / norm).resolve()
+    except OSError:
+        return None
+
+    try:
+        target.relative_to(base)
+    except ValueError:
+        return None
+
+    if not target.is_file():
+        return None
+    return target
 
 
 def _int_page_val(payload: dict[str, Any]) -> int:
@@ -271,7 +336,7 @@ app.add_middleware(
 
 @app.on_event("startup")
 def _on_startup() -> None:
-    print("DCS RAG Backend started，访问 http://127.0.0.1:8000")
+    print("Manual RAG Backend started，访问 http://127.0.0.1:8000")
 
 
 @app.get("/")
@@ -289,14 +354,7 @@ def index() -> Any:
 def get_config() -> Any:
     try:
         cfg_path = ROOT / "config.yaml"
-        pdf_options = _read_yaml_list(cfg_path, "frontend.pdf_options")
-        if not pdf_options:
-            pdf_options = [
-                "F-16C“蝰蛇”.pdf",
-                "F-15C.pdf",
-                "DCS_ JF-17 _雷电_.pdf",
-                "DCS FA-18C Early Access Guide CN.pdf",
-            ]
+        pdf_options = _manual_pdf_basenames(cfg_path)
 
         manuals = [{"label": _label_from_pdf_name(p), "pdf_name": p} for p in pdf_options]
         return {"manuals": manuals}
@@ -349,7 +407,13 @@ def chat(req: ChatRequest) -> StreamingResponse:
             action = str(getattr(route_result, "action", "") or "").strip().lower()
 
             if action == "chat":
-                if hasattr(gen, "generate_chat_response"):
+                reasoning = str(getattr(route_result, "reasoning", "") or "").strip()
+
+                if reasoning == "injection_rule":
+                    ans = (
+                        "这个请求我不能按你的方式处理。请直接说明你想查询的手册条目或具体操作。"
+                    )
+                elif hasattr(gen, "generate_chat_response"):
                     answer_obj = gen.generate_chat_response(req.user_input, history_dicts)  # type: ignore[attr-defined]
                     ans = (
                         str(answer_obj.get("answer", "") if isinstance(answer_obj, dict) else answer_obj)
@@ -370,7 +434,7 @@ def chat(req: ChatRequest) -> StreamingResponse:
                 return
 
             if action == "reject":
-                msg = "抱歉，我只能回答 DCS 飞行手册相关的问题。"
+                msg = "抱歉，我只能解答与当前已导入手册节选相关的问题。"
                 payload = {"sources": [], "images": [], "action": "reject"}
                 yield f"event: answer_token\ndata: {json.dumps({'content': msg}, ensure_ascii=False)}\n\n"
                 yield (
@@ -382,7 +446,7 @@ def chat(req: ChatRequest) -> StreamingResponse:
 
             yield (
                 "event: status\ndata: "
-                f"{json.dumps({'text': '正在检索手册...'}, ensure_ascii=False)}\n\n"
+                f"{json.dumps({'text': '正在检索节选...'}, ensure_ascii=False)}\n\n"
             )
             query_q = str(getattr(route_result, "query", "") or "").strip() or req.user_input
             retr = gen.retrieve_for_stream(
@@ -508,6 +572,20 @@ def get_pdf(filename: str) -> Any:
             media_type="application/pdf",
             headers={"Content-Disposition": "inline"},
         )
+    except HTTPException:
+        raise
+    except Exception as exc:
+        return _json_error(exc)
+
+
+@app.get("/image/{file_path:path}")
+def get_image_by_subpath(file_path: str) -> Any:
+    try:
+        resolved = _safe_resolve_under_images_dir(file_path)
+        if resolved is None:
+            raise HTTPException(status_code=404, detail="Image not found")
+        mime, _ = mimetypes.guess_type(str(resolved))
+        return FileResponse(str(resolved), media_type=mime or "application/octet-stream")
     except HTTPException:
         raise
     except Exception as exc:

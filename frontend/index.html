@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DCS 手册问答</title>
+  <title>手册问答</title>
   <style>
     :root {
       --bg: #131324;
@@ -404,7 +404,7 @@
   <div class="app">
     <section class="left">
       <div class="toolbar">
-        <div class="title">DCS 手册问答</div>
+        <div class="title">手册问答</div>
         <div class="toolbar-actions">
           <select id="manual-select" class="manual-select"></select>
           <button id="new-chat-btn" class="new-chat-btn" type="button">新对话</button>
@@ -529,8 +529,16 @@
       el.pdfTitle.textContent = `当前 PDF：${state.selectedManualLabel || pdfNameWithExt}`;
     }
 
-    function buildImageSrc(path) {
-      return `/image?path=${encodeURIComponent(path)}`;
+    function buildImageSrc(rawPath) {
+      const s = String(rawPath || "").trim();
+      if (!s) return "";
+      const unified = s.replace(/\\/g, "/");
+      const marker = "data/images/";
+      const idx = unified.toLowerCase().indexOf(marker);
+      if (idx === -1) return "";
+      let rel = unified.slice(idx + marker.length).replace(/^\/+/, "");
+      if (!rel || rel.split("/").some((p) => p === "." || p === "..")) return "";
+      return `/image/${rel.split("/").map(encodeURIComponent).join("/")}`;
     }
 
     function renderLightbox() {
@@ -609,7 +617,9 @@
         }))
         .filter((m) => m.label && m.pdfName);
       if (!normalized.length) {
-        throw new Error("No manuals in config");
+        throw new Error(
+          "未发现手册 PDF：请将 .pdf 放入 documents/（或与后端 frontend.pdf_dir 一致），或设置 config.yaml 的 frontend.pdf_options"
+        );
       }
       return normalized;
     }
@@ -835,7 +845,7 @@
       row.className = "row assistant";
       const bubble = document.createElement("div");
       bubble.className = "bubble";
-      bubble.textContent = "你好，我是 DCS 手册问答助手。请选择手册后提问，我会尽量从手册中为你找到答案。";
+      bubble.textContent = "你好，我是手册节选问答助手。请选择手册文件后提问，我会尽量依据节选作答。";
       row.appendChild(bubble);
       el.messages.appendChild(row);
       scrollToBottom();
@@ -1009,7 +1019,7 @@
                   statusEl.textContent = String(j.text || "");
                 }
                 const txt = String(j.text || "");
-                if (txt === "正在检索手册..." && timing.retrieveStart == null) {
+                if (txt === "正在检索节选..." && timing.retrieveStart == null) {
                   timing.retrieveStart = Date.now();
                 }
                 if (txt === "正在生成回答..." && timing.generateStart == null) {

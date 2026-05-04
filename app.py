@@ -26,6 +26,29 @@ def load_config() -> dict[str, Any]:
     return loaded if isinstance(loaded, dict) else {}
 
 
+def _frontend_pdf_directory(cfg: dict[str, Any], root: Path) -> Path:
+    fe = cfg.get("frontend") if isinstance(cfg.get("frontend"), dict) else {}
+    pdf_dir_raw = fe.get("pdf_dir")
+    pdf_dir = str(pdf_dir_raw if pdf_dir_raw is not None else "documents").strip() or "documents"
+    p = Path(pdf_dir)
+    return p.resolve() if p.is_absolute() else (root / p).resolve()
+
+
+def _pdf_dropdown_options(cfg: dict[str, Any], root: Path) -> list[str]:
+    """
+    Mirrors backend `frontend.pdf_options` vs scanned `frontend.pdf_dir` behavior.
+    """
+    fe = cfg.get("frontend") if isinstance(cfg.get("frontend"), dict) else {}
+    raw_opts = fe.get("pdf_options")
+    if isinstance(raw_opts, list) and raw_opts:
+        return [str(x) for x in raw_opts if str(x).strip()]
+
+    d = _frontend_pdf_directory(cfg, root)
+    if not d.is_dir():
+        return []
+    return sorted([p.name for p in d.glob("*.pdf") if p.is_file()], key=str.casefold)
+
+
 @st.cache_resource
 def init_models() -> str:
     """预热本地 embedding/reranker 模型，避免首次提问等待过长。"""
@@ -204,7 +227,7 @@ def _friendly_error_message(exc: Exception) -> str:
 
 
 st.set_page_config(
-    page_title="DCS 手册问答助手",
+    page_title="手册问答助手",
     page_icon="✈️",
     layout="centered",
 )
@@ -219,10 +242,7 @@ include_reasoning = bool(
     )
 )
 
-pdf_options = frontend_cfg.get("pdf_options")
-if not isinstance(pdf_options, list) or not pdf_options:
-    pdf_options = ["F-16C“蝰蛇”.pdf"]
-pdf_options = [str(x) for x in pdf_options]
+pdf_options = _pdf_dropdown_options(cfg, ROOT)
 
 feedback_log_cfg = str(frontend_cfg.get("feedback_log_path", "data/feedback_log.jsonl"))
 feedback_log_path = Path(feedback_log_cfg)
@@ -240,6 +260,12 @@ if "feedback_submitted" not in st.session_state:
 
 with st.sidebar:
     st.header("设置")
+    if not pdf_options:
+        st.warning(
+            "未发现手册 PDF：请将 `.pdf` 放入 **documents/**（或由 `frontend.pdf_dir` "
+            "指定目录）；也可在 `config.yaml` 中设置列举项 `frontend.pdf_options`。"
+        )
+        st.stop()
     pdf_filter = st.selectbox("选择手册", options=pdf_options, index=0)
     if st.button("🔄 新对话"):
         st.session_state.messages = []
@@ -248,8 +274,8 @@ with st.sidebar:
         st.session_state.feedback_submitted = set()
         st.rerun()
 
-st.title("DCS 手册问答助手")
-st.caption("基于DCS飞行手册的智能问答系统")
+st.title("手册问答助手")
+st.caption("基于 handbook / manual 节选检索的智能问答")
 st.divider()
 
 warmup_status = init_models()
@@ -280,7 +306,7 @@ if prompt:
                 )
 
             if route_result.action == "search":
-                with st.spinner("正在检索手册并生成回答（首次启动可能需要加载模型）..."):
+                with st.spinner("正在检索节选并生成回答（首次启动可能需要加载模型）..."):
                     result = run_rag_pipeline_with_history(
                         query=route_result.query if route_result.query else prompt,
                         pdf_name_filter=pdf_filter,
@@ -300,7 +326,7 @@ if prompt:
                 query_rewritten = bool(result.get("query_rewritten", False))
             elif route_result.action == "reject":
                 result = {
-                    "answer": "这个问题和飞行手册问答无关，或请求内容不安全，我不能按这个方向继续。请改为提问手册相关内容。",
+                    "answer": "这个问题与当前手册节选问答范围无关，或请求不安全，我无法继续。请改为与手册节选相关的内容。",
                 }
                 sources = []
                 images = []
@@ -309,7 +335,7 @@ if prompt:
             else:
                 if route_result.reasoning == "injection_rule":
                     result = {
-                        "answer": "这个请求我不能按你的方式处理。请直接告诉我你想查询的手册内容或操作问题。",
+                        "answer": "这个请求我不能按你的方式处理。请直接说明你想查询的手册条目或具体操作。",
                     }
                 else:
                     with st.spinner("正在生成回答..."):
