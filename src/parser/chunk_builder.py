@@ -17,9 +17,27 @@ except ModuleNotFoundError:
 
 
 def _normalize_pdf_stem(pdf_name: str) -> str:
-    stem = Path(pdf_name).stem.lower()
-    normalized = re.sub(r"[^a-z0-9]+", "", stem)
-    return normalized or "manual"
+    """
+    Derive a filesystem-safe slug from PDF filename (without extension).
+
+    - Names with ASCII letters/digits (F-16C, DCS_ JF-17, …) keep the legacy rule:
+      lowercase + strip non-alphanumeric → e.g. f16c, dcsjf17.
+    - Pure-Chinese (or otherwise no ASCII alnum) names keep CJK characters so
+      distinct manuals do not all collapse to "manual".
+    """
+    stem = Path(pdf_name).stem
+    ascii_slug = re.sub(r"[^a-z0-9]+", "", stem.lower())
+    if ascii_slug:
+        return ascii_slug
+
+    cjk_slug = re.sub(r'[\\/:*?"<>|\s.]+', "", stem)
+    if cjk_slug:
+        return cjk_slug
+
+    import hashlib
+
+    digest = hashlib.sha256(pdf_name.encode("utf-8")).hexdigest()[:12]
+    return f"pdf_{digest}"
 
 
 def build_chunks(

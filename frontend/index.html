@@ -6,13 +6,13 @@
   <title>手册问答</title>
   <style>
     :root {
-      --bg: #131324;
-      --panel: #1b1b2d;
-      --panel-2: #202039;
-      --line: #2f3148;
+      --bg: #0d1117;
+      --panel: #111827;
+      --panel-2: #1e293b;
+      --line: #1e293b;
       --text: #e9ecff;
       --muted: #9aa3c4;
-      --primary: #2563eb;
+      --primary: #0ea5e9;
       --danger: #e11d48;
     }
 
@@ -38,14 +38,15 @@
       display: flex;
       flex-direction: column;
       background: var(--panel);
-      border-right: 1px solid var(--line);
+      border-right: 1.5px solid #0ea5e9;
+      box-shadow: 2px 0 12px rgba(14, 165, 233, 0.08);
     }
 
     .right {
       flex: 0 0 42%;
       display: flex;
       flex-direction: column;
-      background: #121220;
+      background: var(--bg);
     }
 
     .toolbar {
@@ -56,13 +57,27 @@
       justify-content: space-between;
       padding: 0 14px;
       border-bottom: 1px solid var(--line);
-      background: #1a1a30;
+      background: var(--panel-2);
     }
 
     .title {
+      display: flex;
+      align-items: center;
       font-size: 16px;
       font-weight: 600;
       color: #fff;
+    }
+
+    .title-deco {
+      width: 14px;
+      height: 14px;
+      border: 1.5px solid var(--primary);
+      transform: rotate(45deg);
+      display: inline-block;
+      border-radius: 2px;
+      margin-right: 8px;
+      vertical-align: middle;
+      flex-shrink: 0;
     }
 
     .toolbar-actions {
@@ -125,13 +140,23 @@
       white-space: pre-wrap;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
     }
-    .row.user .bubble { background: var(--primary); color: #fff; }
+    .row.user .bubble {
+      background: rgba(14, 165, 233, 0.07);
+      border-right: 2.5px solid var(--primary);
+      border-radius: 8px 0 0 8px;
+      color: #bae6fd;
+      box-shadow: none;
+    }
     .row.assistant .bubble { background: #2d2d44; color: #f5f6ff; }
     .row.error .bubble { background: rgba(225, 29, 72, 0.2); color: #ffd5df; border: 1px solid rgba(225, 29, 72, 0.5); }
 
     .assistant-content p { margin: 0.2em 0; }
     .assistant-content ul, .assistant-content ol { margin: 0.4em 0 0.4em 1.2em; }
+    .assistant-content li { margin: 0.25em 0; }
+    .assistant-content strong { color: #fff; font-weight: 600; }
     .assistant-content code { background: #1f2031; padding: 1px 5px; border-radius: 5px; }
+    .assistant-content .katex { font-size: 1.05em; }
+    .assistant-content .katex-display { margin: 0.5em 0; overflow-x: auto; }
     .status-hint {
       color: #888;
       font-style: italic;
@@ -145,29 +170,37 @@
       line-height: 1.4;
     }
 
-    .sources-wrap {
+    .sources-inline-wrap {
       margin-top: 10px;
-      background: #23253b;
-      border: 1px solid #353855;
-      border-radius: 10px;
-      padding: 8px 10px;
-      font-size: 13px;
-    }
-    .sources-toggle {
-      color: #c9d0f3;
-      cursor: pointer;
-      user-select: none;
-    }
-    .sources-list {
-      display: none;
-      margin-top: 8px;
-      gap: 6px;
+      display: flex;
       flex-direction: column;
+      gap: 8px;
     }
-    .source-item { color: #c4caeb; }
+    .sources-inline-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .source-page-tag {
+      display: inline-block;
+      background: rgba(14, 165, 233, 0.1);
+      border: 1px solid rgba(14, 165, 233, 0.25);
+      color: #38bdf8;
+      border-radius: 4px;
+      padding: 2px 7px;
+      font-size: 11px;
+      flex-shrink: 0;
+    }
+    .source-title-path {
+      color: #475569;
+      font-size: 12px;
+      flex: 1;
+      min-width: 120px;
+    }
     .jump-link {
-      margin-left: 8px;
-      color: #8ab4ff;
+      margin-left: 4px;
+      color: #38bdf8;
       cursor: pointer;
       text-decoration: underline;
       background: transparent;
@@ -175,40 +208,55 @@
       padding: 0;
       font: inherit;
       line-height: inherit;
+      font-size: 12px;
+      flex-shrink: 0;
     }
 
-    .images-wrap {
+    .images-strip-wrap {
       margin-top: 10px;
-      background: #23253b;
-      border: 1px solid #353855;
-      border-radius: 10px;
-      padding: 8px 10px;
-      font-size: 13px;
     }
-    .images-toggle {
-      color: #c9d0f3;
-      cursor: pointer;
-      user-select: none;
+    .images-strip-label {
+      font-size: 11px;
+      color: #475569;
+      margin-bottom: 6px;
     }
-    .images-list {
-      display: none;
-      margin-top: 10px;
+    .images-strip {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
       gap: 8px;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      flex-wrap: nowrap;
     }
-    .img-card {
-      border: 1px solid #3a3e60;
-      border-radius: 8px;
+    .images-strip-slot {
+      position: relative;
+      width: 56px;
+      height: 44px;
+      flex-shrink: 0;
+      border-radius: 5px;
       overflow: hidden;
-      background: #1c1e33;
     }
-    .img-card img {
+    .images-strip-slot img {
       display: block;
-      width: 100%;
-      height: 140px;
+      width: 56px;
+      height: 44px;
       object-fit: cover;
-      background: #0f1120;
+      border-radius: 5px;
+      border: 1px solid #263347;
       cursor: zoom-in;
+      background: #0f1120;
+    }
+    .images-strip-more {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.55);
+      color: #f8fafc;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 5px;
+      pointer-events: none;
     }
 
     .lightbox {
@@ -374,7 +422,22 @@
       color: var(--text);
       padding: 10px 12px;
       outline: none;
-      overflow-y: auto;
+      overflow-y: hidden;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.28) transparent;
+    }
+    /* Windows/Chromium 默认纵向滚动条两端常有上下三角，易被误认为数字框调节钮；需要滚动时再出现，并去掉端点小三角 */
+    .input::-webkit-scrollbar {
+      width: 6px;
+    }
+    .input::-webkit-scrollbar-button {
+      display: none;
+      height: 0;
+      width: 0;
+    }
+    .input::-webkit-scrollbar-thumb {
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.28);
     }
 
     .pdf-header {
@@ -404,7 +467,7 @@
   <div class="app">
     <section class="left">
       <div class="toolbar">
-        <div class="title">手册问答</div>
+        <div class="title"><span class="title-deco" aria-hidden="true"></span>手册问答</div>
         <div class="toolbar-actions">
           <select id="manual-select" class="manual-select"></select>
           <button id="new-chat-btn" class="new-chat-btn" type="button">新对话</button>
@@ -445,7 +508,11 @@
     </div>
   </div>
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous" />
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+  <script src="/render-answer.js"></script>
   <script>
     // === 状态管理 ===
     const DEFAULT_MANUALS = [
@@ -509,8 +576,13 @@
 
     function resizeTextarea() {
       const maxHeight = 108; // ~3 lines
+      el.input.style.overflowY = "hidden";
       el.input.style.height = "auto";
-      el.input.style.height = Math.min(el.input.scrollHeight, maxHeight) + "px";
+      const sh = el.input.scrollHeight;
+      el.input.style.height = Math.min(sh, maxHeight) + "px";
+      // 不要用 scrollHeight > clientHeight：单行时常因取整差 1～2px 误判为可滚动。
+      // 只有内容高度超过框的上限、必须裁切滚动时才显示滚动条。
+      el.input.style.overflowY = sh > maxHeight ? "auto" : "hidden";
     }
 
     function buildPdfSrc(pdfNameWithExt, page, cacheBust) {
@@ -670,23 +742,11 @@
       if (!sources.length) return null;
 
       const wrap = document.createElement("div");
-      wrap.className = "sources-wrap";
-
-      const toggle = document.createElement("div");
-      toggle.className = "sources-toggle";
-      toggle.textContent = `📖 查看来源 (${sources.length} 条)`;
-
-      const list = document.createElement("div");
-      list.className = "sources-list";
-
-      toggle.addEventListener("click", () => {
-        const visible = list.style.display === "flex";
-        list.style.display = visible ? "none" : "flex";
-      });
+      wrap.className = "sources-inline-wrap";
 
       sources.forEach((src) => {
-        const item = document.createElement("div");
-        item.className = "source-item";
+        const row = document.createElement("div");
+        row.className = "sources-inline-row";
 
         const page = Number.isFinite(Number(src.page)) ? Number(src.page) : 0;
         const titlePath = src.title_path ? String(src.title_path) : "（无标题）";
@@ -694,12 +754,29 @@
 
         const rank = Number.isFinite(Number(src.rank)) ? Number(src.rank) : 0;
         const rankText = rank > 0 ? ` · Top ${rank}` : "";
-        item.innerHTML = `第 ${page} 页 · ${escapeHtml(titlePath)}${rankText} <button type="button" class="jump-link" data-pdf="${escapeHtml(pdfName)}" data-page="${page > 0 ? page : 1}">[跳转]</button>`;
 
-        list.appendChild(item);
+        const tag = document.createElement("span");
+        tag.className = "source-page-tag";
+        tag.textContent = `第 ${page} 页`;
+
+        const titleSpan = document.createElement("span");
+        titleSpan.className = "source-title-path";
+        titleSpan.textContent = `${titlePath}${rankText}`;
+
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "jump-link";
+        btn.setAttribute("data-pdf", pdfName);
+        btn.setAttribute("data-page", String(page > 0 ? page : 1));
+        btn.textContent = "[跳转]";
+
+        row.appendChild(tag);
+        row.appendChild(titleSpan);
+        row.appendChild(btn);
+        wrap.appendChild(row);
       });
 
-      list.addEventListener("click", (e) => {
+      wrap.addEventListener("click", (e) => {
         const target = e.target;
         if (!(target instanceof HTMLElement)) return;
         const btn = target.closest(".jump-link");
@@ -709,8 +786,6 @@
         updatePdfViewer(pdfName, Number.isFinite(pageNum) ? pageNum : 1, { force: true });
       });
 
-      wrap.appendChild(toggle);
-      wrap.appendChild(list);
       return wrap;
     }
 
@@ -720,37 +795,45 @@
       if (!images.length) return null;
 
       const wrap = document.createElement("div");
-      wrap.className = "images-wrap";
+      wrap.className = "images-strip-wrap";
 
-      const toggle = document.createElement("div");
-      toggle.className = "images-toggle";
-      toggle.textContent = `🖼 查看图片 (${images.length} 张)`;
+      const label = document.createElement("div");
+      label.className = "images-strip-label";
+      label.textContent = `共 ${images.length} 张图片`;
 
-      const list = document.createElement("div");
-      list.className = "images-list";
+      const strip = document.createElement("div");
+      strip.className = "images-strip";
 
-      toggle.addEventListener("click", () => {
-        const visible = list.style.display === "grid";
-        list.style.display = visible ? "none" : "grid";
-      });
+      const maxThumb = 5;
+      const total = images.length;
+      const overflow = total > maxThumb ? total - maxThumb : 0;
+      const showCount = Math.min(maxThumb, total);
 
-      images.forEach((rawPath, idx) => {
-        const card = document.createElement("div");
-        card.className = "img-card";
+      for (let i = 0; i < showCount; i++) {
+        const slot = document.createElement("div");
+        slot.className = "images-strip-slot";
 
         const img = document.createElement("img");
         img.loading = "lazy";
         img.alt = "检索图片";
-        img.src = buildImageSrc(rawPath);
+        img.src = buildImageSrc(images[i]);
         img.addEventListener("click", () => {
-          openLightbox(images, idx);
+          openLightbox(images, i);
         });
-        card.appendChild(img);
-        list.appendChild(card);
-      });
+        slot.appendChild(img);
 
-      wrap.appendChild(toggle);
-      wrap.appendChild(list);
+        if (i === maxThumb - 1 && overflow > 0) {
+          const more = document.createElement("div");
+          more.className = "images-strip-more";
+          more.textContent = `+${overflow}`;
+          slot.appendChild(more);
+        }
+
+        strip.appendChild(slot);
+      }
+
+      wrap.appendChild(label);
+      wrap.appendChild(strip);
       return wrap;
     }
 
@@ -798,7 +881,7 @@
 
       const content = document.createElement("div");
       content.className = "assistant-content";
-      content.innerHTML = marked.parse(String(result.answer || ""));
+      renderAssistantAnswer(content, String(result.answer || ""));
       bubble.appendChild(content);
 
       const imagesDom = buildImagesDom(result);
@@ -889,6 +972,7 @@
       };
 
       let answerBuffer = "";
+      const answerStreamRenderer = createStreamRenderer(answerEl);
       let feedbackAppended = false;
       let historyRecorded = false;
       let sawErrorEvent = false;
@@ -1004,7 +1088,7 @@
                   statusEl = null;
                 }
                 answerBuffer += ct;
-                answerEl.innerHTML = marked.parse(answerBuffer);
+                answerStreamRenderer.update(answerBuffer);
               } catch (_) {
                 //
               }
@@ -1076,6 +1160,7 @@
             }
 
             if (eventName === "done") {
+              answerStreamRenderer.flush(answerBuffer);
               appendFeedback({
                 messageId,
                 query: text,
@@ -1090,6 +1175,7 @@
           }
 
           if (streamDone) {
+            answerStreamRenderer.flush(answerBuffer);
             appendFeedback({
               messageId,
               query: text,

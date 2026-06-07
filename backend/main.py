@@ -350,6 +350,19 @@ def index() -> Any:
         return _json_error(exc)
 
 
+@app.get("/render-answer.js")
+def render_answer_js() -> Any:
+    try:
+        js_path = ROOT / "frontend" / "render-answer.js"
+        if not js_path.is_file():
+            raise HTTPException(status_code=404, detail="render-answer.js not found")
+        return FileResponse(str(js_path), media_type="application/javascript")
+    except HTTPException:
+        raise
+    except Exception as exc:
+        return _json_error(exc)
+
+
 @app.get("/config")
 def get_config() -> Any:
     try:

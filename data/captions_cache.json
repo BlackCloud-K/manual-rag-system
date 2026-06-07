@@ -1184,5 +1184,11 @@
   "data/images/cmo/page_94_img_0.png": "编辑货物界面，包含以下关键内容：货物名称、货物类型、货物质量、货物容量、货物能力。部分货物标注为红色，显示特定信息。",
   "data/images/cmo/page_96_img_0.png": "导出单位/组到文件窗口，标注有Name、Valid from、Valid Until、Notes，左侧有单元和单位、导入导出单、位群至文件的中文文字。",
   "data/images/cmo/page_97_img_0.png": "文件保存对话框，标注有“File name: Example”，左侧文件夹列表显示“Documents”、“Pictures”等，右侧显示“Load Groups from file”，包含“RAAF Schemes”及相关信息。",
-  "data/images/cmo/page_98_img_0.png": "Lua Console v2界面，显示代码片段，包含标注有“Aircraft”、“Tornado GR.1A”、“RF-4 Phantom II”、“Single-Unit Airfield”等内容。"
+  "data/images/cmo/page_98_img_0.png": "Lua Console v2界面，显示代码片段，包含标注有“Aircraft”、“Tornado GR.1A”、“RF-4 Phantom II”、“Single-Unit Airfield”等内容。",
+  "data/images/manual/page_27_img_0.png": "图中包含多个图表，标注有“Universal coupling”、“Yukawa coupling”、“K=10^(-10)”、“K=10^(-9)”、“WMAP”。下方有中文标注“图 3-1 标量相互作用选取粒子质量的变化曲线”和“图 3-2 标量-矢量相互作用选取粒子质量的变化曲线”。",
+  "data/images/manual/page_28_img_0.png": "图中包含多个图表，主要标注有“Universal coupling”、“Yukawa coupling”、“图 3-4”、“图 3-5”，以及不同的曲线标识如“K=10^-10”、“K=10^-9”、“WMAP”。各图表展示了粒子质量与相应耦合的关系。",
+  "data/images/manual/page_31_img_0.png": "图表显示K与Mx的关系，横轴为Mx (GeV)，纵轴为K (GeV⁻¹)。标注有“Universal coupling: K for Ω h² = 0.1109 (Set 1)”，曲线分别用不同颜色和线型表示S（蓝色实线）、T（红色虚线）、SP（绿色虚线）、Tt（紫色点线）。",
+  "data/images/manual/page_29_img_0.png": "图中包含四个图表，分别标注为“Universal coupling”和“Yukawa coupling”。横轴为\\(M_X\\) (GeV)，纵轴为\\(\\Omega h^2\\)。图例中有不同的曲线，标记为\\(k=10^{-4}\\)、\\(k=10^{-5}\\)、\\(k=10^{-6}\\)、\\(k=10^{-7}\\)、\\(k=10^{-8}\\)和“WMAP”。底部有中文标注“图 3-7 张量相互作用遗迹密度随粒子质量的变化曲线”。",
+  "data/images/manual/page_32_img_0.png": "图中包含两幅图表，分别标注为“Universal coupling”和“Yukawa coupling”。关键数据包括：K (GeV^-1/2)、M_X (GeV)、以及不同曲线的标识（V、VA、tV、tVA、S、T、SP、Tt）。下方有中文标注“图 3-10 普适耦合下矢量、轴矢量、标量、轴矢量相互作用”。",
+  "data/images/manual/page_33_img_0.png": "Yukawa coupling图，横轴为\\( M_X \\) (GeV)，纵轴为\\( k \\) (GeV\\(^{-3}\\))。曲线标注有蓝色的\\( V \\)、红色的\\( V_A \\)、绿色的\\( tV \\)、紫色的\\( tV_A \\)。图中还包含了\\( \\Omega h^2 = 0.1109 \\)的说明。"
 }

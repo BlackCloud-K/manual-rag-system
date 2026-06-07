@@ -28,7 +28,7 @@ generation:
   provider: "google"
   max_context_tokens: 5000
   max_history_tokens: 1500
-  temperature: 0.3
+  temperature: 0.1
   max_tokens: 3000
   source_extraction:
     model: "gpt-4o-mini"

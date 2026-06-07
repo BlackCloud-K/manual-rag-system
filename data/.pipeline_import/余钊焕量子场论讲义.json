@@ -1,0 +1,31 @@
+{
+  "stem": "余钊焕量子场论讲义",
+  "pdf_name": "余钊焕量子场论讲义.pdf",
+  "updated_at": "2026-06-07T12:15:37.405278+00:00",
+  "stages": {
+    "parse": {
+      "done": true,
+      "finished_at": "2026-06-07T12:13:59.230578+00:00"
+    },
+    "normalize": {
+      "done": true,
+      "finished_at": "2026-06-07T12:14:07.240973+00:00"
+    },
+    "vlm": {
+      "done": true,
+      "finished_at": "2026-06-07T12:14:09.616779+00:00"
+    },
+    "inject": {
+      "done": true,
+      "finished_at": "2026-06-07T12:14:09.713235+00:00"
+    },
+    "embed": {
+      "done": true,
+      "finished_at": "2026-06-07T12:15:34.406055+00:00"
+    },
+    "upload": {
+      "done": true,
+      "finished_at": "2026-06-07T12:15:37.404262+00:00"
+    }
+  }
+}

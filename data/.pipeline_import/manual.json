@@ -1,0 +1,31 @@
+{
+  "stem": "manual",
+  "pdf_name": "暗物质性质的研究.pdf",
+  "updated_at": "2026-06-03T01:13:22.752658+00:00",
+  "stages": {
+    "parse": {
+      "done": true,
+      "finished_at": "2026-06-03T01:12:22.523662+00:00"
+    },
+    "normalize": {
+      "done": true,
+      "finished_at": "2026-06-03T01:12:22.585574+00:00"
+    },
+    "vlm": {
+      "done": true,
+      "finished_at": "2026-06-03T01:12:41.506508+00:00"
+    },
+    "inject": {
+      "done": true,
+      "finished_at": "2026-06-03T01:12:41.515317+00:00"
+    },
+    "embed": {
+      "done": true,
+      "finished_at": "2026-06-03T01:13:20.293544+00:00"
+    },
+    "upload": {
+      "done": true,
+      "finished_at": "2026-06-03T01:13:22.752658+00:00"
+    }
+  }
+}
